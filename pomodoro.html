@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+    </head>
+<body>
+
+<h1 id="temporizador">25:00</h1>
+<button id="iniciarPausar">Iniciar</button>
+
+<button id="cerrar">Cerrar ventana</button>
+
+<button id="titulo">
+a
+</button>
+
+
+
+
+<script>
+var tiempoRestante = 1500; // 25 minutos en segundos
+var corriendo = false;
+var intervalo;
+
+document.getElementById("iniciarPausar").addEventListener("click", function() {
+    if (corriendo) {
+        clearInterval(intervalo);
+        this.textContent = "Iniciar";
+    } else {
+        intervalo = setInterval(function() {
+            tiempoRestante--;
+            var minutos = Math.floor(tiempoRestante / 60);
+            var segundos = tiempoRestante % 60;
+            document.getElementById("temporizador").textContent = minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+            if (tiempoRestante <= 0) {
+                clearInterval(intervalo);
+            }
+        }, 1000);
+        this.textContent = "Pausar";
+    }
+    corriendo = !corriendo;
+});
+</script>
+
+<script>
+    const { ipcRenderer } = require('electron');
+
+    document.getElementById("cerrar").addEventListener("click", function() {
+        ipcRenderer.send('cerrar-ventana-pom');
+    });
+    </script>
+    
+
+
+
+    <!-- <script>
+       
+        
+        var moviendo = false;
+        var offsetX, offsetY;
+        
+        var ventana = remote.getCurrentWindow();
+        var titulo = document.getElementById("titulo");
+        
+        titulo.addEventListener("mousedown", function(e) {
+            moviendo = true;
+            offsetX = e.clientX;
+            offsetY = e.clientY;
+        });
+        
+        titulo.addEventListener("mouseup", function() {
+            moviendo = false;
+        });
+        
+        titulo.addEventListener("mousemove", function(e) {
+            if (moviendo) {
+                ventana.setPosition(e.screenX - offsetX, e.screenY - offsetY);
+            }
+        });
+        </script> -->
+
+
+        <!-- <script>
+           // const { ipcRenderer } = require('electron');
+
+var moviendo = false;
+var offsetX, offsetY;
+
+var titulo = document.getElementById("titulo");
+
+titulo.addEventListener("mousedown", function(e) {
+    moviendo = true;
+    offsetX = e.clientX;
+    offsetY = e.clientY;
+});
+
+titulo.addEventListener("mouseup", function() {
+    moviendo = false;
+});
+
+titulo.addEventListener("mousemove", function(e) {
+    if (moviendo) {
+        ipcRenderer.send('mover-ventana-pom', {x: e.screenX - offsetX, y: e.screenY - offsetY});
+    }
+});
+        </script> -->
+
+
+        <script>
+            // En el proceso de renderizado
+//const { ipcRenderer } = require('electron');
+
+var moviendo = false;
+var offsetX, offsetY;
+
+var titulo = document.getElementById("titulo");
+
+titulo.addEventListener("pointerdown", function(e) {
+    moviendo = true;
+    offsetX = e.clientX;
+    offsetY = e.clientY;
+    //var ventana = ipcRenderer.sendSync('obtener-ventana');
+    //moviendo = true;
+    //offsetX = e.clientX - ventana.x;
+    //offsetY = e.clientY - ventana.y;
+    //offsetX = e.clientX - ventana.bounds.x;
+    //offsetY = e.clientY - ventana.bounds.y;
+});
+
+document.addEventListener("pointerup", function() {
+    moviendo = false;
+});
+
+document.addEventListener("pointermove", function(e) {
+    if (moviendo) {
+        ipcRenderer.send('mover-ventana-pom', {x: e.screenX - offsetX, y: e.screenY - offsetY});
+    }
+});
+
+        </script>
+        
+</body>
+</html>

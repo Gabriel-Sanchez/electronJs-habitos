@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <h1>Hello World!aaeouaoeuao</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+
+    <ul id="miLista">
+    </ul>
+
+    <button id="get-data">Obtener datos</button>
+    <script>
+      const { ipcRenderer } = require('electron');
+      const getDataBtn = document.getElementById('get-data');
+
+      getDataBtn.addEventListener('click', () => {
+        ipcRenderer.send('request-data');
+      });
+
+      ipcRenderer.on('send-data', (event, data) => {
+        console.log(data); // Aquí puedes usar los datos como quieras
+
+        var lista = document.getElementById("miLista");
+
+      for (var i = 0; i < data.length; i++) {
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode(data[i].name));
+          lista.appendChild(li);
+}
+      });
+    </script>
+
+
+    <button id="abrirPomodoro">Abrir Pomodoro</button>
+
+<script>
+document.getElementById("abrirPomodoro").addEventListener("click", function() {
+    window.open("pomodoro.html", "_blank", "width=200,height=200");
+});
+</script>
+
+<button id="miBoton">
+  aaaa
+</button>
+
+
+
+<script>
+  
+  document.getElementById("miBoton").addEventListener("click", function() {
+      ipcRenderer.send('abrir-ventana-secundaria');
+  });
+  </script>
+
+
+
+  <button id="cerrar">Cerrar ventana</button>
+
+  <script>
+    const { remote } = require('electron');
+    
+    document.getElementById("cerrar").addEventListener("click", function() {
+        var ventana = remote.getCurrentWindow();
+        ventana.close();
+    });
+    </script>
+  </body>
+</html>
