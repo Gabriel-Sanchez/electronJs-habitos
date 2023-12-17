@@ -35,6 +35,22 @@
           var li = document.createElement("li");
           li.appendChild(document.createTextNode(data[i].name));
           lista.appendChild(li);
+          var botn = document.createElement("button")
+          var texto = document.createTextNode("ir");
+          botn.appendChild(texto);
+
+          // Asignar un valor al botón
+          botn.value = data[i];
+          lista.appendChild(botn)
+
+          console.log(data[i])
+
+          let objeto = data[i]
+
+          botn.addEventListener('click', function () {
+            //console.log(data[i].id)
+            ipcRenderer.send('abrir-ventana-secundaria', objeto)
+          })
 }
       });
     </script>

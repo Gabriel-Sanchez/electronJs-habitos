@@ -11,7 +11,10 @@
 const { ipcRenderer } = require('electron')
 
 ipcRenderer.on('button-value', function (event, value) {
-  document.getElementById('header').innerText = value
+    console.log(value)
+    console.log(value.id)
+    console.log(value.name)
+  document.getElementById('header').innerText = value.id
 })
 </script>
 
@@ -59,7 +62,7 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
 </script>
 
 <script>
-    const { ipcRenderer } = require('electron');
+    //const { ipcRenderer } = require('electron');
 
     document.getElementById("cerrar").addEventListener("click", function() {
         ipcRenderer.send('cerrar-ventana-pom');
