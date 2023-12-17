@@ -5,6 +5,22 @@
     </head>
 <body>
 
+    <h1 id="header"></h1>
+
+<script>
+const { ipcRenderer } = require('electron')
+
+ipcRenderer.on('button-value', function (event, value) {
+  document.getElementById('header').innerText = value
+})
+</script>
+
+
+
+
+
+
+
 <h1 id="temporizador">25:00</h1>
 <button id="iniciarPausar">Iniciar</button>
 

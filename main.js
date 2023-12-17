@@ -16,13 +16,15 @@ const createWindow = () => {
   
     win.loadFile('index.html')
 
+    
+
     ipcMain.on('request-data', (event) => {
       var data = fs.readFileSync("data.json", 'utf8');
       var jsonData = JSON.parse(data);
       event.sender.send('send-data', jsonData);
     });
 
-    ipcMain.on('abrir-ventana-secundaria', () => {
+    ipcMain.on('abrir-ventana-secundaria', (event, value) => {
       let { width, height } = screen.getPrimaryDisplay().workAreaSize;
       let winSecundaria = new BrowserWindow({
           width: 400,
@@ -37,6 +39,10 @@ const createWindow = () => {
           }
       })
       winSecundaria.loadFile('pomodoro.html');
+
+      winSecundaria.webContents.on('did-finish-load', function () {
+        winSecundaria.webContents.send('button-value', value)
+      })
    
       ipcMain.on('cerrar-ventana-pom', (event, arg) => {
         if (!winSecundaria.isDestroyed()) {

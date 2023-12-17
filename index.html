@@ -73,5 +73,33 @@ document.getElementById("abrirPomodoro").addEventListener("click", function() {
         ventana.close();
     });
     </script>
+
+
+
+
+    <button id="btn1" value="1">1</button>
+<button id="btn2" value="2">2</button>
+<button id="btn3" value="3">3</button>
+
+<script>
+//const { ipcRenderer } = require('electron')
+
+document.getElementById('btn1').addEventListener('click', function () {
+  console.log('1')
+  ipcRenderer.send('abrir-ventana-secundaria', this.value)
+})
+
+document.getElementById('btn2').addEventListener('click', function () {
+  ipcRenderer.send('abrir-ventana-secundaria', this.value)
+})
+
+document.getElementById('btn3').addEventListener('click', function () {
+  ipcRenderer.send('abrir-ventana-secundaria', this.value)
+})
+</script>
+
+
+
+
   </body>
 </html>
