@@ -9,6 +9,47 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
+
+    <ul id="miLista">
+    </ul>
+
+    <script>
+      const { ipcRenderer } = require('electron');
+      //const getDataBtn = document.getElementById('get-data');
+      ipcRenderer.send('request-data');
+      
+    
+      ipcRenderer.on('send-data', (event, data) => {
+        console.log(data); // Aquí puedes usar los datos como quieras
+
+        var lista = document.getElementById("miLista");
+
+      for (var i = 0; i < data.length; i++) {
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode(data[i].name));
+          lista.appendChild(li);
+          var botn = document.createElement("button")
+          var texto = document.createTextNode("ir");
+          botn.appendChild(texto);
+
+          // Asignar un valor al botón
+          botn.value = data[i];
+          lista.appendChild(botn)
+
+          console.log(data[i])
+
+          let objeto = data[i]
+
+          botn.addEventListener('click', function () {
+            //console.log(data[i].id)
+            ipcRenderer.send('abrir-ventana-secundaria', objeto)
+          })
+}
+      });
+    </script>
+
+
+
     <h1>Hello World!aaeouaoeuao</h1>
     We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
