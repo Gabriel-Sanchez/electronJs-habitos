@@ -8,14 +8,41 @@
     <h1 id="header"></h1>
 
 <script>
-const { ipcRenderer } = require('electron')
+    var ciclos ;  // Define la cantidad de ciclos Pomodoro
+    var tiempoTrabajo ;  // Tiempo de trabajo en segundos
+    var tiempoDescanso ;  // Tiempo de descanso en segundos
+    const { ipcRenderer } = require('electron')
 
-ipcRenderer.on('button-value', function (event, value) {
-    console.log(value)
-    console.log(value.id)
-    console.log(value.name)
-  document.getElementById('header').innerText = value.id
-})
+    function definir() {
+        return new Promise((resolve, reject) => {
+    
+            ipcRenderer.on('button-value', function (event, value) {
+                ciclos = value.count;
+                tiempoTrabajo = Number(value.work_time) * 60;
+                tiempoDescanso = Number(value.short_break) * 60;
+
+                document.getElementById('header').innerText = value.nombre;
+    
+                resolve([ciclos, tiempoTrabajo, tiempoDescanso]);
+            });
+        });
+    }
+    
+    definir().then(([ciclos, tiempoTrabajo, tiempoDescanso]) => {
+        console.log(ciclos);
+        console.log(tiempoDescanso);
+        console.log(tiempoTrabajo);
+        pomodoro_()
+        boton_cerrar()
+        mover_ventana()
+    }).catch(error => {
+        console.error(error);
+    });
+    
+
+//console.log('tiempo2', tiempo);  // Ahora puedes acceder a 'tiempo' desde fuera de la función
+
+
 </script>
 
 
@@ -37,10 +64,69 @@ a
 
 
 <script>
-var tiempoRestante = 1500; // 25 minutos en segundos
+  
+function pomodoro_(){
+
+
+
 var corriendo = false;
 var intervalo;
+/*
+var ciclos = 4;  // Define la cantidad de ciclos Pomodoro
+var tiempoTrabajo = 25 * 60;  // Tiempo de trabajo en segundos
+var tiempoDescanso = 5 * 60;  // Tiempo de descanso en segundos
+*/
+var tiempoRestante = tiempoTrabajo;  // Inicia el temporizador con el tiempo de trabajo
+var enDescanso = false;
 
+document.getElementById("iniciarPausar").addEventListener("click", function() {
+    if (corriendo) {
+        clearInterval(intervalo);
+        this.textContent = "Iniciar";
+    } else {
+        intervalo = setInterval(function() {
+            tiempoRestante--;
+            var minutos = Math.floor(tiempoRestante / 60);
+            var segundos = tiempoRestante % 60;
+            document.getElementById("temporizador").textContent = minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+            if (tiempoRestante <= 0) {
+                clearInterval(intervalo);
+                if (enDescanso) {
+                    // Si estaba en descanso, vuelve al tiempo de trabajo
+                    tiempoRestante = tiempoTrabajo;
+                    console.log(tiempoRestante)
+                    enDescanso = false;
+                } else {
+                    // Si estaba trabajando, pasa al tiempo de descanso
+                    tiempoRestante = tiempoDescanso;
+                    console.log(tiempoRestante)
+                    enDescanso = true;
+                    ciclos--;
+                }
+                if (ciclos > 0) {
+                    // Si aún quedan ciclos, reinicia el intervalo
+                    intervalo = setInterval(arguments.callee, 1000);
+                    console.log(ciclos)
+                }
+            }
+        }, 1000);
+        this.textContent = "Pausar";
+    }
+    corriendo = !corriendo;
+});
+
+
+
+}
+
+/*
+  console.log('tiempo')
+    console.log(tiempo)
+//var tiempoRestante = 1500; // 25 minutos en segundos
+
+console.log(tiempoRestante)
+var corriendo = false;
+var intervalo;
 document.getElementById("iniciarPausar").addEventListener("click", function() {
     if (corriendo) {
         clearInterval(intervalo);
@@ -59,14 +145,21 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
     }
     corriendo = !corriendo;
 });
+
+*/
 </script>
 
 <script>
     //const { ipcRenderer } = require('electron');
 
-    document.getElementById("cerrar").addEventListener("click", function() {
-        ipcRenderer.send('cerrar-ventana-pom');
-    });
+
+    function boton_cerrar(){
+
+        
+        document.getElementById("cerrar").addEventListener("click", function() {
+            ipcRenderer.send('cerrar-ventana-pom');
+        });
+    }
     </script>
     
 
@@ -129,12 +222,16 @@ titulo.addEventListener("mousemove", function(e) {
             // En el proceso de renderizado
 //const { ipcRenderer } = require('electron');
 
-var moviendo = false;
-var offsetX, offsetY;
 
-var titulo = document.getElementById("titulo");
+function mover_ventana(){
 
-titulo.addEventListener("pointerdown", function(e) {
+    
+    var moviendo = false;
+    var offsetX, offsetY;
+    
+    var titulo = document.getElementById("titulo");
+    
+    titulo.addEventListener("pointerdown", function(e) {
     moviendo = true;
     offsetX = e.clientX;
     offsetY = e.clientY;
@@ -156,7 +253,8 @@ document.addEventListener("pointermove", function(e) {
     }
 });
 
-        </script>
-        
+}
+</script>
+
 </body>
 </html>
