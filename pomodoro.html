@@ -8,6 +8,181 @@
     <h1 id="header"></h1>
 
 <script>
+
+    const fs = require('fs');
+    const Papa = require('papaparse');
+    const moment = require('moment');
+    
+    function registrar_Fin_habito(id_habito) {
+        let data = fs.readFileSync('historial_habitos.csv', 'utf8');
+        let records = Papa.parse(data, {header: true}).data;
+    
+        let hoy = moment().format('YYYY-MM-DD');
+        let hora = moment().format('HH:mm:ss');
+    
+        records.forEach(record => {
+            if(moment(record.fecha).format('YYYY-MM-DD') === hoy && record.id_habito === id_habito) {
+                record.end_timer = hora;
+            }
+        });
+    
+        let csv = Papa.unparse(records);
+        fs.writeFileSync('historial_habitos.csv', csv);
+    }
+    //guarda fin
+
+
+
+function registrar_Inicio_habito(id_habito) {
+    let data = fs.readFileSync('historial_habitos.csv', 'utf8');
+    let records = Papa.parse(data, {header: true}).data;
+
+    let hoy = moment().format('YYYY-MM-DD');
+    let hora = moment().format('HH:mm:ss');
+
+    let existeHoy = records.some(record => moment(record.fecha).format('YYYY-MM-DD') === hoy && record.id_habito === id_habito);
+    console.log(existeHoy)
+    if (!existeHoy) {
+        let nueva_fila = {
+            id_habito: id_habito,
+            fecha: hoy,
+            duracion: 0,
+            start_timer: hora,
+            end_timer: 0,
+            duracion_descanso: 0
+        };
+        records.push(nueva_fila);
+    }
+
+    let csv = Papa.unparse(records);
+    fs.writeFileSync('historial_habitos.csv', csv);
+}
+
+    //registrar
+
+
+    
+    function registrar_habito(id_habito, tiempo_habito) {
+        let data = fs.readFileSync('historial_habitos.csv', 'utf8');
+        let records = Papa.parse(data, {header: true}).data;
+    
+        let hoy = moment().format('YYYY-MM-DD');
+    
+        records.forEach(record => {
+            if(moment(record.fecha).format('YYYY-MM-DD') === hoy && record.id_habito === id_habito) {
+                let duracion = moment.duration(record.duracion);
+                duracion.add(tiempo_habito, 'seconds');
+                record.duracion = `${duracion.hours()}:${duracion.minutes()}:${duracion.seconds()}`;
+            }
+        });
+    
+        let existeHoy = records.some(record => moment(record.fecha).format('YYYY-MM-DD') === hoy && record.id_habito === id_habito);
+    
+        if (!existeHoy) {
+            let duracion = moment.duration(tiempo_habito, 'seconds');
+            let nueva_fila = {
+                id_habito: id_habito,
+                fecha: hoy,
+                duracion: `${duracion.hours()}:${duracion.minutes()}:${duracion.seconds()}`
+            };
+            records.push(nueva_fila);
+        }
+    
+        let csv = Papa.unparse(records);
+        fs.writeFileSync('historial_habitos.csv', csv);
+    }
+
+    //registrar descanso
+
+
+
+function registrar_habito_descanso(id_habito, tiempo_habito_descanso) {
+    let data = fs.readFileSync('historial_habitos.csv', 'utf8');
+    let records = Papa.parse(data, {header: true}).data;
+
+    let hoy = moment().format('YYYY-MM-DD');
+
+    records.forEach(record => {
+        if(moment(record.fecha).format('YYYY-MM-DD') === hoy && record.id_habito === id_habito) {
+            let duracion_descanso = moment.duration(record.duracion_descanso);
+            duracion_descanso.add(tiempo_habito_descanso, 'seconds');
+            record.duracion_descanso = `${duracion_descanso.hours()}:${duracion_descanso.minutes()}:${duracion_descanso.seconds()}`;
+        }
+    });
+
+    let existeHoy = records.some(record => moment(record.fecha).format('YYYY-MM-DD') === hoy && record.id_habito === id_habito);
+
+    if (!existeHoy) {
+        let duracion_descanso = moment.duration(tiempo_habito_descanso, 'seconds');
+        let nueva_fila = {
+            id_habito: id_habito,
+            fecha: hoy,
+            duracion_descanso: `${duracion_descanso.hours()}:${duracion_descanso.minutes()}:${duracion_descanso.seconds()}`
+        };
+        records.push(nueva_fila);
+    }
+
+    let csv = Papa.unparse(records);
+    fs.writeFileSync('historial_habitos.csv', csv);
+}
+
+    
+
+    
+
+
+</script>
+
+<button id="guarda_fin" >
+
+guarda fin
+</button>
+
+<button id="guarda_inicio" >
+
+guarda inicio
+</button>
+<button id="registra_tiempo" >
+    registra_tiempo
+</button>
+<button id="registra_descanso" >
+    registra_descanso
+</button>
+
+<script>
+    // script.js
+document.getElementById('guarda_fin').addEventListener('click', miFuncion);
+
+function miFuncion() {
+    console.log('¡guarda_fin!');
+    registrar_Fin_habito("1")
+}
+document.getElementById('guarda_inicio').addEventListener('click', miFuncion2);
+
+function miFuncion2() {
+    console.log('¡guarda_inicio!');
+    registrar_Inicio_habito("1")
+}
+document.getElementById('registra_tiempo').addEventListener('click', miFuncion3);
+
+function miFuncion3() {
+    console.log('registra_tiempo!');
+    
+    registrar_habito("1", 20)
+}
+document.getElementById('registra_descanso').addEventListener('click', miFuncion4);
+
+function miFuncion4() {
+    console.log('registra_descanso!');
+    
+
+    registrar_habito_descanso("1", 40)
+}
+
+</script>
+
+
+<script>
     var ciclos ;  // Define la cantidad de ciclos Pomodoro
     var tiempoTrabajo ;  // Tiempo de trabajo en segundos
     var tiempoDescanso ;  // Tiempo de descanso en segundos
