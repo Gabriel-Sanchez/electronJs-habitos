@@ -1,0 +1,19 @@
+button{
+    background-color: aqua;
+}
+.pom{
+    display: flex;
+    background-color: blueviolet;
+
+}
+.botones_pom{
+    margin: auto;
+}
+#temporizador{
+    margin: auto;
+}
+
+#iniciarPausar{
+    font-size: 14px; text-align: center;
+
+}

@@ -2,12 +2,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+        <link rel="stylesheet" href="Pomodoro/pomodoro.css">
     </head>
 <body>
 
     <h1 id="header"></h1>
 
 <script>
+    var must_save = false
+
+    function guardar_salir(){
+        if (must_save) {
+            var tiempo;
+            if (break_time) {
+                tiempo = (work_time_global * 60) - time_running;
+                registrar_habito(id_global, tiempo);
+            } else {
+                tiempo = (short_break_global * 60) - time_running;
+                registrar_habito_descanso(id_global, tiempo);
+            }
+            registrar_Fin_habito(id_global);
+        }
+        
+    }
 
     const fs = require('fs');
     const Papa = require('papaparse');
@@ -133,7 +150,7 @@ function registrar_habito_descanso(id_habito, tiempo_habito_descanso) {
 
 </script>
 
-<button id="guarda_fin" >
+<!-- <button id="guarda_fin" >
 
 guarda fin
 </button>
@@ -147,7 +164,7 @@ guarda inicio
 </button>
 <button id="registra_descanso" >
     registra_descanso
-</button>
+</button> -->
 
 <script>
     // script.js
@@ -188,6 +205,9 @@ function miFuncion4() {
     var tiempoDescanso ;  // Tiempo de descanso en segundos
     const { ipcRenderer } = require('electron')
 
+    var objeto_habito
+    var inicio_pom = false
+
     function definir() {
         return new Promise((resolve, reject) => {
     
@@ -197,6 +217,7 @@ function miFuncion4() {
                 tiempoDescanso = Number(value.short_break) * 60;
 
                 document.getElementById('header').innerText = value.nombre;
+                objeto_habito = value
     
                 resolve([ciclos, tiempoTrabajo, tiempoDescanso]);
             });
@@ -224,16 +245,19 @@ function miFuncion4() {
 
 
 
+<div class="pom">
 
+    <h1 id="temporizador">25:00</h1>
 
-<h1 id="temporizador">25:00</h1>
-<button id="iniciarPausar">Iniciar</button>
+    <div class="botones_pom">
+        <button id="iniciarPausar">&#9658;</button>
+        
+        <button id="titulo">&#9633;</button>
+        <button id="cerrar">&#10005;</button>
+        
+    </div>
+</div>
 
-<button id="cerrar">Cerrar ventana</button>
-
-<button id="titulo">
-a
-</button>
 
 
 
@@ -255,9 +279,15 @@ var tiempoRestante = tiempoTrabajo;  // Inicia el temporizador con el tiempo de 
 var enDescanso = false;
 
 document.getElementById("iniciarPausar").addEventListener("click", function() {
+
+    if (!inicio_pom){
+        registrar_Inicio_habito(objeto_habito.id+"")
+    }
+
+
     if (corriendo) {
         clearInterval(intervalo);
-        this.textContent = "Iniciar";
+        this.innerHTML  = "&#9658;";
     } else {
         intervalo = setInterval(function() {
             tiempoRestante--;
@@ -271,21 +301,29 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
                     tiempoRestante = tiempoTrabajo;
                     console.log(tiempoRestante)
                     enDescanso = false;
+
+                    registrar_habito(objeto_habito.id+"", tiempoRestante)
+
                 } else {
                     // Si estaba trabajando, pasa al tiempo de descanso
                     tiempoRestante = tiempoDescanso;
                     console.log(tiempoRestante)
                     enDescanso = true;
                     ciclos--;
+
+                    registrar_habito_descanso(objeto_habito.id+"", tiempoRestante)
                 }
                 if (ciclos > 0) {
                     // Si aún quedan ciclos, reinicia el intervalo
                     intervalo = setInterval(arguments.callee, 1000);
                     console.log(ciclos)
+                } else {
+                    registrar_Fin_habito(objeto_habito.id+"")
+                    this.innerHTML  = "&#9658;";
                 }
             }
         }, 1000);
-        this.textContent = "Pausar";
+        this.innerHTML  = "&#9612;&#9612;";
     }
     corriendo = !corriendo;
 });

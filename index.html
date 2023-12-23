@@ -40,6 +40,8 @@
 
           let objeto = data[i]
 
+          li.classList.add('item_habito')
+
           botn.addEventListener('click', function () {
             //console.log(data[i].id)
             ipcRenderer.send('abrir-ventana-secundaria', objeto)
