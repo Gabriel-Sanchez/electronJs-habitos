@@ -101,17 +101,17 @@ const createWindow = () => {
     })
   });
 
-  wingrafico.webContents.on('did-finish-load', () => {
-    const cal = new CalHeatMap();
-    cal.init({
-      itemSelector: '#cal-heatmap-container', // Selecciona el elemento donde se renderizará el mapa de calor
-      domain: 'month',
-      subDomain: 'day',
-      data: myData, // Asegúrate de tener los datos adecuados para el mapa de calor
-      start: new Date(2023, 0), // Fecha de inicio
-      cellSize: 20
-    });
-  });
+  // wingrafico.webContents.on('did-finish-load', () => {
+  //   const cal = new CalHeatMap();
+  //   cal.init({
+  //     itemSelector: '#cal-heatmap-container', // Selecciona el elemento donde se renderizará el mapa de calor
+  //     domain: 'month',
+  //     subDomain: 'day',
+  //     data: myData, // Asegúrate de tener los datos adecuados para el mapa de calor
+  //     start: new Date(2023, 0), // Fecha de inicio
+  //     cellSize: 20
+  //   });
+  // });
 
 
 }

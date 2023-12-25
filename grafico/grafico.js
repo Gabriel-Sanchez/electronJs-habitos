@@ -65,6 +65,7 @@ svg.selectAll('rect')
   .attr('fill', function(d) { return colorScale(d.value); });
 
 
+  
 
   const CalHeatMap = require('cal-heatmap');
 
@@ -77,24 +78,29 @@ svg.selectAll('rect')
 // <div id="cal-heatmap"></div>
 
 // Ahora, inicializa la biblioteca para crear un calendario vacío
-var cal = new CalHeatMap();
+// Crea una instancia del objeto CalHeatMap
+ // Inicializa la biblioteca para crear un calendario vacío
+ var cal = new CalHeatMap();
 
-// Aquí es donde proporcionas tus datos de prueba
-// En este caso, los datos son un objeto donde las claves son las fechas en formato de timestamp y los valores son los datos para esas fechas
-var datosDePrueba = {
-  "1577836800": 10, // 1 de enero de 2023
-  "1577923200": 20, // 2 de enero de 2023
-  // Agrega más datos aquí...
-};
+ // Aquí es donde proporcionas tus datos de prueba
+ // En este caso, los datos son un objeto donde las claves son las fechas en formato de timestamp y los valores son los datos para esas fechas
+ var datosDePrueba = {
+	"946721039":1,
+	"946706853":1,
+	"946706340":1
+}
+ 
+ 
+ cal.init({
+   data: datosDePrueba,
+   start: new Date(1999, 0), // Comienza el 1 de enero de 2023
+   domain: "month", // Cada dominio es un mes
+   subDomain: "x_day", // Cada subdominio es un día
+   range: 12, // Muestra 12 meses
+   cellSize: 20, // Tamaño de cada celda
+   domainGutter: 10, // Espacio entre cada mes
+   highlight: ["now"], // Resalta la fecha actual
+   itemName: ["dato", "datos"], // Nombre del dato para la leyenda
+ });
+ 
 
-cal.init({
-  data: datosDePrueba,
-  start: new Date(2023, 0), // Comienza el 1 de enero de 2023
-  domain: "month", // Cada dominio es un mes
-  subDomain: "day", // Cada subdominio es un día
-  range: 12, // Muestra 12 meses
-  cellSize: 20, // Tamaño de cada celda
-  domainGutter: 10, // Espacio entre cada mes
-  highlight: ["now"], // Resalta la fecha actual
-  itemName: ["dato", "datos"], // Nombre del dato para la leyenda
-});
