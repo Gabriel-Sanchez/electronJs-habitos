@@ -1,7 +1,23 @@
-h1{
+/* h1{
     color: red;
-}
+    margin-right: auto; 
+} */
 .item_habito{
-    background-color: brown;
+    background-color: rgb(103, 222, 80);
     display: flex;
+    justify-content: space-between;
+}
+.boton_habito{
+    /* margin: auto; */
+    padding: 10px;
+}
+.elemento_lista{
+    padding: 5px;
+    list-style-type: none;
+}
+.titulo_habito{
+    color: black;
+    font-size: 18px;
+    padding-left: 10px;
+
 }

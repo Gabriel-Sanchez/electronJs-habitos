@@ -278,6 +278,10 @@ var tiempoDescanso = 5 * 60;  // Tiempo de descanso en segundos
 var tiempoRestante = tiempoTrabajo;  // Inicia el temporizador con el tiempo de trabajo
 var enDescanso = false;
 
+var minutos = Math.floor(tiempoRestante / 60);
+var segundos = tiempoRestante % 60;
+document.getElementById("temporizador").textContent = minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+
 document.getElementById("iniciarPausar").addEventListener("click", function() {
 
     if (!inicio_pom){
