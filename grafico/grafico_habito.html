@@ -12,15 +12,14 @@
         <link rel="stylesheet" href="../node_modules/cal-heatmap/cal-heatmap.css" />
         <link rel="stylesheet" href="../node_modules/cal-heatmap/cal-heatmap.js" />
         <link rel="stylesheet" href="../node_modules/cal-heatmap/cal-heatmap.min.js" />
+        <link rel="stylesheet" href="../node_modules/d3/d3.js" />
 
 
-        <!-- <link rel="stylesheet" href="../node_modules/d3/d3.js" />
-        <script src="https://d3js.org/d3.v7.min.js"></script>
 
+        <!-- <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="https://unpkg.com/cal-heatmap/dist/cal-heatmap.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css">
-
-<script src="https://d3js.org/d3.v6.min.js"></script> -->
+        <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css">
+        <script src="https://d3js.org/d3.v6.min.js"></script> -->
     </head>
   <body>
       <div id="header"></div>
@@ -34,45 +33,48 @@
       
 
       <script>
-        const CalHeatMap = require('cal-heatmap');
+       const CalHeatMap = require('cal-heatmap');
       
-  
-
-        datasjs =  {
-          "1258185600": 2.77,
-          "1258272000": 2.52,
-          "1258358400": 3.23,
-          "1258444800": 2.06,
-          "1258617600": 2.62,
-          "1258704000": 3.9,
-          "1258790400": 3.41,
-          "1258963200": 0,
-          "1259049600": 0,
-          "1259136000": 3.16,
-          "1259308800": 2.97,
-          "1259395200": 2.79,
-          "1259481600": 3.65,
-          "1259654400": 1.9,
-          "1259740800": 3.46,
-          "1259827200": 3.93,
-          "1260000000": 4.1
-        }
-
-        
+       var data = {
+        '2023-12-18': 5,
+        '2023-12-19': 10,
+        '2023-12-20': 3,
+        '2023-12-21': 8,
+        '2023-12-22': 6,
+        '2023-12-23': 12,
+        '2023-12-24': 4,
+        '2023-1-1': 24,
+        '2023-2-4': 64,
+    };
+    
+    var datasjs = {};
+    
+    Object.keys(data).forEach(function(key) {
+        var date = new Date(key);
+        var timestamp = Math.floor(date.getTime() / 1000); // Convertir la fecha a timestamp UNIX
+    
+        // Transformar los valores como se desee
+        var transformedValue = data[key] * 0.5; // Solo un ejemplo de transformación
+    
+        datasjs[timestamp] = transformedValue; // Asignar el valor transformado al nuevo objeto
+    });
+    
+    console.log(datasjs); // Mostrar el nuevo objeto con fechas en formato timestamp y valores transformados
+    
+    
+      var cal = new CalHeatMap();
+      cal.init({
+        data: datasjs,
+        start: new Date(2023, 0),
+        id: "cal-heatmap",
+        domain: "month",
+        subDomain: "x_day",
+        cellSize: 15,
+        cellpadding: 3,
+        domainGutter: 15
+      });
       
-        var cal = new CalHeatMap();
-        cal.init({
-          data: datasjs,
-          start: new Date(2009, 10, 1),
-          id: "cal-heatmap",
-          domain: "month",
-          subDomain: "x_day",
-          cellSize: 15,
-          cellpadding: 3,
-          domainGutter: 15
-        });
-        
-      
+    
       </script>
 
 
