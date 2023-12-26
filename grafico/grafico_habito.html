@@ -62,17 +62,67 @@
     console.log(datasjs); // Mostrar el nuevo objeto con fechas en formato timestamp y valores transformados
     
     
-      var cal = new CalHeatMap();
-      cal.init({
-        data: datasjs,
-        start: new Date(2023, 0),
-        id: "cal-heatmap",
-        domain: "month",
-        subDomain: "x_day",
-        cellSize: 15,
-        cellpadding: 3,
-        domainGutter: 15
-      });
+   
+
+      const fs = require('fs');
+      const Papa = require('papaparse');
+      
+      function transformarDatos(idHabito, archivo) {
+          const data = fs.readFileSync(archivo, 'utf8');
+          const records = Papa.parse(data, {
+              header: true,
+              skipEmptyLines: true
+          }).data;
+      
+          let datasjs = {};
+          for (let record of records) {
+              if (parseInt(record.id_habito) === idHabito) {
+                  let fecha = record.fecha;
+                  let duracion = record.duracion;
+                  // Convertir la fecha a timestamp
+                  let timestamp = Math.floor(new Date(fecha).getTime() / 1000);
+                  // Convertir la duración a minutos
+                  let [h, m, s] = duracion.split(':').map(Number);
+                  let minutos = h * 60 + m + s / 60;
+                  datasjs[timestamp] = minutos;
+              }
+          }
+          console.log(datasjs);
+
+          var cal = new CalHeatMap();
+          cal.init({
+            data: datasjs,
+            start: new Date(2023, 0),
+            id: "cal-heatmap",
+            domain: "month",
+            subDomain: "x_day",
+            cellSize: 15,
+            cellpadding: 3,
+            domainGutter: 15
+          });
+      }
+      
+      // Uso de la función
+     
+
+      function definir() {
+        const { ipcRenderer } = require('electron')
+    
+            ipcRenderer.on('button-value', function (event, value) {
+              
+                document.getElementById('header').innerText = value.nombre;
+
+                transformarDatos(value.id, 'historial_habitos.csv');
+    
+               
+            });
+        
+    }
+
+    definir()
+      
+
+
       
     
       </script>
