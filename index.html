@@ -8,6 +8,8 @@
     <title>Hello World!</title>
     <link rel="stylesheet" href="./node_modules/cal-heatmap/cal-heatmap.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="node_modules/material-icons/iconfont/material-icons.css">
+
   </head>
   <body>
 
@@ -102,10 +104,18 @@
           div_item_h.appendChild(Nombre_habito);
           var botn = document.createElement("button")
           var botn_graf = document.createElement("button")
-          var texto = document.createTextNode("ir");
-          var texto_graf = document.createTextNode("ir_g");
-          botn.appendChild(texto);
-          botn_graf.appendChild(texto_graf);
+          
+          botn.innerHTML = '<i class="material-icons">alarm</i>';
+          document.body.append(botn);
+          //var texto = document.createTextNode("ir");
+          //botn.appendChild(texto);
+          
+          //var texto_graf = document.createTextNode("&#xF1F6;");
+          //botn_graf.appendChild(texto_graf);
+
+          botn_graf.innerHTML = '<i class="material-icons">calendar_today</i>';
+          document.body.append(botn_graf);
+
 
           // Asignar un valor al botón
           botn.value = data[i];

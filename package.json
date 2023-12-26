@@ -24,6 +24,7 @@
     "csv-stringify": "^6.4.5",
     "d3": "^3.5.17",
     "esm": "^3.2.25",
+    "material-icons": "^1.13.12",
     "moment": "^2.29.4",
     "papaparse": "^5.4.1"
   },
