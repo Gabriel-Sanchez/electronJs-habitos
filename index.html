@@ -94,6 +94,7 @@
           var li = document.createElement("li");
           li.classList.add('elemento_lista')
           var div_item_h = document.createElement('div')
+          var div_botones = document.createElement('div')
           li.appendChild(div_item_h)
           lista.appendChild(li);
           var Nombre_habito = document.createElement('h1')
@@ -107,6 +108,7 @@
           
           botn.innerHTML = '<i class="material-icons">alarm</i>';
           document.body.append(botn);
+          div_item_h.appendChild(div_botones)
           //var texto = document.createTextNode("ir");
           //botn.appendChild(texto);
           
@@ -120,14 +122,15 @@
           // Asignar un valor al botón
           botn.value = data[i];
           botn_graf.value = data[i];
-          div_item_h.appendChild(botn)
-          div_item_h.appendChild(botn_graf)
+          div_botones.appendChild(botn)
+          div_botones.appendChild(botn_graf)
 
           console.log(data[i])
 
           let objeto = data[i]
 
           botn.classList.add('boton_habito')
+          botn_graf.classList.add('boton_habito')
 
           div_item_h.classList.add('item_habito')
 

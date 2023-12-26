@@ -3,6 +3,7 @@
     <head>
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
         <link rel="stylesheet" href="Pomodoro/pomodoro.css">
+        <link rel="stylesheet" href="node_modules/material-icons/iconfont/material-icons.css">
     </head>
 <body>
 
@@ -247,13 +248,17 @@ function miFuncion4() {
 
 <div class="pom">
 
-    <h1 id="temporizador">25:00</h1>
+    <div class="tiempo">
+
+        <h1 id="temporizador">25:00</h1>
+    </div>
+
 
     <div class="botones_pom">
-        <button id="iniciarPausar">&#9658;</button>
+        <button id="iniciarPausar"><i class="material-icons">play_arrow</i></button>
         
-        <button id="titulo">&#9633;</button>
-        <button id="cerrar">&#10005;</button>
+        <button id="titulo"><i class="material-icons">open_with</i></button>
+        <button id="cerrar"><i class="material-icons">close</i></button>
         
     </div>
 </div>
@@ -291,7 +296,7 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
 
     if (corriendo) {
         clearInterval(intervalo);
-        this.innerHTML  = "&#9658;";
+        this.innerHTML  = '<i class="material-icons">play_arrow</i>';
     } else {
         intervalo = setInterval(function() {
             tiempoRestante--;
@@ -323,11 +328,11 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
                     console.log(ciclos)
                 } else {
                     registrar_Fin_habito(objeto_habito.id+"")
-                    this.innerHTML  = "&#9658;";
+                    this.innerHTML  = '<i class="material-icons">play_arrow</i>';
                 }
             }
         }, 1000);
-        this.innerHTML  = "&#9612;&#9612;";
+        this.innerHTML  = '<i class="material-icons">pause</i>';
     }
     corriendo = !corriendo;
 });
