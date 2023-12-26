@@ -9,6 +9,10 @@
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://unpkg.com; script-src 'self' 'unsafe-inline' https://d3js.org https://unpkg.com;">
 
         <title>Hello World!</title>
+
+        <link rel="stylesheet" href="grafico.css">
+
+
         <link rel="stylesheet" href="../node_modules/cal-heatmap/cal-heatmap.css" />
         <link rel="stylesheet" href="../node_modules/cal-heatmap/cal-heatmap.js" />
         <link rel="stylesheet" href="../node_modules/cal-heatmap/cal-heatmap.min.js" />
@@ -23,6 +27,7 @@
     </head>
   <body>
       <div id="header"></div>
+      <h1>hola</h1>
       <div id="cal-heatmap"></div>
       
       <!-- <div id="cal-heatmap-container"></div> -->
@@ -98,7 +103,8 @@
             subDomain: "x_day",
             cellSize: 15,
             cellpadding: 3,
-            domainGutter: 15
+            domainGutter: 15,
+            itemName: window.innerWidth < 768 ? ["week", "day"] : ["month", "day"], // Cambiar la unidad de tiempo según el ancho de la ventana
           });
       }
       
@@ -120,6 +126,7 @@
     }
 
     definir()
+    
       
 
 

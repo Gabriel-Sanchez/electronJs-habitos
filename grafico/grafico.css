@@ -1,0 +1,24 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#cal-heatmap-container {
+  height: 100%; /* Ocupar toda la altura disponible */
+  width: 100%; /* Ocupar todo el ancho disponible */
+  display: flex;
+  justify-content: center; /* Centrar el heatmap horizontalmente */
+  align-items: center; /* Centrar el heatmap verticalmente */
+}
+
+#cal-heatmap {
+  width: 100%; /* Ocupar todo el ancho del contenedor */
+  /* No es necesario establecer altura aquí */
+}
+
+#heatmap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
