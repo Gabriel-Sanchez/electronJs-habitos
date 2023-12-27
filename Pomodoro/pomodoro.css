@@ -1,11 +1,19 @@
 button{
     background-color: #4cb4d9;
+    /* width: 30px; */
+    border-radius: 5px;
   
 }
 #pom{
     display: flex;
     background-color: rgb(189, 122, 252);
     justify-content: space-between;
+    /* border-radius: 10px; */
+    border-radius: 5px 0 0 0;
+    /* padding-left: 5px;
+    padding-right: 5px; */
+    padding: 4px;
+
 
 }
 .botones_pom{
@@ -29,4 +37,17 @@ i{
 body{
     margin: 0;
     padding: 0;
+    border-radius: 10px;
+}
+html{
+    border-radius: 20px;
+}
+
+#tiempo{
+    display: flex;
+
+}
+h2{
+    margin-top: 0;
+    margin-bottom: 0;
 }

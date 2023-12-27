@@ -29,10 +29,12 @@ const createWindow = () => {
     let { width, height } = screen.getPrimaryDisplay().workAreaSize;
     let winSecundaria = new BrowserWindow({
       width: 230,
-      height: 100,
+      height: 38,
+      transparent: true,
       frame: false,
+      hasShadow: false,
       x: width - 230,
-      y: height - 102,
+      y: height - 100,
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
@@ -40,6 +42,7 @@ const createWindow = () => {
       }
     })
     winSecundaria.loadFile('pomodoro.html');
+    winSecundaria.setAlwaysOnTop(true, 'floating')
 
 
 
