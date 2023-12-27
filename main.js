@@ -6,7 +6,7 @@ const { app, BrowserWindow, ipcMain, screen } = require('electron')
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
+    width: 500,
     height: 600,
     webPreferences: {
       nodeIntegration: true,
@@ -28,11 +28,11 @@ const createWindow = () => {
   ipcMain.on('abrir-ventana-secundaria', (event, value) => {
     let { width, height } = screen.getPrimaryDisplay().workAreaSize;
     let winSecundaria = new BrowserWindow({
-      width: 400,
-      height: 300,
-      // frame: false,
-      x: width - 400,
-      y: height - 300,
+      width: 230,
+      height: 100,
+      frame: false,
+      x: width - 230,
+      y: height - 102,
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
@@ -84,7 +84,7 @@ const createWindow = () => {
   ipcMain.on('abrir-ventana-grafico', (event, value) => {
     let { width, height } = screen.getPrimaryDisplay().workAreaSize;
     let wingrafico = new BrowserWindow({
-      width: 900,
+      width: 1020,
       height: 800,
       // frame: false,
       //x: width - 400,

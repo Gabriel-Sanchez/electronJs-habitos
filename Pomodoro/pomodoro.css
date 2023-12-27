@@ -1,19 +1,32 @@
 button{
-    background-color: aqua;
+    background-color: #4cb4d9;
+  
 }
-.pom{
+#pom{
     display: flex;
-    background-color: blueviolet;
+    background-color: rgb(189, 122, 252);
+    justify-content: space-between;
 
 }
 .botones_pom{
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 #temporizador{
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #iniciarPausar{
     font-size: 14px; text-align: center;
 
+}
+
+i{
+     font-size: 18px !important;
+}
+
+body{
+    margin: 0;
+    padding: 0;
 }

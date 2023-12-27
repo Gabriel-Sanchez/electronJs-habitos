@@ -7,7 +7,7 @@
     </head>
 <body>
 
-    <h1 id="header"></h1>
+    <!-- <h1 id="header"></h1> -->
 
 <script>
     var must_save = false
@@ -217,7 +217,7 @@ function miFuncion4() {
                 tiempoTrabajo = Number(value.work_time) * 60;
                 tiempoDescanso = Number(value.short_break) * 60;
 
-                document.getElementById('header').innerText = value.nombre;
+                //document.getElementById('header').innerText = value.nombre;
                 objeto_habito = value
     
                 resolve([ciclos, tiempoTrabajo, tiempoDescanso]);
@@ -246,16 +246,16 @@ function miFuncion4() {
 
 
 
-<div class="pom">
+<div id="pom">
 
-    <div class="tiempo">
+    <div id="tiempo">
 
         <h1 id="temporizador">25:00</h1>
     </div>
 
 
     <div class="botones_pom">
-        <button id="iniciarPausar"><i class="material-icons">play_arrow</i></button>
+        <button id="iniciarPausar"><i class="material-icons" >play_arrow</i></button>
         
         <button id="titulo"><i class="material-icons">open_with</i></button>
         <button id="cerrar"><i class="material-icons">close</i></button>
@@ -268,6 +268,10 @@ function miFuncion4() {
 
 
 <script>
+
+    var div_tiempo = document.getElementById('pom');
+    div_tiempo.style.backgroundColor = 'color_deseado'; // reemplaza 'color_deseado' con el color que quieras
+
   
 function pomodoro_(){
 
@@ -296,8 +300,20 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
 
     if (corriendo) {
         clearInterval(intervalo);
-        this.innerHTML  = '<i class="material-icons">play_arrow</i>';
+        this.innerHTML  = '<i style="font-size: 66px;" class="material-icons">play_arrow</i>';
+        div_tiempo.style.backgroundColor = 'orange';
     } else {
+
+        if (enDescanso) {
+            div_tiempo.style.backgroundColor = 'green';
+            console.log('cambio de color 1')
+        }else{
+            div_tiempo.style.backgroundColor = 'red';
+            console.log('cambio de color 2')
+        }
+
+
+
         intervalo = setInterval(function() {
             tiempoRestante--;
             var minutos = Math.floor(tiempoRestante / 60);
@@ -312,6 +328,7 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
                     enDescanso = false;
 
                     registrar_habito(objeto_habito.id+"", tiempoRestante)
+                    div_tiempo.style.backgroundColor = 'red';
 
                 } else {
                     // Si estaba trabajando, pasa al tiempo de descanso
@@ -321,6 +338,7 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
                     ciclos--;
 
                     registrar_habito_descanso(objeto_habito.id+"", tiempoRestante)
+                    div_tiempo.style.backgroundColor = 'green';
                 }
                 if (ciclos > 0) {
                     // Si aún quedan ciclos, reinicia el intervalo
@@ -329,6 +347,7 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
                 } else {
                     registrar_Fin_habito(objeto_habito.id+"")
                     this.innerHTML  = '<i class="material-icons">play_arrow</i>';
+                    div_tiempo.style.backgroundColor = 'purple';
                 }
             }
         }, 1000);
