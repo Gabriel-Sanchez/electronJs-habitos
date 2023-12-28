@@ -179,7 +179,7 @@ document.getElementById('guarda_inicio').addEventListener('click', miFuncion2);
 
 function miFuncion2() {
     console.log('¡guarda_inicio!');
-    registrar_Inicio_habito("1")
+   // registrar_Inicio_habito("1")
 }
 document.getElementById('registra_tiempo').addEventListener('click', miFuncion3);
 
@@ -232,6 +232,7 @@ function miFuncion4() {
         pomodoro_()
         boton_cerrar()
         mover_ventana()
+        //boton_cerrar()
     }).catch(error => {
         console.error(error);
     });
@@ -273,7 +274,32 @@ function miFuncion4() {
     var div_tiempo = document.getElementById('pom');
     div_tiempo.style.backgroundColor = 'color_deseado'; // reemplaza 'color_deseado' con el color que quieras
 
-  
+    var tiempoRestante = 0;  // Inicia el temporizador con el tiempo de trabajo
+    var enDescanso;
+    function gurdar_salir(){
+
+        if (inicio_pom){
+            
+            var tiempo = 0
+            console.log(enDescanso)
+            if (!enDescanso) {
+                tiempo = tiempoTrabajo - tiempoRestante
+                console.log(tiempo)
+                registrar_habito(objeto_habito.id+"", tiempo)
+            } else {
+                    tiempo = tiempoDescanso - tiempoRestante
+                    console.log(tiempo)
+                    registrar_habito_descanso(objeto_habito.id+"", tiempo)
+                }
+                console.log("va a guardar")
+                registrar_Fin_habito(objeto_habito.id+"")
+            }
+
+        }
+
+
+
+
 function pomodoro_(){
 
 
@@ -285,8 +311,8 @@ var ciclos = 4;  // Define la cantidad de ciclos Pomodoro
 var tiempoTrabajo = 25 * 60;  // Tiempo de trabajo en segundos
 var tiempoDescanso = 5 * 60;  // Tiempo de descanso en segundos
 */
-var tiempoRestante = tiempoTrabajo;  // Inicia el temporizador con el tiempo de trabajo
-var enDescanso = false;
+tiempoRestante = tiempoTrabajo;  // Inicia el temporizador con el tiempo de trabajo
+enDescanso = false;
 
 var minutos = Math.floor(tiempoRestante / 60);
 var segundos = tiempoRestante % 60;
@@ -295,10 +321,15 @@ var html_ciclos = document.getElementById("ciclos")
 html_ciclos.textContent = ciclos
 
 
+
+
+
 document.getElementById("iniciarPausar").addEventListener("click", function() {
 
     if (!inicio_pom){
+        console.log('guardar inicio')
         registrar_Inicio_habito(objeto_habito.id+"")
+        inicio_pom = true
     }
 
 
@@ -406,8 +437,11 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
 
         
         document.getElementById("cerrar").addEventListener("click", function() {
+            gurdar_salir()
             ipcRenderer.send('cerrar-ventana-pom');
         });
+        /*
+        */
     }
     </script>
     
