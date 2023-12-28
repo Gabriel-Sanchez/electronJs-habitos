@@ -291,6 +291,9 @@ var enDescanso = false;
 var minutos = Math.floor(tiempoRestante / 60);
 var segundos = tiempoRestante % 60;
 document.getElementById("temporizador").textContent = minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+var html_ciclos = document.getElementById("ciclos")
+html_ciclos.textContent = ciclos
+
 
 document.getElementById("iniciarPausar").addEventListener("click", function() {
 
@@ -301,9 +304,10 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
 
     if (corriendo) {
         clearInterval(intervalo);
-        this.innerHTML  = '<i style="font-size: 66px;" class="material-icons">play_arrow</i>';
+        this.innerHTML  = '<i class="material-icons">play_arrow</i>';
         div_tiempo.style.backgroundColor = 'orange';
     } else {
+        this.innerHTML  = '<i class="material-icons">pause</i>';
 
         if (enDescanso) {
             div_tiempo.style.backgroundColor = 'green';
@@ -330,14 +334,14 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
 
                     registrar_habito(objeto_habito.id+"", tiempoRestante)
                     div_tiempo.style.backgroundColor = 'red';
-
+                    
                 } else {
                     // Si estaba trabajando, pasa al tiempo de descanso
                     tiempoRestante = tiempoDescanso;
                     console.log(tiempoRestante)
                     enDescanso = true;
                     ciclos--;
-
+                    
                     registrar_habito_descanso(objeto_habito.id+"", tiempoRestante)
                     div_tiempo.style.backgroundColor = 'green';
                 }
@@ -345,14 +349,17 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
                     // Si aún quedan ciclos, reinicia el intervalo
                     intervalo = setInterval(arguments.callee, 1000);
                     console.log(ciclos)
+                    html_ciclos.textContent = ciclos
                 } else {
                     registrar_Fin_habito(objeto_habito.id+"")
                     this.innerHTML  = '<i class="material-icons">play_arrow</i>';
                     div_tiempo.style.backgroundColor = 'purple';
+                    tiempoRestante = tiempoTrabajo;
+                    corriendo = !corriendo;
                 }
             }
         }, 1000);
-        this.innerHTML  = '<i class="material-icons">pause</i>';
+        //this.innerHTML  = '<i class="material-icons">pause</i>';
     }
     corriendo = !corriendo;
 });
