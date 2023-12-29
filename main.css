@@ -31,3 +31,21 @@
 ul{
     padding-left: 0;
 }
+
+.columnas {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .columna1 {
+    width: 500px;
+    /* background-color: lightblue; */
+  }
+  .columna2 {
+    flex-grow: 1;
+    background-color: lightgreen;
+  }
+  @media (max-width: 500px) {
+    .columna2 {
+      display: none;
+    }
+  }
