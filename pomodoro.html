@@ -260,8 +260,8 @@ function miFuncion4() {
     <div class="botones_pom">
         <button id="iniciarPausar"><i class="material-icons" >play_arrow</i></button>
         
-        <button id="titulo"><i class="material-icons">open_with</i></button>
-        <button id="cerrar"><i class="material-icons">close</i></button>
+        <!-- <button id="titulo"><i class="material-icons">open_with</i></button> -->
+        <button id="cerrar"><i id="cerrar_icon" class="material-icons">close</i></button>
         
     </div>
 </div>
@@ -317,9 +317,9 @@ enDescanso = false;
 
 var minutos = Math.floor(tiempoRestante / 60);
 var segundos = tiempoRestante % 60;
-document.getElementById("temporizador").textContent = minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+document.getElementById("temporizador").textContent = (minutos < 10 ? "0" : "") +  minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
 var html_ciclos = document.getElementById("ciclos")
-html_ciclos.textContent = ciclos
+html_ciclos.textContent =  (ciclos < 10 ? "0" : "") + ciclos
 
 
 
@@ -355,7 +355,7 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
             tiempoRestante--;
             var minutos = Math.floor(tiempoRestante / 60);
             var segundos = tiempoRestante % 60;
-            document.getElementById("temporizador").textContent = minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+            document.getElementById("temporizador").textContent = (minutos < 10 ? "0" : "") + minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
             if (tiempoRestante <= 0) {
                 clearInterval(intervalo);
                 if (enDescanso) {
@@ -381,7 +381,7 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
                     // Si aún quedan ciclos, reinicia el intervalo
                     intervalo = setInterval(arguments.callee, 1000);
                     console.log(ciclos)
-                    html_ciclos.textContent = ciclos
+                    html_ciclos.textContent = (ciclos < 10 ? "0" : "") + ciclos
                 } else {
                     registrar_Fin_habito(objeto_habito.id+"")
                     this.innerHTML  = '<i class="material-icons">play_arrow</i>';
@@ -513,7 +513,7 @@ function mover_ventana(){
     var moviendo = false;
     var offsetX, offsetY;
     
-    var titulo = document.getElementById("titulo");
+    var titulo = document.getElementById("pom");
     
     titulo.addEventListener("pointerdown", function(e) {
     moviendo = true;

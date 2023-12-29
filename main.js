@@ -28,13 +28,13 @@ const createWindow = () => {
   ipcMain.on('abrir-ventana-secundaria', (event, value) => {
     let { width, height } = screen.getPrimaryDisplay().workAreaSize;
     let winSecundaria = new BrowserWindow({
-      width: 230,
-      height: 38,
+      width: 150,
+      height: 39,
       transparent: true,
       frame: false,
       hasShadow: false,
-      x: width - 230,
-      y: height - 100,
+      x: width - 150,
+      y: height - 90,
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,

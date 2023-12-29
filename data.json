@@ -4,7 +4,7 @@
         "nombre": "Duo",
         "work_time": 1,
         "short_break": 1,
-        "count": 2,
+        "count": 5,
         "type": 2,
         "orden_n": 3
     },
@@ -14,7 +14,7 @@
         "nombre": "motivacion",
         "work_time": 10,
         "short_break": 5,
-        "count": 1,
+        "count": 55,
         "type": 1
     },
     {
