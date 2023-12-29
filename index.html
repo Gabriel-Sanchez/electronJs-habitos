@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="all.css">
     <link rel="stylesheet" href="node_modules/material-icons/iconfont/material-icons.css">
+    <script src="index.js"></script>
 
   </head>
   <body>
@@ -75,78 +76,140 @@
 
     <ul id="miLista">
     </ul>
+    <ul id="miLista_hechos">
+    </ul>
 
     <script>
   
       const { ipcRenderer } = require('electron');
       //const getDataBtn = document.getElementById('get-data');
-      ipcRenderer.send('request-data');
+        
+          ipcRenderer.send('request-data');
 
-      var data
-      
+          var data
+
+
+
+
+
+
+          ipcRenderer.on('send-data', (event, data) => {
+
+
+
+       
+
+          
+
+          });
+
+          
+          function llenar_lista_habitos(nombre_lista, hecho) {
+            var data = fs.readFileSync("data.json", 'utf8');
+            var jsonData = JSON.parse(data);
+            data = jsonData
+            //data = data
+            //console.log(data); // Aquí puedes usar los datos como quieras
+
+            var lista = document.getElementById(nombre_lista);
+            var records_h = leer_archivo_historial('historial_habitos.csv')
+            //console.log(records_h)
+
+            for (var i = 0; i < data.length; i++) {
+              //console.log(existeRegistroHoy(records_h, data[i].id))
+
+              if (existeRegistroHoy(records_h, data[i].id) == hecho) {
+
+
+
+
+                var li = document.createElement("li");
+                li.classList.add('elemento_lista')
+                var div_item_h = document.createElement('div')
+                var div_botones = document.createElement('div')
+                li.appendChild(div_item_h)
+                lista.appendChild(li);
+                var Nombre_habito = document.createElement('h1')
+                Nombre_habito.classList.add('titulo_habito')
+                var texto_nombre = document.createTextNode(data[i].nombre)
+
+                Nombre_habito.appendChild(texto_nombre)
+                div_item_h.appendChild(Nombre_habito);
+                var botn = document.createElement("button")
+                var botn_graf = document.createElement("button")
+
+                
+                document.body.append(botn);
+                div_item_h.appendChild(div_botones)
+                //var texto = document.createTextNode("ir");
+                //botn.appendChild(texto);
+
+                //var texto_graf = document.createTextNode("&#xF1F6;");
+                //botn_graf.appendChild(texto_graf);
+
+                botn_graf.innerHTML = '<i class="material-icons">calendar_today</i>';
+                document.body.append(botn_graf);
+
+
+                // Asignar un valor al botón
+                botn.value = data[i];
+                botn_graf.value = data[i];
+                div_botones.appendChild(botn)
+                div_botones.appendChild(botn_graf)
+
+                //console.log(data[i])
+
+                let objeto = data[i]
+
+                botn.classList.add('boton_habito')
+                botn_graf.classList.add('boton_habito')
+
+                if (data[i].type == 1) {
+                  div_item_h.classList.add('item_habito')
+                  botn.innerHTML = '<i class="material-icons">alarm</i>';
+                  botn.addEventListener('click', function () {
+                    //console.log(data[i].id)
+                    ipcRenderer.send('abrir-ventana-secundaria', objeto)
+                  })
+                } else {
+                  div_item_h.classList.add('item_habito_check')
+                  botn.innerHTML = '';
+                  botn.innerHTML = '<i class="material-icons">check</i>';
+                  botn.addEventListener('click', function () {
+                    //console.log("check-" + objeto.id)
+                    
+                    
+                    registrar_Habitos_checker(objeto.id)
+                    actualizar_listas()
+                    //ipcRenderer.send('abrir-ventana-secundaria', objeto)
+                  })
+
+                }
+
+                botn_graf.addEventListener('click', function () {
+                  //console.log(data[i].id)
+                  ipcRenderer.send('abrir-ventana-grafico', objeto)
+                })
+
+
+
+              }
+            }
+        }
+
+    function actualizar_listas(){
+
+      document.getElementById('miLista').innerHTML = '';
+      document.getElementById('miLista_hechos').innerHTML = '';
+
+      llenar_lista_habitos("miLista", false)
+      llenar_lista_habitos("miLista_hechos", true)
+      console.log('guardar')
+    }
     
-      ipcRenderer.on('send-data', (event, data) => {
-        data = data
-        console.log(data); // Aquí puedes usar los datos como quieras
-
-        var lista = document.getElementById("miLista");
-
-      for (var i = 0; i < data.length; i++) {
-          var li = document.createElement("li");
-          li.classList.add('elemento_lista')
-          var div_item_h = document.createElement('div')
-          var div_botones = document.createElement('div')
-          li.appendChild(div_item_h)
-          lista.appendChild(li);
-          var Nombre_habito = document.createElement('h1')
-          Nombre_habito.classList.add('titulo_habito')
-          var texto_nombre = document.createTextNode(data[i].nombre)
-          
-          Nombre_habito.appendChild(texto_nombre)
-          div_item_h.appendChild(Nombre_habito);
-          var botn = document.createElement("button")
-          var botn_graf = document.createElement("button")
-          
-          botn.innerHTML = '<i class="material-icons">alarm</i>';
-          document.body.append(botn);
-          div_item_h.appendChild(div_botones)
-          //var texto = document.createTextNode("ir");
-          //botn.appendChild(texto);
-          
-          //var texto_graf = document.createTextNode("&#xF1F6;");
-          //botn_graf.appendChild(texto_graf);
-
-          botn_graf.innerHTML = '<i class="material-icons">calendar_today</i>';
-          document.body.append(botn_graf);
-
-
-          // Asignar un valor al botón
-          botn.value = data[i];
-          botn_graf.value = data[i];
-          div_botones.appendChild(botn)
-          div_botones.appendChild(botn_graf)
-
-          console.log(data[i])
-
-          let objeto = data[i]
-
-          botn.classList.add('boton_habito')
-          botn_graf.classList.add('boton_habito')
-
-          div_item_h.classList.add('item_habito')
-
-          botn.addEventListener('click', function () {
-            //console.log(data[i].id)
-            ipcRenderer.send('abrir-ventana-secundaria', objeto)
-          })
-          botn_graf.addEventListener('click', function () {
-            //console.log(data[i].id)
-            ipcRenderer.send('abrir-ventana-grafico', objeto)
-          })
-}
-
-      });
+    actualizar_listas()
     </script>
+    
 
 
     <!-- <h1>Hello World!aaeouaoeuao</h1>
@@ -255,15 +318,17 @@ document.getElementById('btn3').addEventListener('click', function () {
 </script>
  -->
 
- <script src="node_modules/d3/dist/d3.min.js"></script>
+ <!-- <script src="node_modules/d3/dist/d3.min.js"></script>
  <script src="node_modules/papaparse/papaparse.min.js"></script>
- 
+  -->
 
 <script>
 // Primero, necesitas instalar heatmap.js en tu proyecto
 // npm install heatmap.js
 
 // Luego, en tu archivo JavaScript, puedes crear un heatmap así:
+
+/*
 
 var h337 = require('heatmap.js');
 
@@ -299,7 +364,7 @@ if (container instanceof Element) {
 } else {
   console.error('El contenedor no es un Element');
 }
-
+*/
 
 </script>
 

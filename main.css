@@ -8,6 +8,11 @@
     display: flex;
     justify-content: space-between;
 }
+.item_habito_check{
+    background-color: rgb(80, 196, 222);
+    display: flex;
+    justify-content: space-between;
+}
 .boton_habito{
     /* margin: auto; */
     padding: 10px;
