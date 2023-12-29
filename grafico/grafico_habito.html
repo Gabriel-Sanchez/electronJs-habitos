@@ -11,6 +11,7 @@
         <title>Hello World!</title>
 
         <link rel="stylesheet" href="grafico.css">
+        <link rel="stylesheet" href="../all.css">
 
 
         <link rel="stylesheet" href="../node_modules/cal-heatmap/cal-heatmap.css" />
@@ -26,16 +27,26 @@
         <script src="https://d3js.org/d3.v6.min.js"></script> -->
     </head>
   <body>
-      <div id="header"></div>
-      <div id="onClick-placeholder">
 
-      </div>
-   
-      <div id="cal-heatmap"></div>
-      <button id="minDate-previous"><</button>
-      <button id="minDate-next">></button>
-      <div id="mes_habito"></div>
-      
+    <div class="heatmap_principal">
+
+        <div id="header"></div>
+        <div class="center_div arriba_e">
+            
+            <div  id="cal-heatmap"></div>
+        </div>
+        <div>
+            <div id="mes_habito"></div>
+            <div class="center_div" >
+                
+                <button id="minDate-previous"><</button>
+                <button id="minDate-next">></button>
+            </div>
+            
+        </div>
+        <div id="onClick-placeholder"></div>
+    </div>
+        
       <!-- <div id="cal-heatmap-container"></div> -->
       
       <!-- <script src="grafico.js"></script> -->
@@ -77,6 +88,44 @@
 
       const fs = require('fs');
       const Papa = require('papaparse');
+
+      function mostrar_datos(date, nb){
+
+        let dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        let meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+        let diaSemana = dias[date.getDay()];
+        let ano = date.getFullYear();
+        let mes = meses[date.getMonth()];
+        let dia = date.getDate();
+        console.log(`La fecha es ${diaSemana}, ${dia} de ${mes} del año ${ano}`);
+
+        let fecha = date.toISOString().split('T')[0];
+        datos_historial =  get_datos_historial(valor_completo.id, fecha,'historial_habitos.csv' )
+        console.log(datos_historial)
+
+        if (nb === null){
+            resultado = 'sin registro'
+            
+        }else{
+            
+            resultado = ` <br>  La fecha es ${diaSemana}, ${dia} de ${mes} del año ${ano} </br>  <br> Concentración: ${datos_historial.duracion} - Descanso: ${datos_historial.duracion_descanso} <br/> <br> Hora de inicio: ${datos_historial.start_timer} - Hora de fin: ${datos_historial.end_timer}  <br/> `
+        }
+
+
+
+        document.getElementById('onClick-placeholder').innerHTML = `
+       
+        <!-- <b>${date}</b>  -->
+      <br/> <b>${resultado}</b> <br/>
+        
+        <!-- with 
+
+        
+        <b>${(nb === null ? 'unknown' : nb)}</b> items -->
+    `;
+
+      }
 
 
       function get_datos_historial(idHabito, fechaHabito, archivo) {
@@ -154,39 +203,16 @@
             cellSize: 15,
             //cellpadding: 3,
             highlight: "now",
-            tooltip: true,
             //range: 4
             //domainGutter: 15,
             //itemName: window.innerWidth < 768 ? ["week", "day"] : ["month", "day"], // Cambiar la unidad de tiempo según el ancho de la ventana
             itemName: "minuto",
-            onClick: function (date, nb) {
-                let fecha = date.toISOString().split('T')[0];
-                datos_historial =  get_datos_historial(valor_completo.id, fecha,'historial_habitos.csv' )
-                console.log(datos_historial)
-
-                if (nb === null){
-                    resultado = 'nada'
-                    
-                }else{
-                    
-                    resultado = `<br> ${datos_historial.duracion} <br/> <br> ${datos_historial.start_timer} <br/>  <br> ${datos_historial.end_timer} <br/> <br> ${datos_historial.duracion_descanso} <br/> `
-                }
-
-
-
-                document.getElementById('onClick-placeholder').innerHTML = `
-                You just clicked <br/>on <b>${date}</b> 
-              <br/>on <b>${resultado}</b> 
-
-               
-             
-                <br/>with 
-
-                
-                <b>${(nb === null ? 'unknown' : nb)}</b> items
-            `;
             
-              },
+            onClick: function (date, nb) {
+                mostrar_datos(date, nb)
+            },
+            
+            tooltip: true,
         });
 
 
@@ -217,6 +243,9 @@
                   },
                   width: 110,
                 },
+                onClick: function (date, nb) {
+                    mostrar_datos(date, nb)
+                  },
                 //legend: [20, 40, 60, 80],
               });
         /*

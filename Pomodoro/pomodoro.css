@@ -1,3 +1,8 @@
+html,
+body {
+  background-color: rgba(255, 255, 255, 0);
+}
+
 button{
     background-color: #4cb4d9;
     /* width: 30px; */

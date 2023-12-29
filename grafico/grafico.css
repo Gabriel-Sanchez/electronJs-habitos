@@ -1,8 +1,5 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
+
+
 
 #cal-heatmap-container {
   height: 100%; /* Ocupar toda la altura disponible */
@@ -21,4 +18,35 @@ body {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+}
+
+.heatmap_principal{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh;  */
+}
+
+.center_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 50px;  */
+}
+
+.arriba_e{
+    margin-top: 40px;
+}
+/* .y_2023.m_1 .domain-background {
+    fill: red !important;
+  }
+.y_2023 .domain-background {
+    fill: rgb(10, 194, 191) !important;
+  } */
+
+#header{
+    margin-top: 20px;
+    font-size: 20px;
 }
