@@ -46,11 +46,11 @@ ul{
   }
   .columna1 {
     width: 500px;
-    background-color: lightblue;
+    
   }
   .columna2 {
     flex-grow: 1;
-    background-color: lightgreen;
+    
   }
   @media (max-width: 500px) {
     .columna2 {

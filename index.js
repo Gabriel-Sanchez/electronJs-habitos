@@ -18,7 +18,12 @@ function leer_archivo_historial(archivo){
 
 function existeRegistroHoy(records, id) {
     // Obtén la fecha de hoy en formato yyyy-mm-dd
-    const hoy = new Date().toISOString().split('T')[0];
+    //const hoy = new Date().toISOString().split('T')[0];
+    const hoy = new Date().toLocaleDateString('en-CA');
+    
+    // console.log(records)
+    // console.log(id)
+    // console.log(hoy)
 
     // Utiliza el método 'some' para buscar un registro que cumpla con la condición
     return records.some(record => record.id_habito == id && record.fecha == hoy);

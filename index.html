@@ -89,7 +89,7 @@
     <div class="columnas">
       <div class="columna1">
         
-        Columna 1
+        
 
         
     <ul id="miLista">
@@ -100,7 +100,7 @@
       
       
       </div>
-      <div class="columna2">Columna 2
+      <div class="columna2">
 
         <div class="heatmap_principal">
 
@@ -163,7 +163,12 @@
             //console.log(records_h)
 
             for (var i = 0; i < data.length; i++) {
-              //console.log(existeRegistroHoy(records_h, data[i].id))
+              /*
+              console.log(existeRegistroHoy(records_h, data[i].id))
+
+              console.log(records_h)
+              console.log(data[i].id)
+              */
 
               if (existeRegistroHoy(records_h, data[i].id) == hecho) {
 
@@ -238,6 +243,7 @@
                   //console.log(data[i].id)
                  // ipcRenderer.send('abrir-ventana-grafico', objeto)
                  definir(objeto)
+                 //mostrar_flechas()
 
                 })
 
