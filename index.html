@@ -88,14 +88,26 @@
 
     <div class="columnas">
       <div class="columna1">
+
+        <div id="ventana1" class="ventana">
+          <h1>Ventana 1</h1>
+          <button onclick="cambiarVentana('ventana2')">Ir a la ventana 2</button>
+          <ul id="miLista">
+          </ul>
+          <ul id="miLista_hechos">
+          </ul>
+        </div>
+        
+        <div id="ventana2" class="ventana" style="display: none;">
+          <h1>Ventana 2</h1>
+          <h2 id="titulo_habito"></h2>
+          <button onclick="cambiarVentana('ventana1')">Volver a la ventana 1</button>
+        </div>
         
         
 
         
-    <ul id="miLista">
-    </ul>
-    <ul id="miLista_hechos">
-    </ul>
+   
       
       
       
@@ -185,7 +197,9 @@
                 Nombre_habito.classList.add('titulo_habito')
                 var texto_nombre = document.createTextNode(data[i].nombre)
 
+                var boton_config = document.createElement("button")
                 Nombre_habito.appendChild(texto_nombre)
+                div_item_h.appendChild(boton_config);
                 div_item_h.appendChild(Nombre_habito);
                 var botn = document.createElement("button")
                 var botn_graf = document.createElement("button")
@@ -215,6 +229,11 @@
 
                 botn.classList.add('boton_habito')
                 botn_graf.classList.add('boton_habito')
+                
+                boton_config.addEventListener('click', function () {
+                  configurar_habito(objeto)
+                  cambiarVentana('ventana2')
+                })
 
                 if (data[i].type == 1) {
                   div_item_h.classList.add('item_habito')

@@ -38,6 +38,7 @@ function existeRegistroHoy(records, id) {
 
 function registrar_Habitos_checker(id_habito) {
     console.log(id_habito)
+    id_habito = id_habito+""
     let data = fs.readFileSync('historial_habitos.csv', 'utf8');
     let records = Papa.parse(data, {header: true}).data;
 
@@ -60,4 +61,19 @@ function registrar_Habitos_checker(id_habito) {
 
     let csv = Papa.unparse(records);
     fs.writeFileSync('historial_habitos.csv', csv);
+}
+
+
+function cambiarVentana(id) {
+    var ventanas = document.getElementsByClassName('ventana');
+    for (var i = 0; i < ventanas.length; i++) {
+      ventanas[i].style.display = 'none';
+    }
+    document.getElementById(id).style.display = 'block';
+  }
+
+function configurar_habito(valor){
+    var titulo = document.getElementById('titulo_habito')
+    titulo.innerText = valor.nombre
+
 }
