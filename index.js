@@ -45,7 +45,7 @@ function registrar_Habitos_checker(id_habito) {
         let nueva_fila = {
             id_habito: id_habito,
             fecha: hoy,
-            duracion: 1,
+            duracion: "0"+":"+1+":"+'0',
             start_timer: hora,
             end_timer: hora,
             duracion_descanso: 0

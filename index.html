@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'"> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://unpkg.com; script-src 'self' 'unsafe-inline' https://d3js.org https://unpkg.com;">
+
     <title>Habitos</title>
     <link rel="stylesheet" href="./node_modules/cal-heatmap/cal-heatmap.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="all.css">
     <link rel="stylesheet" href="node_modules/material-icons/iconfont/material-icons.css">
     <script src="index.js"></script>
+
+    <link rel="stylesheet" href="grafico/grafico.css">
+    <link rel="stylesheet" href="all.css">
+
+    <link rel="stylesheet" href="node_modules/cal-heatmap/cal-heatmap.css" />
+    <link rel="stylesheet" href="node_modules/cal-heatmap/cal-heatmap.js" />
+    <link rel="stylesheet" href="node_modules/cal-heatmap/cal-heatmap.min.js" />
+    <link rel="stylesheet" href="node_modules/d3/d3.js" />
+
+    <script src="grafico/grafico.js"></script>
 
   </head>
   <body>
@@ -88,7 +100,29 @@
       
       
       </div>
-      <div class="columna2">Columna 2</div>
+      <div class="columna2">Columna 2
+
+        <div class="heatmap_principal">
+
+          <div id="header"></div>
+          <div class="center_div arriba_e">
+              
+              <div  id="cal-heatmap"></div>
+          </div>
+          <div>
+              <div id="mes_habito"></div>
+              <div class="center_div" >
+                  
+                  <button id="minDate-previous"><</button>
+                  <button id="minDate-next">></button>
+              </div>
+              
+          </div>
+          <div id="onClick-placeholder"></div>
+      </div>
+
+
+      </div>
     </div>
 
 
@@ -194,6 +228,7 @@
                     
                     registrar_Habitos_checker(objeto.id)
                     actualizar_listas()
+                    definir(objeto)
                     //ipcRenderer.send('abrir-ventana-secundaria', objeto)
                   })
 
@@ -201,8 +236,11 @@
 
                 botn_graf.addEventListener('click', function () {
                   //console.log(data[i].id)
-                  ipcRenderer.send('abrir-ventana-grafico', objeto)
+                 // ipcRenderer.send('abrir-ventana-grafico', objeto)
+                 definir(objeto)
+
                 })
+
 
 
 
