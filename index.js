@@ -76,4 +76,58 @@ function configurar_habito(valor){
     var titulo = document.getElementById('titulo_habito')
     titulo.innerText = valor.nombre
 
+    document.getElementById('id').value = valor.id;
+document.getElementById('nombre').value = valor.nombre;
+document.getElementById('work_time').value = valor.work_time;
+document.getElementById('short_break').value = valor.short_break;
+document.getElementById('count').value = valor.count;
+document.getElementById('type').value = valor.type;
+document.getElementById('orden_n').value = valor.orden_n;
+
+console.log(valor.orden_n)
+
 }
+
+
+function guardar_habito_json(){
+    var data = fs.readFileSync("data.json", 'utf8');
+    var jsonData = JSON.parse(data);
+    var formValues = {
+        "id": Number(document.getElementById('id').value) ,
+        "nombre": document.getElementById('nombre').value,
+        "work_time": Number(document.getElementById('work_time').value)  ,
+        "short_break": Number(document.getElementById('short_break').value) ,
+        "count": Number(document.getElementById('count').value) ,
+        "type": Number(document.getElementById('type').value) ,
+        "orden_n": Number(document.getElementById('orden_n').value) ,
+    };
+
+    console.log(formValues)
+
+    // Buscar el índice del objeto con el id dado
+    var index = jsonData.findIndex(item => item.id === formValues.id);
+
+    // Si el objeto existe, actualizarlo
+    if (index !== -1) {
+        jsonData[index] = formValues;
+        fs.writeFileSync("data.json", JSON.stringify(jsonData, null, 2), 'utf8');
+        console.log('guardardó')
+    } else {
+        // Si el objeto no existe, puedes decidir qué hacer (por ejemplo, añadirlo al array)
+        console.log('El objeto con id ' + formValues.id + ' no existe');
+    }
+
+    actualizar_listas()
+    cambiarVentana('ventana1')
+}
+
+
+function actualizar_listas(){
+
+    document.getElementById('miLista').innerHTML = '';
+    document.getElementById('miLista_hechos').innerHTML = '';
+
+    llenar_lista_habitos("miLista", false)
+    llenar_lista_habitos("miLista_hechos", true)
+    console.log('guardar')
+  }

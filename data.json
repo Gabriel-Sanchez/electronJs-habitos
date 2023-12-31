@@ -1,254 +1,254 @@
 [
-    {
-        "id": 7,
-        "nombre": "Duo",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 5,
-        "type": 2,
-        "orden_n": 3
-    },
-    {
-        "id": 26,
-        "orden_n": 2,
-        "nombre": "motivacion",
-        "work_time": 10,
-        "short_break": 5,
-        "count": 55,
-        "type": 1
-    },
-    {
-        "id": 8,
-        "nombre": "Bussu",
-        "work_time": 5,
-        "short_break": 1,
-        "count": 1,
-        "type": 2,
-        "orden_n": 4
-    },
-    {
-        "id": 3,
-        "nombre": "Platzi Habilidades blandas",
-        "work_time": 10,
-        "short_break": 5,
-        "count": 1,
-        "type": 1,
-        "orden_n": 5
-    },
-    {
-        "id": 2,
-        "nombre": "anki",
-        "work_time": 15,
-        "short_break": 5,
-        "count": 1,
-        "type": 1,
-        "orden_n": 6
-    },
-    {
-        "id": 1,
-        "nombre": "ingles",
-        "work_time": 10,
-        "short_break": 5,
-        "count": 1,
-        "type": 1,
-        "orden_n": 7
-    },
-    {
-        "id": 12,
-        "nombre": "Chat in english ",
-        "work_time": 10,
-        "short_break": 1,
-        "count": 1,
-        "type": 1,
-        "orden_n": 8
-    },
-    {
-        "id": 9,
-        "nombre": "Fotografia",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2,
-        "orden_n": 9
-    },
-    {
-        "id": 10,
-        "nombre": "hobby",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 1,
-        "orden_n": 10
-    },
-    {
-        "id": 13,
-        "nombre": "Ortografia",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 1,
-        "orden_n": 11
-    },
-    {
-        "id": 14,
-        "nombre": "Platzi espa\u00f1ol ",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 1,
-        "orden_n": 12
-    },
-    {
-        "id": 21,
-        "orden_n": 13,
-        "nombre": "anki (espa\u00f1ol)",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 1
-    },
-    {
-        "id": 11,
-        "nombre": "Ejercicio",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2,
-        "orden_n": 14
-    },
-    {
-        "id": 22,
-        "orden_n": 15,
-        "nombre": "audiolibro",
-        "work_time": 10,
-        "short_break": 1,
-        "count": 1,
-        "type": 1
-    },
-    {
-        "id": 23,
-        "orden_n": 16,
-        "nombre": "Serie ingles",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2
-    },
-    {
-        "id": 4,
-        "nombre": "Ingenieria",
-        "work_time": 10,
-        "short_break": 1,
-        "count": 1,
-        "type": 1,
-        "orden_n": 17
-    },
-    {
-        "id": 6,
-        "nombre": "crema",
-        "work_time": 25,
-        "short_break": 5,
-        "count": 2,
-        "type": 2,
-        "orden_n": 18
-    },
-    {
-        "id": 18,
-        "nombre": "Leer",
-        "work_time": 2,
-        "short_break": 2,
-        "count": 1,
-        "type": 1,
-        "orden_n": 19
-    },
-    {
-        "id": 5,
-        "nombre": "Tesis",
-        "work_time": 25,
-        "short_break": 5,
-        "count": 4,
-        "type": 1,
-        "orden_n": 20
-    },
-    {
-        "id": 17,
-        "nombre": "Leer ingles",
-        "work_time": 2,
-        "short_break": 1,
-        "count": 1,
-        "type": 1,
-        "orden_n": 21
-    },
-    {
-        "id": 15,
-        "nombre": "one piece",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2,
-        "orden_n": 22
-    },
-    {
-        "id": 16,
-        "nombre": "vagabond",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2,
-        "orden_n": 23
-    },
-    {
-        "id": 19,
-        "nombre": "creatina",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2,
-        "orden_n": 24
-    },
-    {
-        "id": 24,
-        "orden_n": 25,
-        "nombre": "escribe que aprendiste hoy",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2
-    },
-    {
-        "id": 20,
-        "orden_n": 26,
-        "nombre": "de que estas agradecido hoy (gratitud)",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2
-    },
-    {
-        "id": 25,
-        "orden_n": 27,
-        "nombre": "agua",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2
-    },
-    {
-        "id": 27,
-        "orden_n": 28,
-        "nombre": "apex",
-        "work_time": 1,
-        "short_break": 1,
-        "count": 1,
-        "type": 2
-    },
-    {
-        "id": 28,
-        "orden_n": 29,
-        "nombre": "programacion",
-        "work_time": 15,
-        "short_break": 2,
-        "count": 2,
-        "type": 1
-    }
+  {
+    "id": 7,
+    "nombre": "Duo",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 5,
+    "type": 2,
+    "orden_n": 3
+  },
+  {
+    "id": 26,
+    "orden_n": 2,
+    "nombre": "motivacion",
+    "work_time": 10,
+    "short_break": 5,
+    "count": 55,
+    "type": 1
+  },
+  {
+    "id": 8,
+    "nombre": "Bussu",
+    "work_time": 54,
+    "short_break": 12,
+    "count": 1,
+    "type": 2,
+    "orden_n": 4
+  },
+  {
+    "id": 3,
+    "nombre": "Platzi Habilidades blandas",
+    "work_time": 101,
+    "short_break": 5,
+    "count": 1,
+    "type": 1,
+    "orden_n": 5
+  },
+  {
+    "id": 2,
+    "nombre": "anki",
+    "work_time": 15,
+    "short_break": 5,
+    "count": 1,
+    "type": 1,
+    "orden_n": 6
+  },
+  {
+    "id": 1,
+    "nombre": "ingles",
+    "work_time": 10,
+    "short_break": 5,
+    "count": 1,
+    "type": 1,
+    "orden_n": 7
+  },
+  {
+    "id": 12,
+    "nombre": "Chat in english ",
+    "work_time": 10,
+    "short_break": 1,
+    "count": 1,
+    "type": 1,
+    "orden_n": 8
+  },
+  {
+    "id": 9,
+    "nombre": "Fotografia",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2,
+    "orden_n": 9
+  },
+  {
+    "id": 10,
+    "nombre": "hobby",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 1,
+    "orden_n": 10
+  },
+  {
+    "id": 13,
+    "nombre": "Ortografia",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 1,
+    "orden_n": 11
+  },
+  {
+    "id": 14,
+    "nombre": "Platzi español ",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 1,
+    "orden_n": 12
+  },
+  {
+    "id": 21,
+    "orden_n": 13,
+    "nombre": "anki (español)",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 1
+  },
+  {
+    "id": 11,
+    "nombre": "Ejercicio",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2,
+    "orden_n": 14
+  },
+  {
+    "id": 22,
+    "orden_n": 15,
+    "nombre": "audiolibro",
+    "work_time": 10,
+    "short_break": 1,
+    "count": 1,
+    "type": 1
+  },
+  {
+    "id": 23,
+    "orden_n": 16,
+    "nombre": "Serie ingles",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2
+  },
+  {
+    "id": 4,
+    "nombre": "Ingenieria",
+    "work_time": 10,
+    "short_break": 1,
+    "count": 1,
+    "type": 1,
+    "orden_n": 17
+  },
+  {
+    "id": 6,
+    "nombre": "crema",
+    "work_time": 25,
+    "short_break": 5,
+    "count": 2,
+    "type": 2,
+    "orden_n": 18
+  },
+  {
+    "id": 18,
+    "nombre": "Leer",
+    "work_time": 2,
+    "short_break": 2,
+    "count": 1,
+    "type": 1,
+    "orden_n": 19
+  },
+  {
+    "id": 5,
+    "nombre": "Tesis",
+    "work_time": 25,
+    "short_break": 5,
+    "count": 4,
+    "type": 1,
+    "orden_n": 20
+  },
+  {
+    "id": 17,
+    "nombre": "Leer ingles",
+    "work_time": 2,
+    "short_break": 1,
+    "count": 1,
+    "type": 1,
+    "orden_n": 21
+  },
+  {
+    "id": 15,
+    "nombre": "one piece",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2,
+    "orden_n": 22
+  },
+  {
+    "id": 16,
+    "nombre": "vagabond",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2,
+    "orden_n": 23
+  },
+  {
+    "id": 19,
+    "nombre": "creatina",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2,
+    "orden_n": 24
+  },
+  {
+    "id": 24,
+    "orden_n": 25,
+    "nombre": "escribe que aprendiste hoy",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2
+  },
+  {
+    "id": 20,
+    "orden_n": 26,
+    "nombre": "de que estas agradecido hoy (gratitud)",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2
+  },
+  {
+    "id": 25,
+    "orden_n": 27,
+    "nombre": "agua",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2
+  },
+  {
+    "id": 27,
+    "orden_n": 28,
+    "nombre": "apex",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 2
+  },
+  {
+    "id": 28,
+    "orden_n": 29,
+    "nombre": "programacion",
+    "work_time": 15,
+    "short_break": 2,
+    "count": 2,
+    "type": 1
+  }
 ]
