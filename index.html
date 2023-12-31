@@ -92,6 +92,7 @@
         <div id="ventana1" class="ventana">
           <h1>Ventana 1</h1>
           <button onclick="cambiarVentana('ventana2')">Ir a la ventana 2</button>
+          <button onclick="configurar_habito_nuevo()" >agregar</button>
           <ul id="miLista">
           </ul>
           <ul id="miLista_hechos">
@@ -119,7 +120,7 @@
                 <option value="1">Pomodoro</option>
                 <option value="2">Checker</option>
             </select>
-            <button onclick="guardar_habito_json()">Guardar</button>
+            <button id="boton_agregar" onclick="guardar_habito_json()">Guardar</button>
         </div>
         </div>
         

@@ -86,10 +86,16 @@ document.getElementById('orden_n').value = valor.orden_n;
 
 console.log(valor.orden_n)
 
+var button = document.getElementById('boton_agregar');
+button.onclick = function() {
+    guardar_habito_json()
+};
+
 }
 
 
 function guardar_habito_json(){
+    console.log('editar existente')
     var data = fs.readFileSync("data.json", 'utf8');
     var jsonData = JSON.parse(data);
     var formValues = {
@@ -131,3 +137,70 @@ function actualizar_listas(){
     llenar_lista_habitos("miLista_hechos", true)
     console.log('guardar')
   }
+
+function agregar_Nuevo_habito_js(){
+    console.log('guarda uno nuevo')
+
+
+    var data = fs.readFileSync("data.json", 'utf8');
+    var jsonData = JSON.parse(data);
+
+    var maxId = Math.max.apply(Math, jsonData.map(function(item) { return item.id; }));
+    var maxOrdenN = Math.max.apply(Math, jsonData.map(function(item) { return item.orden_n; }));
+
+
+    var formValues = {
+        "id": maxId + 1 ,
+        "nombre": document.getElementById('nombre').value,
+        "work_time": Number(document.getElementById('work_time').value)  ,
+        "short_break": Number(document.getElementById('short_break').value) ,
+        "count": Number(document.getElementById('count').value) ,
+        "type": Number(document.getElementById('type').value) ,
+        "orden_n": maxOrdenN + 1 ,
+    };
+
+    console.log(formValues)
+
+    jsonData.push(formValues);
+    fs.writeFileSync("data.json", JSON.stringify(jsonData, null, 2), 'utf8');
+
+    // Buscar el índice del objeto con el id dado
+    // var index = jsonData.findIndex(item => item.id === formValues.id);
+
+
+    // Si el objeto existe, actualizarlo
+    // if (index !== -1) {
+    //     jsonData[index] = formValues;
+    //     console.log('guardardó')
+    // } else {
+    //     // Si el objeto no existe, puedes decidir qué hacer (por ejemplo, añadirlo al array)
+    //     console.log('El objeto con id ' + formValues.id + ' no existe');
+    // }
+
+    actualizar_listas()
+    cambiarVentana('ventana1')
+}
+
+
+function configurar_habito_nuevo(){
+    
+    cambiarVentana('ventana2')
+    var titulo = document.getElementById('titulo_habito')
+    titulo.innerText = ''
+
+    document.getElementById('id').value = '';
+document.getElementById('nombre').value = '';
+document.getElementById('work_time').value = '';
+document.getElementById('short_break').value = '';
+document.getElementById('count').value = '';
+document.getElementById('type').value = '';
+document.getElementById('orden_n').value = '';
+
+// console.log(valor.orden_n)
+
+var button = document.getElementById('boton_agregar');
+button.onclick = function() {
+    agregar_Nuevo_habito_js()
+};
+
+}
