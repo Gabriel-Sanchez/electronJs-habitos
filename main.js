@@ -2,6 +2,7 @@ console.log('hola gabo');
 const fs = require('fs');
 
 const { app, BrowserWindow, ipcMain, screen } = require('electron')
+const path = require('path')
 
 
 const createWindow = () => {
@@ -12,10 +13,12 @@ const createWindow = () => {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true
-    }
+    },
+    icon: path.join(__dirname, 'assets/icon/icon.png')
   })
 
   win.loadFile('index.html')
+
 
 
 
@@ -28,13 +31,13 @@ const createWindow = () => {
   ipcMain.on('abrir-ventana-secundaria', (event, value) => {
     let { width, height } = screen.getPrimaryDisplay().workAreaSize;
     let winSecundaria = new BrowserWindow({
-      width: 150,
-      height: 39,
+      width: 160,
+      height: 40,
       transparent: true,
       frame: false,
       hasShadow: false,
-      x: width - 150,
-      y: height - 90,
+      x: width - 160,
+      y: height - 100,
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
