@@ -90,9 +90,9 @@
       <div class="columna1">
 
         <div id="ventana1" class="ventana">
-          <h1>Ventana 1</h1>
-          <button onclick="cambiarVentana('ventana2')">Ir a la ventana 2</button>
-          <button onclick="configurar_habito_nuevo()" >agregar</button>
+          <!-- <h1>Ventana 1</h1> -->
+          <!-- <button onclick="cambiarVentana('ventana2')">Ir a la ventana 2</button> -->
+          <button class="material-icons" onclick="configurar_habito_nuevo()" >  add</button>
           <ul id="miLista">
           </ul>
           <ul id="miLista_hechos">
@@ -100,29 +100,33 @@
         </div>
         
         <div id="ventana2" class="ventana" style="display: none;">
-          <h1>Ventana 2</h1>
+          <!-- <h1>Ventana 2</h1> -->
+          <button class="material-icons" onclick="cambiarVentana('ventana1')">arrow_back</button>
           <h2 id="titulo_habito"></h2>
-          <button onclick="cambiarVentana('ventana1')">Volver a la ventana 1</button>
+          <div class="contenedor_formulario">
+
+          
           <div id="formDiv" >
-            <h2>dato</h2>
-            <label for="nombre">Nombre:</label><br>
-            <input type="hidden" id="id" name="id">
-            <input type="hidden" id="orden_n" name="orden_n">
-            <input type="text" id="nombre" name="nombre"><br>
-            <label for="work_time">Work Time:</label><br>
-            <input type="number" id="work_time" name="work_time"><br>
-            <label for="short_break">Short Break:</label><br>
-            <input type="number" id="short_break" name="short_break"><br>
-            <label for="count">Count:</label><br>
-            <input type="number" id="count" name="count"><br>
-            <label for="type">Type:</label><br>
-            <select id="type" name="type">
+          
+            <label  for="nombre">Nombre:</label>
+            <input class="imput_form" type="hidden" id="id" name="id">
+            <input class="imput_form" type="hidden" id="orden_n" name="orden_n">
+            <input class="imput_form" type="text" id="nombre" name="nombre">
+            <label for="work_time">Work Time:</label>
+            <input  class="imput_form" type="number" id="work_time" name="work_time">
+            <label for="short_break">Short Break:</label>
+            <input class="imput_form" type="number" id="short_break" name="short_break">
+            <label for="count">Count:</label>
+            <input class="imput_form" type="number" id="count" name="count">
+            <label for="type">Type:</label>
+            <select class="imput_form" id="type" name="type">
                 <option value="1">Pomodoro</option>
                 <option value="2">Checker</option>
             </select>
             <button id="boton_agregar" onclick="guardar_habito_json()">Guardar</button>
         </div>
         </div>
+      </div>
         
         
 
