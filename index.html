@@ -101,7 +101,11 @@
         
         <div id="ventana2" class="ventana" style="display: none;">
           <!-- <h1>Ventana 2</h1> -->
-          <button class="material-icons" onclick="cambiarVentana('ventana1')">arrow_back</button>
+          <div class="botones_superior">
+            <button class="material-icons" onclick="cambiarVentana('ventana1')">arrow_back</button>
+            <button class="material-icons" id="boton_borrar" onclick="eliminar_habito()">delete</button>
+
+          </div>
           <h2 id="titulo_habito"></h2>
           <div class="contenedor_formulario">
 

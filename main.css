@@ -117,3 +117,12 @@ ul{
 #titulo_habito{
   text-align: center;
 }
+
+.botones_superior{
+  display: flex;
+justify-content: space-between;
+}
+
+#boton_borrar{
+  color: red;
+}

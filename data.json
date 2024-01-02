@@ -250,41 +250,5 @@
     "short_break": 2,
     "count": 2,
     "type": 1
-  },
-  {
-    "id": 29,
-    "nombre": "aaaapp",
-    "work_time": 13,
-    "short_break": 2,
-    "count": 34,
-    "type": 2,
-    "orden_n": 30
-  },
-  {
-    "id": 30,
-    "nombre": "1xxxx",
-    "work_time": 3,
-    "short_break": 4,
-    "count": 4,
-    "type": 2,
-    "orden_n": 31
-  },
-  {
-    "id": 31,
-    "nombre": "mmbmb",
-    "work_time": 12,
-    "short_break": 31,
-    "count": 44,
-    "type": 2,
-    "orden_n": 32
-  },
-  {
-    "id": 32,
-    "nombre": "iiii",
-    "work_time": 1,
-    "short_break": 3,
-    "count": 4,
-    "type": 2,
-    "orden_n": 33
   }
 ]

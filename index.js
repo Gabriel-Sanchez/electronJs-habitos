@@ -91,6 +91,8 @@ button.onclick = function() {
     guardar_habito_json()
 };
 
+document.getElementById('boton_borrar').style.display = 'block'
+
 }
 
 
@@ -202,5 +204,25 @@ var button = document.getElementById('boton_agregar');
 button.onclick = function() {
     agregar_Nuevo_habito_js()
 };
+
+document.getElementById('boton_borrar').style.display = 'none'
+
+}
+
+
+function eliminar_habito(){
+    var data = fs.readFileSync("data.json", 'utf8');
+    var jsonData = JSON.parse(data);
+    // Buscar el índice del objeto con el id dado
+var idParaEliminar = Number(document.getElementById('id').value);
+
+// Filtrar el array para excluir el objeto con el id dado
+jsonData = jsonData.filter(item => item.id !== idParaEliminar);
+
+// Guardar el nuevo array en el archivo JSON
+fs.writeFileSync("data.json", JSON.stringify(jsonData, null, 2), 'utf8');
+console.log('Registro eliminado');
+actualizar_listas()
+cambiarVentana('ventana1')
 
 }
