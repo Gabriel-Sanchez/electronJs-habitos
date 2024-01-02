@@ -2,7 +2,7 @@
   {
     "id": 7,
     "nombre": "Duo",
-    "work_time": 1,
+    "work_time": 13,
     "short_break": 1,
     "count": 5,
     "type": 2,
@@ -19,7 +19,7 @@
   },
   {
     "id": 8,
-    "nombre": "Bussu",
+    "nombre": "Bussu1",
     "work_time": 5,
     "short_break": 12,
     "count": 1,
@@ -46,7 +46,7 @@
   },
   {
     "id": 1,
-    "nombre": "ingles",
+    "nombre": "ingles1",
     "work_time": 10,
     "short_break": 5,
     "count": 1,
@@ -82,7 +82,7 @@
   },
   {
     "id": 13,
-    "nombre": "Ortografia",
+    "nombre": "Ortografia 1",
     "work_time": 1,
     "short_break": 1,
     "count": 1,
@@ -118,12 +118,12 @@
   },
   {
     "id": 22,
-    "orden_n": 15,
-    "nombre": "audiolibro",
+    "nombre": "AudioLibros",
     "work_time": 10,
     "short_break": 1,
     "count": 1,
-    "type": 1
+    "type": 1,
+    "orden_n": 15
   },
   {
     "id": 23,
@@ -244,11 +244,47 @@
   },
   {
     "id": 28,
-    "orden_n": 29,
-    "nombre": "programacion",
+    "nombre": "2programacion",
     "work_time": 15,
     "short_break": 2,
     "count": 2,
-    "type": 1
+    "type": 1,
+    "orden_n": 29
+  },
+  {
+    "id": 29,
+    "nombre": "audueueu",
+    "work_time": 112,
+    "short_break": 333,
+    "count": 221,
+    "type": 1,
+    "orden_n": 30
+  },
+  {
+    "id": 30,
+    "nombre": "aud",
+    "work_time": 21,
+    "short_break": 3,
+    "count": 1,
+    "type": 2,
+    "orden_n": 31
+  },
+  {
+    "id": 31,
+    "nombre": "331",
+    "work_time": 11,
+    "short_break": 2,
+    "count": 3,
+    "type": 1,
+    "orden_n": 32
+  },
+  {
+    "id": 32,
+    "nombre": "444m",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 2,
+    "type": 1,
+    "orden_n": 33
   }
 ]

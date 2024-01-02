@@ -27,6 +27,93 @@
   </head>
   <body>
 
+
+ 
+
+    <ul id="list">
+      <!-- Los elementos de la lista serán añadidos aquí por JavaScript -->
+  </ul>
+
+
+
+    <!-- <script>
+      function saveListToFile(list) {
+        // Convierte la lista a una cadena JSON
+        const data = JSON.stringify(list);
+    
+        // Escribe la cadena JSON en un archivo
+        fs.writeFile('list.json', data, (err) => {
+            if (err) {
+                console.error('Hubo un error al escribir el archivo', err);
+            } else {
+                console.log('Archivo guardado con éxito');
+            }
+        });
+    }
+    
+      // Elemento <ul> que será ordenado
+const menuList = document.querySelector("#list");
+
+// Conjunto de datos a ordenar arrastrando y soltando
+let listElements = ["gato 🐈", "loro 🦜", "elefante 🐘", "serpiente 🐍"];
+
+// Renderiza los elementos <li> en cada cambio de datos
+function renderUpdateList(list, target) {
+    // Limpia todos los <li> anteriores
+    target.textContent = "";
+
+    // Se itera cada elemento de la lista para crear un <li>
+    list.forEach((value, index) => {
+        const myLi = document.createElement("li");
+        myLi.textContent = value;
+        myLi.setAttribute("draggable", "true");
+        myLi.setAttribute("data-key", index);  // Añade el atributo data-key
+
+        // Eventos
+        myLi.addEventListener("drop", eventDrop);
+        myLi.addEventListener("dragover", eventDragOver);
+
+        // Se añade al documento
+        target.appendChild(myLi);
+    });
+}
+
+// Drag Start - <li> que se está arrastrando.
+let myDragElement = undefined;
+
+menuList.addEventListener("dragstart", (event) => {
+    // Guarda qué elemento se está moviendo.
+    myDragElement = event.target;
+});
+
+// Drag over - <li> que está debajo del elemento que se está arrastrando.
+let eventDragOverIndex = -1;
+
+function eventDragOver(event) {
+    event.preventDefault();
+}
+
+function eventDrop(event) {
+    event.preventDefault();
+
+    // Obtiene los índices de los elementos implicados
+    let dragIndex = myDragElement.dataset.key;
+    let dropIndex = event.target.dataset.key;
+
+    // Mueve el elemento arrastrado a la nueva posición
+    listElements.splice(dropIndex, 0, listElements.splice(dragIndex, 1)[0]);
+
+    // Renderiza la lista actualizada
+    renderUpdateList(listElements, menuList);
+
+    saveListToFile(listElements);
+}
+
+// Inicializa la lista
+renderUpdateList(listElements, menuList);
+
+    </script> -->
+
     <!-- <div id="cal-heatmap"></div>
 
     <script type="module">
@@ -85,6 +172,7 @@
 
     <svg id="miSVG" >
     </svg> -->
+    
 
     <div class="columnas">
       <div class="columna1">
@@ -170,7 +258,19 @@
     </div>
 
 
+  
     <script>
+
+    
+    </script> 
+
+
+
+
+    <script>
+
+
+  
   
       const { ipcRenderer } = require('electron');
       //const getDataBtn = document.getElementById('get-data');
@@ -198,8 +298,10 @@
           function llenar_lista_habitos(nombre_lista, hecho) {
             var data = fs.readFileSync("data.json", 'utf8');
             var jsonData = JSON.parse(data);
+            //var sortedJsonData = [...jsonData].sort((a, b) => a.orden_n - b.orden_n);
+
+            //data = sortedJsonData
             data = jsonData
-            //data = data
             //console.log(data); // Aquí puedes usar los datos como quieras
 
             var lista = document.getElementById(nombre_lista);
@@ -303,6 +405,11 @@
 
               }
             }
+
+            //eventos_lista_habitos()
+            //ordenar_lista_habitos()
+            //window.onload =  ordenar_lista_habitos
+            window.onload = eventos_lista_habitos
         }
 
     
@@ -466,6 +573,23 @@ if (container instanceof Element) {
 */
 
 </script>
+
+
+
+ 
+
+
+
+
+
+  
+
+  
+
+
+
+
+
 
 
   </body>

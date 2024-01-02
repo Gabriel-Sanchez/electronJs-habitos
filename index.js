@@ -5,6 +5,55 @@ const moment = require('moment');
 var data_historial
 var records
 
+const Sortable = require('sortablejs');
+
+// let lista 
+ var sortable 
+
+
+
+const path = require('path');
+// Al cargar la página, recuperar el orden de la lista del archivo
+function ordenar_lista_habitos() {
+let orden;
+try {
+   let data = fs.readFileSync(path.join(__dirname, 'ordenLista.json'));
+   if (data) {
+       orden = JSON.parse(data);
+   }
+} catch (error) {
+   console.error('Error al leer el archivo:', error);
+}
+if (orden) {
+   sortable.sort(orden);
+   console.log(orden)
+}
+};
+
+
+function eventos_lista_habitos(){
+
+// Crear una nueva instancia de Sortable
+let lista = document.getElementById('miLista');
+sortable = Sortable.create(lista, {
+ // Definir el evento onEnd
+ onEnd: function (/**Event*/evt) {
+     // Guardar el nuevo orden de la lista en un archivo
+     let orden = sortable.toArray();
+     fs.writeFileSync(path.join(__dirname, 'ordenLista.json'), JSON.stringify(orden));
+     console.log('se guardo orden json')
+     console.log(orden)
+ },
+});
+
+ordenar_lista_habitos()
+
+}
+
+
+// window.onload =  ordenar_lista_habitos
+window.onload = eventos_lista_habitos
+
 function leer_archivo_historial(archivo){
     const data = fs.readFileSync(archivo, 'utf8');
           const records = Papa.parse(data, {
@@ -138,6 +187,7 @@ function actualizar_listas(){
     llenar_lista_habitos("miLista", false)
     llenar_lista_habitos("miLista_hechos", true)
     console.log('guardar')
+    eventos_lista_habitos()
   }
 
 function agregar_Nuevo_habito_js(){
@@ -226,3 +276,6 @@ actualizar_listas()
 cambiarVentana('ventana1')
 
 }
+
+
+

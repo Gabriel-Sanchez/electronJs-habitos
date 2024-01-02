@@ -26,7 +26,8 @@
     "esm": "^3.2.25",
     "material-icons": "^1.13.12",
     "moment": "^2.29.4",
-    "papaparse": "^5.4.1"
+    "papaparse": "^5.4.1",
+    "sortablejs": "^1.15.1"
   },
   "description": ""
 }
