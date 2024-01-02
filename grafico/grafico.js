@@ -128,7 +128,8 @@ function transformarDatos(idHabito, archivo) {
    var cal = new CalHeatMap();
    cal.init({
      data: datasjs,
-     start: new Date(Date.UTC(2023, 1)), 
+     start: new Date(),
+    //  start: new Date(Date.UTC(2023, 1)), 
      /*
      subDomainTextFormat: function (date, value) {
          return value;
@@ -151,6 +152,8 @@ function transformarDatos(idHabito, archivo) {
      //domainGutter: 15,
      //itemName: window.innerWidth < 768 ? ["week", "day"] : ["month", "day"], // Cambiar la unidad de tiempo según el ancho de la ventana
      itemName: "minuto",
+     previousSelector: '#minDate-previous_year',
+     nextSelector: '#minDate-next_year',
      
      onClick: function (date, nb) {
          mostrar_datos(date, nb)
