@@ -323,6 +323,15 @@ renderUpdateList(listElements, menuList);
 
                 var li = document.createElement("li");
                 li.classList.add('elemento_lista')
+                li.id = data[i].orden_n
+
+                let objStr = JSON.stringify(data[i]);
+
+                // Agregar la cadena de texto al atributo data-obj del elemento
+                li.dataset.obj = objStr;
+
+
+
                 var div_item_h = document.createElement('div')
                 var div_botones = document.createElement('div')
                 li.appendChild(div_item_h)
@@ -409,7 +418,8 @@ renderUpdateList(listElements, menuList);
             //eventos_lista_habitos()
             //ordenar_lista_habitos()
             //window.onload =  ordenar_lista_habitos
-            window.onload = eventos_lista_habitos
+            //window.onload = eventos_lista_habitos
+            ordenar_lista_habitos()
         }
 
     

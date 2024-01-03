@@ -16,39 +16,103 @@ const path = require('path');
 // Al cargar la página, recuperar el orden de la lista del archivo
 function ordenar_lista_habitos() {
 let orden;
-try {
-   let data = fs.readFileSync(path.join(__dirname, 'ordenLista.json'));
-   if (data) {
-       orden = JSON.parse(data);
-   }
-} catch (error) {
-   console.error('Error al leer el archivo:', error);
-}
-if (orden) {
-   sortable.sort(orden);
-   console.log(orden)
-}
+// try {
+//    let data = fs.readFileSync(path.join(__dirname, 'ordenLista.json'));
+//    if (data) {
+//        orden = JSON.parse(data);
+//    }
+// } catch (error) {
+//    console.error('Error al leer el archivo:', error);
+// }
+
+
+ // Selecciona la lista
+ const listaOrdenable = document.getElementById('miLista');
+ // Obtiene todos los elementos <li>
+ const elementos = listaOrdenable.children
+ // Ordena los elementos basados en su atributo id numérico
+ const elementosOrdenados = Array.from(elementos).sort((a, b) => {
+   const idA = parseInt(a.id);
+   const idB = parseInt(b.id);
+   return idA - idB;
+ });
+ // Reemplaza los elementos en la lista con los elementos ordenados
+ elementosOrdenados.forEach((elemento) => listaOrdenable.appendChild(elemento));
+
+// if (orden) {
+// //    sortable.sort(orden);
+// sortable.toArray();
+// console.log(orden) 
+// }
 };
 
 
-function eventos_lista_habitos(){
+function eventos_lista_habitos() {
+    var data = fs.readFileSync("data.json", 'utf8');
+    var obj = JSON.parse(data);
 
-// Crear una nueva instancia de Sortable
-let lista = document.getElementById('miLista');
-sortable = Sortable.create(lista, {
- // Definir el evento onEnd
- onEnd: function (/**Event*/evt) {
-     // Guardar el nuevo orden de la lista en un archivo
-     let orden = sortable.toArray();
-     fs.writeFileSync(path.join(__dirname, 'ordenLista.json'), JSON.stringify(orden));
-     console.log('se guardo orden json')
-     console.log(orden)
- },
-});
+    // Crear una nueva instancia de Sortable
+    let lista = document.getElementById('miLista');
+    sortable = Sortable.create(lista, {
+        // Definir el evento onEnd
+        onEnd: function (/**Event*/evt) {
+            // Guardar el nuevo orden de la lista en un archivo
+            // let orden = sortable.toArray();
+            // fs.writeFileSync(path.join(__dirname, 'ordenLista.json'), JSON.stringify(orden));
 
-ordenar_lista_habitos()
+            // let nuevoOrden = sortable.toArray();
+            let elementos_all  = document.getElementById('miLista')
+            let elementos_li = elementos_all.children;
 
+            console.log(obj)
+            console.log(elementos_li)
+
+            for (let i = 0; i < elementos_li.length; i++) {
+                let id = obj[i].id;
+
+
+
+
+                let objStr = elementos_li[i].dataset.obj;
+
+                // Convertir la cadena de texto a un objeto
+                let obj2 = JSON.parse(objStr);
+            
+                // console.log(obj2.id);
+
+                var index = obj.findIndex(item => item.id === obj2.id);
+                obj[index].orden_n = i
+
+
+           
+                // console.log(elementos_li[i].dataset.obj)
+                
+                // let index = nuevoOrden.indexOf(id.toString());
+
+                // console.log(index)
+                // if (index !== -1) {
+                //     let nuevaPosicion = index + 1;
+                //     obj[i].orden_n = nuevaPosicion;
+                // } else {
+                //     console.log(`ID ${id} not found in nuevoOrden`);
+                // }
+            }
+
+            console.log(obj)
+
+            fs.writeFileSync("data.json", JSON.stringify(obj, null, 2), 'utf8');
+
+            // let data = JSON.stringify(obj, null, 2);
+            // fs.writeFileSync('data.json', data, 'utf8');
+
+            console.log('se guardo orden json')
+            // console.log(orden)
+        },
+    });
+
+    ordenar_lista_habitos()
 }
+
 
 
 // window.onload =  ordenar_lista_habitos
