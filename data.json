@@ -6,7 +6,7 @@
     "short_break": 1,
     "count": 5,
     "type": 2,
-    "orden_n": 2
+    "orden_n": 1
   },
   {
     "id": 26,
@@ -24,7 +24,7 @@
     "short_break": 12,
     "count": 1,
     "type": 2,
-    "orden_n": 5
+    "orden_n": 2
   },
   {
     "id": 3,
@@ -33,7 +33,7 @@
     "short_break": 5,
     "count": 1,
     "type": 1,
-    "orden_n": 3
+    "orden_n": 4
   },
   {
     "id": 2,
@@ -42,7 +42,7 @@
     "short_break": 5,
     "count": 1,
     "type": 1,
-    "orden_n": 4
+    "orden_n": 5
   },
   {
     "id": 1,
@@ -285,6 +285,6 @@
     "short_break": 1,
     "count": 2,
     "type": 1,
-    "orden_n": 1
+    "orden_n": 3
   }
 ]
