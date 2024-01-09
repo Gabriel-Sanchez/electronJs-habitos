@@ -394,7 +394,8 @@ function generarGraficoDuracionPorAnio(id) {
       data: {
         labels: labels,
         datasets: [{
-          label: `Duración por día para ID ${id} - ${year}`,
+          //label: `Duración por día para ID ${id} - ${year}`,
+          label: `${year}`,
           data: duraciones,
           backgroundColor: 'rgba(54, 162, 235, 0.5)',
           borderColor: 'rgba(54, 162, 235, 1)',
@@ -420,9 +421,16 @@ function generarGraficoDuracionPorAnio(id) {
             }
           }
         }
+      },
+      plugins: {
+        title: {
+          display: false, // Establecer a false para ocultar el título
+          text: 'Título del gráfico'
+        }
       }
     });
   }
+  
 
   function handlePrevButtonClick() {
     if (currentYearIndex > 0) {
