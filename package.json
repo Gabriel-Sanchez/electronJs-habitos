@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "cal-heatmap": "^3.6.2",
+    "chart.js": "^4.4.1",
     "csv-parse": "^5.5.3",
     "csv-parser": "^3.0.0",
     "csv-stringify": "^6.4.5",
