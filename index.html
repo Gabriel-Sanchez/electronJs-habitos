@@ -233,177 +233,47 @@ renderUpdateList(listElements, menuList);
       </div>
       <div class="columna2">
 
-        <style>
-          /* Estilos opcionales para los botones */
-          .button-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-          }
-          .button-container button {
-            padding: 10px 20px;
-            font-size: 14px;
-            cursor: pointer;
-          }
-        </style>
-
-        <div class="button-container">
-          <button id="prevButton">Anterior</button>
-          <button id="nextButton">Siguiente</button>
-        </div>
 
 
-        <div style="width: 400px;">
-    <canvas id="myChart"></canvas>
-  </div>
+            <!-- <script>
+              let ctx = document.getElementById('myChart').getContext('2d');
+              let myChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                      labels: ['Rojo', 'Azul', 'Amarillo', 'Verde', 'Morado', 'Naranja'],
+                      datasets: [{
+                          label: '# de votos',
+                          data: [12, 19, 3, 5, 2, 3],
+                          backgroundColor: [
+                              'rgba(255, 99, 132, 0.2)',
+                              'rgba(54, 162, 235, 0.2)',
+                              'rgba(255, 206, 86, 0.2)',
+                              'rgba(75, 192, 192, 0.2)',
+                              'rgba(153, 102, 255, 0.2)',
+                              'rgba(255, 159, 64, 0.2)'
+                          ],
+                          borderColor: [
+                              'rgba(255, 99, 132, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(255, 206, 86, 1)',
+                              'rgba(75, 192, 192, 1)',
+                              'rgba(153, 102, 255, 1)',
+                              'rgba(255, 159, 64, 1)'
+                          ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                      scales: {
+                          y: {
+                              beginAtZero: true
+                          }
+                      }
+                  }
+              });
+            </script> -->
 
-  <!-- <script src="node_modules/chart.js/dist/chart.js"></script> -->
-
-  <script>
-    function generarGraficoDuracionPorAnio(id) {
-      const data = fs.readFileSync('historial_habitos.csv', 'utf8');
-      const records = Papa.parse(data, {
-        header: true,
-        skipEmptyLines: true
-      }).data;
-    
-      const filteredData = records.filter(record => record.id_habito === id);
-    
-      const duracionesPorAnio = {};
-    
-      filteredData.forEach(record => {
-        const fecha = new Date(record.fecha);
-        const anio = fecha.getFullYear();
-    
-        if (!duracionesPorAnio[anio]) {
-          duracionesPorAnio[anio] = {};
-        }
-    
-        const diaDelAnio = Math.floor((fecha - new Date(anio, 0, 0)) / (1000 * 60 * 60 * 24)); // Día del año
-        const duracionArray = record.duracion.split(':').map(Number);
-        const duracionEnHoras = duracionArray[0] + duracionArray[1] / 60 + duracionArray[2] / 3600;
-    
-        if (!duracionesPorAnio[anio][diaDelAnio]) {
-          duracionesPorAnio[anio][diaDelAnio] = 0;
-        }
-    
-        duracionesPorAnio[anio][diaDelAnio] += duracionEnHoras;
-      });
-    
-      const years = Object.keys(duracionesPorAnio);
-      let currentYearIndex = 0;
-      let currentChart = null;
-    
-      function updateChart(year) {
-        const diasDelAnio = 365; // O 366 si es un año bisiesto
-        const duraciones = Array.from({ length: diasDelAnio }, (_, idx) => duracionesPorAnio[year][idx] || 0);
-    
-        const labels = Array.from({ length: diasDelAnio }, (_, idx) => {
-          const fecha = new Date(new Date(year, 0)); // Inicializa en el 1 de enero del año específico
-          fecha.setDate(idx + 1); // Establece el día del mes basado en el índice
-          return fecha.toLocaleDateString('es-ES', { month: 'short', day: 'numeric' });
-        });
-    
-        if (currentChart) {
-          currentChart.destroy(); // Destruye el gráfico anterior si existe
-        }
-    
-        const ctx = document.getElementById('myChart');
-        currentChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: labels,
-            datasets: [{
-              label: `Duración por día para ID ${id} - ${year}`,
-              data: duraciones,
-              backgroundColor: 'rgba(54, 162, 235, 0.5)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Horas'
-                }
-              },
-              x: {
-                display: true,
-                title: {
-                  display: true,
-                  text: 'Fechas'
-                }
-              }
-            }
-          }
-        });
-      }
-    
-      updateChart(years[currentYearIndex]);
-    
-      const prevButton = document.getElementById('prevButton');
-      const nextButton = document.getElementById('nextButton');
-    
-      prevButton.addEventListener('click', () => {
-        if (currentYearIndex > 0) {
-          currentYearIndex--;
-          updateChart(years[currentYearIndex]);
-        }
-      });
-    
-      nextButton.addEventListener('click', () => {
-        if (currentYearIndex < years.length - 1) {
-          currentYearIndex++;
-          updateChart(years[currentYearIndex]);
-        }
-      });
-    }
-    // Llamada a la función para generar el gráfico para el ID deseado
-    generarGraficoDuracionPorAnio('25');
-  </script>
-
-  <!-- <script>
-    let ctx = document.getElementById('myChart').getContext('2d');
-    let myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Rojo', 'Azul', 'Amarillo', 'Verde', 'Morado', 'Naranja'],
-            datasets: [{
-                label: '# de votos',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-  </script> -->
-
-        <!-- <canvas id="myChart" width="800" height="400"></canvas> -->
+                  <!-- <canvas id="myChart" width="800" height="400"></canvas> -->
 
         <div class="heatmap_principal">
 
@@ -427,6 +297,149 @@ renderUpdateList(listElements, menuList);
           </div>
           <div id="onClick-placeholder"></div>
       </div>
+
+      
+      <style>
+        /* Estilos opcionales para los botones */
+        .button-container {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+        }
+        .button-container button {
+          padding: 10px 20px;
+          font-size: 14px;
+          cursor: pointer;
+        }
+      </style>
+
+    
+
+<div style="justify-content: center; display: flex;" >
+
+ 
+
+<div style="width: 1000px; height: 300px;">
+  <div class="button-container">
+    <button id="prevButton"><</button>
+    <button id="nextButton">></button>
+  </div>
+  <canvas id="myChart"></canvas>
+</div>
+</div>
+
+<!-- <script src="node_modules/chart.js/dist/chart.js"></script> -->
+
+<script>
+  let currentYearIndex = 0;
+  let currentChart = null;
+  function generarGraficoDuracionPorAnio(id) {
+    const data = fs.readFileSync('historial_habitos.csv', 'utf8');
+    const records = Papa.parse(data, {
+      header: true,
+      skipEmptyLines: true
+    }).data;
+  
+    const filteredData = records.filter(record => record.id_habito === id);
+  
+    const duracionesPorAnio = {};
+  
+    filteredData.forEach(record => {
+      const fecha = new Date(record.fecha);
+      const anio = fecha.getFullYear();
+  
+      if (!duracionesPorAnio[anio]) {
+        duracionesPorAnio[anio] = {};
+      }
+  
+      const diaDelAnio = Math.floor((fecha - new Date(anio, 0, 0)) / (1000 * 60 * 60 * 24)); // Día del año
+      const duracionArray = record.duracion.split(':').map(Number);
+      const duracionEnHoras = duracionArray[0] + duracionArray[1] / 60 + duracionArray[2] / 3600;
+  
+      if (!duracionesPorAnio[anio][diaDelAnio]) {
+        duracionesPorAnio[anio][diaDelAnio] = 0;
+      }
+  
+      duracionesPorAnio[anio][diaDelAnio] += duracionEnHoras;
+    });
+  
+    const years = Object.keys(duracionesPorAnio);
+  
+  
+    function updateChart(year) {
+      const diasDelAnio = 365; // O 366 si es un año bisiesto
+      const duraciones = Array.from({ length: diasDelAnio }, (_, idx) => duracionesPorAnio[year][idx] || 0);
+  
+      const labels = Array.from({ length: diasDelAnio }, (_, idx) => {
+        const fecha = new Date(new Date(year, 0)); // Inicializa en el 1 de enero del año específico
+        fecha.setDate(idx + 1); // Establece el día del mes basado en el índice
+        return fecha.toLocaleDateString('es-ES', { month: 'short', day: 'numeric' });
+      });
+  
+      if (currentChart) {
+        currentChart.destroy(); // Destruye el gráfico anterior si existe
+      }
+  
+      const ctx = document.getElementById('myChart');
+      ctx.style.height = '100px';
+      currentChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: `Duración por día para ID ${id} - ${year}`,
+            data: duraciones,
+            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Horas'
+              }
+            },
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: 'Fechas'
+              }
+            }
+          }
+        }
+      });
+    }
+  
+    updateChart(years[currentYearIndex]);
+  
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+  
+    prevButton.addEventListener('click', () => {
+      if (currentYearIndex > 0) {
+        currentYearIndex--;
+        updateChart(years[currentYearIndex]);
+      }
+    });
+  
+    nextButton.addEventListener('click', () => {
+      if (currentYearIndex < years.length - 1) {
+        currentYearIndex++;
+        updateChart(years[currentYearIndex]);
+      }
+    });
+  }
+  // Llamada a la función para generar el gráfico para el ID deseado
+ 
+</script>
+
 
 
       </div>
@@ -645,6 +658,7 @@ svg.selectAll(".bar")
                   //console.log(data[i].id)
                  // ipcRenderer.send('abrir-ventana-grafico', objeto)
                  definir(objeto)
+                 generarGraficoDuracionPorAnio(objeto.id+'');
                  //mostrar_flechas()
 
                 })

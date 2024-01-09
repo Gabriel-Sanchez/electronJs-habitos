@@ -235,7 +235,7 @@
   },
   {
     "id": 27,
-    "orden_n": 28,
+    "orden_n": 29,
     "nombre": "apex",
     "work_time": 1,
     "short_break": 1,
@@ -249,7 +249,7 @@
     "short_break": 2,
     "count": 2,
     "type": 1,
-    "orden_n": 27
+    "orden_n": 28
   },
   {
     "id": 29,
@@ -258,7 +258,7 @@
     "short_break": 333,
     "count": 221,
     "type": 1,
-    "orden_n": 28
+    "orden_n": 30
   },
   {
     "id": 30,
@@ -267,7 +267,7 @@
     "short_break": 3,
     "count": 1,
     "type": 2,
-    "orden_n": 29
+    "orden_n": 31
   },
   {
     "id": 31,
