@@ -366,21 +366,23 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
                 clearInterval(intervalo);
                 if (enDescanso) {
                     // Si estaba en descanso, vuelve al tiempo de trabajo
-                    tiempoRestante = tiempoTrabajo;
+                    tiempoRestante = tiempoDescanso;
+                    console.log('va a guardar habito Si descanso')
                     console.log(tiempoRestante)
                     enDescanso = false;
-
-                    registrar_habito(objeto_habito.id+"", tiempoRestante)
+                    
+                    registrar_habito_descanso(objeto_habito.id+"", tiempoRestante)
                     div_tiempo.style.backgroundColor = 'red';
                     
                 } else {
-                    // Si estaba trabajando, pasa al tiempo de descanso
-                    tiempoRestante = tiempoDescanso;
+                    tiempoRestante = tiempoTrabajo;
+                    console.log('va a guardar habito no descanso')
                     console.log(tiempoRestante)
+                    // Si estaba trabajando, pasa al tiempo de descanso
                     enDescanso = true;
                     ciclos--;
                     
-                    registrar_habito_descanso(objeto_habito.id+"", tiempoRestante)
+                    registrar_habito(objeto_habito.id+"", tiempoRestante)
                     div_tiempo.style.backgroundColor = 'green';
                 }
                 if (ciclos > 0) {

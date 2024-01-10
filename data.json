@@ -282,8 +282,8 @@
     "id": 32,
     "nombre": "444m",
     "work_time": 1,
-    "short_break": 1,
-    "count": 2,
+    "short_break": 2,
+    "count": 1,
     "type": 1,
     "orden_n": 3
   }
