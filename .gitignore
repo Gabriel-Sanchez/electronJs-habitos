@@ -2,3 +2,4 @@ package-lock.json
 node_modules
 habitos_gab-win32-x64/
 *.zip
+habitos_gab*
