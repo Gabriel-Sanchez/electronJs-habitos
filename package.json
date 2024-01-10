@@ -12,6 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^27.2.0",
+    "electron-builder": "^24.9.1",
+    "electron-packager": "^17.1.2",
     "standard": "^17.1.0"
   },
   "eslintConfig": {
