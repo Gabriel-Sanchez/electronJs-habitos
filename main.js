@@ -1,7 +1,7 @@
 console.log('hola gabo');
 const fs = require('fs');
 
-const { app, BrowserWindow, ipcMain, screen } = require('electron')
+const { app, BrowserWindow, ipcMain, screen, Menu  } = require('electron')
 const path = require('path')
 
 
@@ -19,7 +19,13 @@ const createWindow = () => {
 
   win.loadFile('index.html')
 
-  win.setMenu(null);
+  //win.setMenu(null);
+  const menu = Menu.buildFromTemplate([]);
+  win.setMenu(menu);
+
+  ipcMain.on('ejecutar-mi-funcion-actualizar', () => {
+    win.webContents.executeJavaScript('actualizar_listas();');
+  });
 
 
 

@@ -2,7 +2,7 @@
   {
     "id": 7,
     "nombre": "Duo",
-    "work_time": 13,
+    "work_time": 1,
     "short_break": 1,
     "count": 5,
     "type": 2,
@@ -11,9 +11,9 @@
   {
     "id": 26,
     "nombre": "motivacion",
-    "work_time": 10,
-    "short_break": 5,
-    "count": 55,
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
     "type": 1,
     "orden_n": 0
   },
@@ -38,7 +38,7 @@
   {
     "id": 2,
     "nombre": "anki",
-    "work_time": 15,
+    "work_time": 1,
     "short_break": 5,
     "count": 1,
     "type": 1,
@@ -47,9 +47,9 @@
   {
     "id": 1,
     "nombre": "ingles1",
-    "work_time": 10,
-    "short_break": 5,
-    "count": 1,
+    "work_time": 1,
+    "short_break": 2,
+    "count": 3,
     "type": 1,
     "orden_n": 6
   },
@@ -272,7 +272,7 @@
   {
     "id": 31,
     "nombre": "331",
-    "work_time": 11,
+    "work_time": 1,
     "short_break": 2,
     "count": 3,
     "type": 1,
