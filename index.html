@@ -395,7 +395,7 @@ renderUpdateList(listElements, menuList);
         data: {
           labels: labels,
           datasets: [{
-            label: `${year}`,
+            label: `${year}-min`,
             data: duraciones,
             backgroundColor: 'rgba(54, 162, 235, 0.5)',
             borderColor: 'rgba(54, 162, 235, 1)',
@@ -453,6 +453,12 @@ renderUpdateList(listElements, menuList);
 
     prevButton.addEventListener('click', handlePrevButtonClick);
     nextButton.addEventListener('click', handleNextButtonClick);
+
+
+    const latestYear = years_graf.reduce((latest, year) => (parseInt(year) > parseInt(latest) ? year : latest), years_graf[0]);
+
+    // Mostrar primero el año más reciente
+    currentYearIndex_graf = years_graf.indexOf(latestYear);
 
     updateChart_graf(years_graf[currentYearIndex_graf]);
   }
