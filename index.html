@@ -234,6 +234,8 @@ renderUpdateList(listElements, menuList);
           <div class="conotenedor-superior">
 
             <button class="material-icons" onclick="configurar_habito_nuevo()" >  add</button>
+
+            <h4 id="tareas_restantes"></h4>
            
 
             
@@ -651,6 +653,8 @@ svg.selectAll(".bar")
 
     <script>
 
+      var tareas_restantes = 0
+
 
   
   
@@ -680,15 +684,20 @@ svg.selectAll(".bar")
           function llenar_lista_habitos(nombre_lista, hecho) {
             var data = fs.readFileSync("data.json", 'utf8');
             var jsonData = JSON.parse(data);
-            //var sortedJsonData = [...jsonData].sort((a, b) => a.orden_n - b.orden_n);
+            var sortedJsonData = [...jsonData].sort((a, b) => a.orden_n - b.orden_n);
 
-            //data = sortedJsonData
-            data = jsonData
+            data = sortedJsonData
+            //data = jsonData
             //console.log(data); // Aquí puedes usar los datos como quieras
 
             var lista = document.getElementById(nombre_lista);
             var records_h = leer_archivo_historial('historial_habitos.csv')
             //console.log(records_h)
+
+            if (!hecho){
+              tareas_restantes = 0
+            }
+
 
             for (var i = 0; i < data.length; i++) {
               /*
@@ -699,6 +708,8 @@ svg.selectAll(".bar")
               */
 
               if (existeRegistroHoy(records_h, data[i].id) == hecho) {
+
+                tareas_restantes = calcular_habitos_restanten(hecho, tareas_restantes)
 
 
 
@@ -803,6 +814,9 @@ svg.selectAll(".bar")
             //window.onload =  ordenar_lista_habitos
             //window.onload = eventos_lista_habitos
             ordenar_lista_habitos()
+
+            var texto_numeros_restantes = document.getElementById('tareas_restantes')
+            texto_numeros_restantes.innerText = tareas_restantes
         }
 
     

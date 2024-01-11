@@ -343,3 +343,12 @@ cambiarVentana('ventana1')
 
 
 
+function calcular_habitos_restanten(hecho, cantidad){
+
+    if (!hecho){
+        cantidad = cantidad + 1
+    }
+
+    return cantidad
+
+}
