@@ -171,6 +171,7 @@ function transformarDatos(idHabito, archivo) {
          subDomain: 'x_day',
          data: datasjs,
          start: new Date(),
+         highlight: "now",
          cellSize: 15,
          cellRadius: 3,
          cellPadding: 5,
