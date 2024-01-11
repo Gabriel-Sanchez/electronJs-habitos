@@ -183,7 +183,111 @@ renderUpdateList(listElements, menuList);
         <div id="ventana1" class="ventana">
           <!-- <h1>Ventana 1</h1> -->
           <!-- <button onclick="cambiarVentana('ventana2')">Ir a la ventana 2</button> -->
-          <button class="material-icons" onclick="configurar_habito_nuevo()" >  add</button>
+          
+
+          <!-- <progress value="0" max="100"></progress>
+          <h3 id="porcentaje_dia"></h3> -->
+
+
+          <style>
+            .progress-bar {
+              position: relative;
+              width: 100%;
+              height: 35px;
+              
+            }
+            
+            progress {
+            
+              
+              width: 100%;
+              height: 100%;
+
+              margin: 0;
+              padding: 0;
+              
+            }
+            
+            .progress-text {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 1em;
+              color: black;
+             
+            }
+            .contenedor-bar{
+              margin-left: 10px;
+              margin-right: 10px;
+              
+            }
+
+         
+            
+          </style>
+
+          <div class="conotenedor-superior">
+
+            <button class="material-icons" onclick="configurar_habito_nuevo()" >  add</button>
+           
+
+            
+            <div class="contenedor-bar">
+              
+              
+              <div class="progress-bar">
+                <progress value="0" max="100"></progress>
+                <div class="progress-text">0%</div>
+              </div>
+            </div>
+            
+            
+            
+          </div>
+
+          <script>
+            // Obtén el elemento progress
+            let barraProgreso = document.querySelector('progress');
+            let textoProgreso = document.querySelector('.progress-text');
+
+function Calcula_porcentaje_dia(){
+
+  let ahora = new Date();
+  let totalMinutosHoy = ahora.getHours() * 60 + ahora.getMinutes();
+  let totalMinutosDia = 24 * 60;
+
+  // Calcula el porcentaje del día que ha pasado
+  let porcentajeDiaPasado = (totalMinutosHoy / totalMinutosDia) * 100;
+
+  // Actualiza el valor de la barra de progreso
+  barraProgreso.value = porcentajeDiaPasado;
+
+  // Actualiza el texto con el porcentaje del día que ha pasado
+  textoProgreso.textContent = porcentajeDiaPasado.toFixed(2) + '% del día';
+
+  console.log(barraProgreso.value)
+  dia_porcentaje = document.getElementById('porcentaje_dia')
+  //dia_porcentaje.innerText = porcentajeDiaPasado.toFixed(2) + '% del día'
+}
+
+Calcula_porcentaje_dia()
+
+// Actualiza la barra de progreso cada minuto
+setInterval(() => {
+  console.log('p')
+  Calcula_porcentaje_dia()
+}, 60000); // 60000 milisegundos equivalen a un minuto
+
+          </script>
+
+
+
+
           <ul id="miLista">
           </ul>
           <ul id="miLista_hechos">
