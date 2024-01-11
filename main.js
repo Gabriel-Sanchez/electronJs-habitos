@@ -20,8 +20,10 @@ const createWindow = () => {
   win.loadFile('index.html')
 
   //win.setMenu(null);
-  const menu = Menu.buildFromTemplate([]);
-  win.setMenu(menu);
+  // const menu = Menu.buildFromTemplate([]);
+  // win.setMenu(menu);
+
+  win.setMenuBarVisibility(false);
 
   ipcMain.on('ejecutar-mi-funcion-actualizar', () => {
     win.webContents.executeJavaScript('actualizar_listas();');
