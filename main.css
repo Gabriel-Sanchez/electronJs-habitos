@@ -34,6 +34,7 @@
     padding-left: 10px;
     width: 70%;
     height: 100%;
+    align-items: center;
 
 }
 .titulo_habito_texto{
@@ -49,6 +50,7 @@
     padding-left: 10px;
     padding: 0;
     margin: 0;
+    
 }
 
 .boton_config{
@@ -184,4 +186,27 @@ button{
 
 button:hover {
   background-color: #bec4c2; /* Verde al pasar el ratón */
+}
+
+#details_lista_hecha{
+  /* margin-left: 10px;
+  margin-right: 10px; */
+  background-color: #525467;
+  /* padding: auto; */
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+}
+
+summary{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+
+.detalles_lista{
+  background-color: #525467;
 }

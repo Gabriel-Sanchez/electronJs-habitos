@@ -207,6 +207,14 @@ renderUpdateList(listElements, menuList);
               padding: 0;
               
             }
+        
+
+          progress {
+            accent-color: #3687c0; /* Color de la barra de progreso */
+        }
+          
+
+
             
             .progress-text {
               position: absolute;
@@ -293,10 +301,15 @@ setInterval(() => {
 
 
 
+          <div class="detalles_lista">
 
-          <ul id="miLista">
+            <ul id="miLista">
+          </div>
           </ul>
-          <ul id="miLista_hechos">
+          <details id="details_lista_hecha">
+            <summary>Tareas completadas hoy</summary>
+            <ul id="miLista_hechos">
+          </details>
           </ul>
         </div>
         
