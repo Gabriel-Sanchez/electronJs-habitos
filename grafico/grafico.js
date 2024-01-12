@@ -160,10 +160,18 @@ function transformarDatos(idHabito, archivo) {
      },
      
      tooltip: true,
+     //legend: [0, 1, 5, 10,25,100],
+     legend: [5, 25, 50 , 100],
+     legendColors: {
+       min: "#49c94f",
+       max: "#055585",
+       empty: "white",
+       base: "#525467",
+       overflow: "black"
+      },
  });
 
-
-
+ 
  var cal2 = new CalHeatMap();
        cal2.init({
          itemSelector: '#mes_habito',
@@ -194,7 +202,24 @@ function transformarDatos(idHabito, archivo) {
          onClick: function (date, nb) {
              mostrar_datos(date, nb)
            },
-         //legend: [20, 40, 60, 80],
+           legend: [5, 25, 50 , 100],
+           legendColors: {
+             min: "#49c94f",
+             max: "#055585",
+             empty: "white",
+             base: "#525467",
+             overflow: "white"
+            },
+            //legendColors: ['#00ff00', '#0000ff', '#ffff00'],
+
+
+
+
+        //  legendColors: {
+        //    min: '#efefef',
+        //    max: 'steelblue',
+        //    empty: 'white'
+        //  }
        });
  /*
    document.getElementById('minDate-previous').addEventListener('click', function(e) {
