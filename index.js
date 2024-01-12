@@ -352,3 +352,66 @@ function calcular_habitos_restanten(hecho, cantidad){
     return cantidad
 
 }
+
+
+function calcularDiasDeRachaHastaHoy(id, datos, hecho) {
+    // Filtrar los datos por id
+    let datosFiltrados = datos.filter(d => d.id_habito == id);
+  
+    // Ordenar los datos por fecha
+    datosFiltrados.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+    console.log(datosFiltrados)
+  
+    // Calcular los días de racha
+    let racha = 0;
+    let hoy = new Date();
+    let hoy_constante = new Date();
+    hoy.setHours(0, 0, 0, 0); // Asegurarse de que la hora es medianoche para la comparación de fechas
+    
+    hoy_constante = hoy_constante = new Date();
+    hoy_constante.setHours(0, 0, 0, 0); // Asegurarse de que la hora es medianoche para la comparación de fechas
+    
+    hoy_racha = false
+    
+    if (!hecho){
+        hoy.setDate(hoy.getDate() - 1);    
+    }
+  
+    for (let i = datosFiltrados.length - 1; i >= 0; i--) {
+      let fechaActual = new Date(datosFiltrados[i].fecha);
+      fechaActual.setHours(0, 0, 0, 0); // Asegurarse de que la hora es medianoche para la comparación de fechas
+
+    //  if (hoy_constante.getTime() === fechaActual.getTime()){
+    //     racha++;
+    //     console.log('hoy')
+    // }
+  
+      // Verificar si hay datos para el día de hoy
+      if (esFechaConsecutiva(fechaActual, hoy) ) {
+        racha++;
+    }  else if (racha > 0) {
+        break; // La racha se rompe, ya hemos contado los días consecutivos hasta hoy
+       }
+  
+      hoy = restarUnDia(hoy); // Restar un día a la fecha de hoy para la próxima iteración
+    }
+
+    if (id == 19){
+        console.log(id)
+        console.log(racha)
+    }
+  
+    return racha;
+  }
+  
+  // Función para verificar si dos fechas son consecutivas
+  function esFechaConsecutiva(fecha1, fecha2) {
+    const unDiaEnMilisegundos = 24 * 60 * 60 * 1000;
+    return Math.abs(fecha1 - fecha2) === unDiaEnMilisegundos;
+  }
+  
+  // Función para restar un día a una fecha
+  function restarUnDia(fecha) {
+    return new Date(fecha.getTime() - 24 * 60 * 60 * 1000);
+  }
+  

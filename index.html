@@ -707,7 +707,9 @@ svg.selectAll(".bar")
               console.log(data[i].id)
               */
 
+              
               if (existeRegistroHoy(records_h, data[i].id) == hecho) {
+                var numero_racha_h = calcularDiasDeRachaHastaHoy(data[i].id, records_h, hecho )
 
                 tareas_restantes = calcular_habitos_restanten(hecho, tareas_restantes)
 
@@ -731,7 +733,7 @@ svg.selectAll(".bar")
                 lista.appendChild(li);
                 var Nombre_habito = document.createElement('h1')
                 Nombre_habito.classList.add('titulo_habito')
-                var texto_nombre = document.createTextNode(data[i].nombre)
+                var texto_nombre = document.createTextNode(data[i].nombre + numero_racha_h)
 
                 var boton_config = document.createElement("button")
                 Nombre_habito.appendChild(texto_nombre)
