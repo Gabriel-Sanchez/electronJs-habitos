@@ -206,6 +206,7 @@ function miFuncion4() {
     var tiempoTrabajo ;  // Tiempo de trabajo en segundos
     var tiempoDescanso ;  // Tiempo de descanso en segundos
     const { ipcRenderer } = require('electron')
+    var ciclos_global 
 
     var objeto_habito
     var inicio_pom = false
@@ -215,6 +216,7 @@ function miFuncion4() {
     
             ipcRenderer.on('button-value', function (event, value) {
                 ciclos = value.count;
+                ciclos_global = ciclos
                 tiempoTrabajo = Number(value.work_time) * 60;
                 tiempoDescanso = Number(value.short_break) * 60;
 
@@ -304,19 +306,28 @@ function miFuncion4() {
 
 
 
+function definir_tiempo_inicio(){
+
+
+
+}
+
+
 function pomodoro_(){
 
 
 
 var corriendo = false;
+var reset_pom = false
 var intervalo;
 /*
 var ciclos = 4;  // Define la cantidad de ciclos Pomodoro
 var tiempoTrabajo = 25 * 60;  // Tiempo de trabajo en segundos
 var tiempoDescanso = 5 * 60;  // Tiempo de descanso en segundos
 */
-tiempoRestante = tiempoTrabajo;  // Inicia el temporizador con el tiempo de trabajo
 enDescanso = false;
+
+tiempoRestante = tiempoTrabajo;  // Inicia el temporizador con el tiempo de trabajo
 
 var minutos = Math.floor(tiempoRestante / 60);
 var segundos = tiempoRestante % 60;
@@ -326,11 +337,14 @@ html_ciclos.textContent =  (ciclos < 10 ? "0" : "") + ciclos
 var audio = document.getElementById('myAudio');
         
 
-
+var boton_pausa_h = document.getElementById("iniciarPausar")
 
 
 
 document.getElementById("iniciarPausar").addEventListener("click", function() {
+
+    console.log('entra boton')
+
 
     if (!inicio_pom){
         console.log('guardar inicio')
@@ -344,7 +358,14 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
         this.innerHTML  = '<i class="material-icons">play_arrow</i>';
         div_tiempo.style.backgroundColor = 'orange';
     } else {
-        this.innerHTML  = '<i class="material-icons">pause</i>';
+        
+        //if(!reset_pom){
+            this.innerHTML  = '<i class="material-icons">pause</i>';
+            console.log('actuva pausa')
+        //}else{
+         //   this.innerHTML  = '<i class="material-icons">play_arrow</i>';
+        //    reset_pom = false
+      //  }
 
         if (enDescanso) {
             div_tiempo.style.backgroundColor = 'green';
@@ -392,14 +413,25 @@ document.getElementById("iniciarPausar").addEventListener("click", function() {
                     html_ciclos.textContent = (ciclos < 10 ? "0" : "") + ciclos
                 } else {
                     registrar_Fin_habito(objeto_habito.id+"")
-                    this.innerHTML  = '<i class="material-icons">play_arrow</i>';
+                    boton_pausa_h.innerHTML  = '<i class="material-icons">play_arrow</i>';
+                    console.log('boton arrow')
+                    console.log(this)
                     div_tiempo.style.backgroundColor = 'purple';
                     tiempoRestante = tiempoTrabajo;
                     corriendo = !corriendo;
+                    
+                    var minutos = Math.floor(tiempoRestante / 60);
+                    var segundos = tiempoRestante % 60;
+                    document.getElementById("temporizador").textContent = (minutos < 10 ? "0" : "") +  minutos + ":" + (segundos < 10 ? "0" : "") + segundos;
+                    ciclos = ciclos_global
+                    console.log(ciclos)
+                    html_ciclos.textContent = (ciclos < 10 ? "0" : "") + ciclos
+                    console.log('finalizo')
+                    reset_pom = true
                 }
             }
         }, 1000);
-        //this.innerHTML  = '<i class="material-icons">pause</i>';
+        
     }
     corriendo = !corriendo;
 });

@@ -48,8 +48,8 @@
     "id": 1,
     "nombre": "ingles1",
     "work_time": 1,
-    "short_break": 2,
-    "count": 3,
+    "short_break": 1,
+    "count": 2,
     "type": 1,
     "orden_n": 6
   },
@@ -282,8 +282,8 @@
     "id": 32,
     "nombre": "444m",
     "work_time": 1,
-    "short_break": 2,
-    "count": 1,
+    "short_break": 1,
+    "count": 2,
     "type": 1,
     "orden_n": 1
   }
