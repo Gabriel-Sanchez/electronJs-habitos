@@ -48,14 +48,14 @@ let orden;
 
 
 function eventos_lista_habitos() {
-    var data = fs.readFileSync("data.json", 'utf8');
-    var obj = JSON.parse(data);
-
-    // Crear una nueva instancia de Sortable
     let lista = document.getElementById('miLista');
     sortable = Sortable.create(lista, {
         // Definir el evento onEnd
         onEnd: function (/**Event*/evt) {
+            var data = fs.readFileSync("data.json", 'utf8');
+            var obj = JSON.parse(data);
+        
+            // Crear una nueva instancia de Sortable
             // Guardar el nuevo orden de la lista en un archivo
             // let orden = sortable.toArray();
             // fs.writeFileSync(path.join(__dirname, 'ordenLista.json'), JSON.stringify(orden));

@@ -19,12 +19,12 @@
   },
   {
     "id": 8,
-    "nombre": "Bussu",
+    "nombre": "Bussummmmmmmmmmxxqqq",
     "work_time": 5,
     "short_break": 12,
     "count": 1,
     "type": 2,
-    "orden_n": 3
+    "orden_n": 17
   },
   {
     "id": 3,
@@ -33,7 +33,7 @@
     "short_break": 5,
     "count": 1,
     "type": 1,
-    "orden_n": 7
+    "orden_n": 9
   },
   {
     "id": 2,
@@ -60,7 +60,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 8
+    "orden_n": 9
   },
   {
     "id": 9,
@@ -78,7 +78,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 9
+    "orden_n": 3
   },
   {
     "id": 13,
@@ -87,7 +87,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 10
+    "orden_n": 8
   },
   {
     "id": 14,
@@ -100,7 +100,7 @@
   },
   {
     "id": 21,
-    "orden_n": 13,
+    "orden_n": 16,
     "nombre": "anki (español)",
     "work_time": 1,
     "short_break": 1,
@@ -114,7 +114,7 @@
     "short_break": 1,
     "count": 1,
     "type": 2,
-    "orden_n": 17
+    "orden_n": 12
   },
   {
     "id": 22,
@@ -123,11 +123,11 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 4
+    "orden_n": 15
   },
   {
     "id": 23,
-    "orden_n": 21,
+    "orden_n": 22,
     "nombre": "Serie ingles",
     "work_time": 1,
     "short_break": 1,
@@ -141,7 +141,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 14
+    "orden_n": 7
   },
   {
     "id": 6,
@@ -150,7 +150,7 @@
     "short_break": 5,
     "count": 2,
     "type": 2,
-    "orden_n": 23
+    "orden_n": 24
   },
   {
     "id": 18,
@@ -159,7 +159,7 @@
     "short_break": 2,
     "count": 1,
     "type": 1,
-    "orden_n": 15
+    "orden_n": 14
   },
   {
     "id": 5,
@@ -168,7 +168,7 @@
     "short_break": 5,
     "count": 4,
     "type": 1,
-    "orden_n": 16
+    "orden_n": 18
   },
   {
     "id": 17,
@@ -177,7 +177,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 18
+    "orden_n": 20
   },
   {
     "id": 15,
@@ -186,7 +186,7 @@
     "short_break": 1,
     "count": 1,
     "type": 2,
-    "orden_n": 24
+    "orden_n": 25
   },
   {
     "id": 16,
@@ -195,11 +195,11 @@
     "short_break": 1,
     "count": 1,
     "type": 2,
-    "orden_n": 26
+    "orden_n": 29
   },
   {
     "id": 19,
-    "nombre": "creatina",
+    "nombre": "creatinai",
     "work_time": 1,
     "short_break": 1,
     "count": 1,
@@ -226,16 +226,16 @@
   },
   {
     "id": 25,
-    "orden_n": 29,
-    "nombre": "agua",
+    "nombre": "aguak",
     "work_time": 1,
     "short_break": 1,
     "count": 1,
-    "type": 2
+    "type": 2,
+    "orden_n": 31
   },
   {
     "id": 27,
-    "orden_n": 31,
+    "orden_n": 3,
     "nombre": "apex",
     "work_time": 1,
     "short_break": 1,
@@ -249,7 +249,7 @@
     "short_break": 2,
     "count": 2,
     "type": 1,
-    "orden_n": 22
+    "orden_n": 23
   },
   {
     "id": 29,
@@ -258,7 +258,7 @@
     "short_break": 333,
     "count": 221,
     "type": 1,
-    "orden_n": 20
+    "orden_n": 21
   },
   {
     "id": 30,
