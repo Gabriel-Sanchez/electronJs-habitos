@@ -233,9 +233,13 @@ renderUpdateList(listElements, menuList);
 
           <div class="conotenedor-superior">
 
-            <button class="material-icons" onclick="configurar_habito_nuevo()" >  add</button>
+            <div class="contenedor_datos_superior" >
 
-            <h4 id="tareas_restantes"></h4>
+              <button class="material-icons" onclick="configurar_habito_nuevo()" >  add</button>
+  
+              <h4 id="tareas_restantes"></h4>
+            </div>
+
            
 
             
@@ -731,12 +735,21 @@ svg.selectAll(".bar")
                 var div_botones = document.createElement('div')
                 li.appendChild(div_item_h)
                 lista.appendChild(li);
-                var Nombre_habito = document.createElement('h1')
+                var Nombre_habito = document.createElement('div')
+                var Nombre_habito_h1 = document.createElement('h1')
+                var racha_habito_p = document.createElement('h6')
                 Nombre_habito.classList.add('titulo_habito')
-                var texto_nombre = document.createTextNode(data[i].nombre + numero_racha_h)
+                Nombre_habito_h1.classList.add('titulo_habito_texto')
+                racha_habito_p.classList.add('racha_habito_texto')
+                var texto_nombre = document.createTextNode(data[i].nombre)
+                var texto_numero_racha = document.createTextNode( numero_racha_h)
+                racha_habito_p.appendChild(texto_numero_racha)
 
                 var boton_config = document.createElement("button")
-                Nombre_habito.appendChild(texto_nombre)
+                boton_config.classList.add('boton_config')
+                Nombre_habito_h1.appendChild(texto_nombre)
+                Nombre_habito.appendChild(Nombre_habito_h1)
+                Nombre_habito.appendChild(racha_habito_p)
                 div_item_h.appendChild(boton_config);
                 div_item_h.appendChild(Nombre_habito);
                 var botn = document.createElement("button")

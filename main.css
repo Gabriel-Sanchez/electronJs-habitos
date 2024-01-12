@@ -7,11 +7,14 @@
     background-color: rgb(103, 222, 80);
     display: flex;
     justify-content: space-between;
-}
-.item_habito_check{
+    align-items: center;
+  }
+  .item_habito_check{
     background-color: rgb(80, 196, 222);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 100%;
 
 }
 .boton_habito{
@@ -23,11 +26,33 @@
     list-style-type: none;
 }
 .titulo_habito{
+  display: flex;
+  justify-content: space-between;
+  
     color: black;
     font-size: 18px;
     padding-left: 10px;
     width: 70%;
+    height: 100%;
 
+}
+.titulo_habito_texto{
+    color: black;
+    font-size: 18px;
+    padding-left: 10px;
+    padding: 0;
+    margin: 0;
+}
+.racha_habito_texto{
+    color: rgb(45, 45, 45);
+    font-size: 14px;
+    padding-left: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+.boton_config{
+  height: 51px;
 }
 
 ul{
@@ -128,4 +153,26 @@ justify-content: space-between;
 
 #boton_borrar{
   color: red;
+}
+
+#tareas_restantes{
+  height: 40px;
+  width: 40px;
+  /* Utilizar un diseño Flexbox */
+  display: flex;
+  
+  /* Centrar los elementos verticalmente */
+  align-items: center;
+  
+  /* Centrar los elementos horizontalmente */
+  justify-content: center;
+  background-color: rgb(177, 70, 70);
+  margin: 0;
+}
+
+.contenedor_datos_superior{
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+
 }
