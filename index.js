@@ -67,8 +67,27 @@ function eventos_lista_habitos() {
             console.log(obj)
             console.log(elementos_li)
 
+
+            let array = Array.from(elementos_li);
+            console.log(array)
+
+            // Ordenar el array
+            array.sort(function(a, b) {
+                let objA = JSON.parse(a.dataset.obj);
+                let objB = JSON.parse(b.dataset.obj);
+
+                // Comparar objA.orden_n y objB.orden_n
+                return objA.orden_n - objB.orden_n;
+            });
+
+            console.log(array)
+
             for (let i = 0; i < elementos_li.length; i++) {
                 let id = obj[i].id;
+
+                // console.log(array[i].orden_n) 
+                // console.log(array[i].id) 
+                // console.log(JSON.parse(array[i].dataset.obj).orden_n) 
 
 
 
@@ -81,7 +100,7 @@ function eventos_lista_habitos() {
                 // console.log(obj2.id);
 
                 var index = obj.findIndex(item => item.id === obj2.id);
-                obj[index].orden_n = i
+                obj[index].orden_n = Number(array[i].id) 
 
 
            
@@ -98,7 +117,7 @@ function eventos_lista_habitos() {
                 // }
             }
 
-            console.log(obj)
+            //console.log(obj)
 
             fs.writeFileSync("data.json", JSON.stringify(obj, null, 2), 'utf8');
 
