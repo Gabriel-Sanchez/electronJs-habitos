@@ -258,6 +258,7 @@ function definir(value) {
          document.getElementById('header').innerText = value.nombre;
 
          valor_completo = value
+         document.getElementById('onClick-placeholder').innerHTML = ''
 
          transformarDatos(value.id, 'historial_habitos.csv');
 

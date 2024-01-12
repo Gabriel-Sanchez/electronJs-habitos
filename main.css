@@ -52,7 +52,7 @@
 }
 
 .boton_config{
-  height: 51px;
+  height: 47px;
 }
 
 ul{
@@ -166,7 +166,7 @@ justify-content: space-between;
   
   /* Centrar los elementos horizontalmente */
   justify-content: center;
-  background-color: rgb(177, 70, 70);
+  background-color: #525467;
   margin: 0;
 }
 
@@ -175,4 +175,13 @@ justify-content: space-between;
   justify-content: space-between;
   height: 40px;
 
+}
+
+button{
+  background-color: #aaadce;
+  border: none; /* Elimina los bordes */
+}
+
+button:hover {
+  background-color: #bec4c2; /* Verde al pasar el ratón */
 }
