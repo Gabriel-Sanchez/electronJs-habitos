@@ -199,6 +199,9 @@ function configurar_habito (valor) {
   document.getElementById('count').value = valor.count
   document.getElementById('type').value = valor.type
   document.getElementById('orden_n').value = valor.orden_n
+  document.getElementById('color_hab').value = valor.color
+
+  resetBorderColorsHabit(valor.color)
 
   console.log(valor.orden_n)
 
@@ -309,6 +312,8 @@ function configurar_habito_nuevo () {
   document.getElementById('orden_n').value = ''
   document.getElementById('color_hab').value = ''
 
+  resetBorderColorsHabit('none')
+
   // console.log(valor.orden_n)
 
   const button = document.getElementById('boton_agregar')
@@ -402,4 +407,19 @@ function esFechaConsecutiva (fecha1, fecha2) {
 // Función para restar un día a una fecha
 function restarUnDia (fecha) {
   return new Date(fecha.getTime() - 24 * 60 * 60 * 1000)
+}
+
+function resetBorderColorsHabit(colorHabito) {
+  let colorPalette = document.getElementById('colorPalette');
+  var divsHijos = colorPalette.getElementsByTagName('div');
+
+  for (var i = 0; i < divsHijos.length; i++) {
+    if (divsHijos[i].style.backgroundColor == colorHabito ){
+      
+      divsHijos[i].style.border = '2px solid black';
+    }else{
+      divsHijos[i].style.border = "none";
+
+    }
+  }
 }

@@ -26,7 +26,8 @@
     "short_break": 12,
     "count": 1,
     "type": 2,
-    "orden_n": 17
+    "orden_n": 17,
+    "color": "orange"
   },
   {
     "id": 3,
@@ -35,7 +36,8 @@
     "short_break": 5,
     "count": 1,
     "type": 1,
-    "orden_n": 9
+    "orden_n": 9,
+    "color": "blue"
   },
   {
     "id": 2,
@@ -45,7 +47,7 @@
     "count": 1,
     "type": 1,
     "orden_n": 5,
-    "color": "yellow"
+    "color": "orange"
   },
   {
     "id": 1,
@@ -64,7 +66,8 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 9
+    "orden_n": 9,
+    "color": "blue"
   },
   {
     "id": 9,
@@ -83,7 +86,7 @@
     "count": 1,
     "type": 1,
     "orden_n": 3,
-    "color": "yellow"
+    "color": "blue"
   },
   {
     "id": 13,
@@ -92,7 +95,8 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 8
+    "orden_n": 8,
+    "color": "violet"
   },
   {
     "id": 14,
@@ -119,7 +123,8 @@
     "short_break": 1,
     "count": 1,
     "type": 2,
-    "orden_n": 12
+    "orden_n": 12,
+    "color": "undefined"
   },
   {
     "id": 22,
@@ -128,16 +133,18 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 15
+    "orden_n": 15,
+    "color": "undefined"
   },
   {
     "id": 23,
-    "orden_n": 22,
     "nombre": "Serie ingles",
     "work_time": 1,
     "short_break": 1,
     "count": 1,
-    "type": 2
+    "type": 2,
+    "orden_n": 22,
+    "color": "green"
   },
   {
     "id": 4,
@@ -223,12 +230,13 @@
   },
   {
     "id": 20,
-    "orden_n": 28,
     "nombre": "de que estas agradecido hoy (gratitud)",
     "work_time": 1,
     "short_break": 1,
     "count": 1,
-    "type": 2
+    "type": 2,
+    "orden_n": 28,
+    "color": "violet"
   },
   {
     "id": 25,
@@ -275,7 +283,8 @@
     "short_break": 3,
     "count": 1,
     "type": 2,
-    "orden_n": 30
+    "orden_n": 30,
+    "color": "undefined"
   },
   {
     "id": 31,
@@ -295,7 +304,7 @@
     "count": 2,
     "type": 1,
     "orden_n": 1,
-    "color": "indigo"
+    "color": "green"
   },
   {
     "id": 33,
@@ -325,6 +334,26 @@
     "count": 1,
     "type": 1,
     "orden_n": 34,
+    "color": "red"
+  },
+  {
+    "id": 36,
+    "nombre": "bb",
+    "work_time": 2,
+    "short_break": 3,
+    "count": 4,
+    "type": 1,
+    "orden_n": 35,
+    "color": "blue"
+  },
+  {
+    "id": 37,
+    "nombre": "iu",
+    "work_time": 1,
+    "short_break": 2,
+    "count": 3,
+    "type": 2,
+    "orden_n": 36,
     "color": "red"
   }
 ]
