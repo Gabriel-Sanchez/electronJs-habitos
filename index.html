@@ -341,14 +341,13 @@ setInterval(() => {
                 <option value="1">Pomodoro</option>
                 <option value="2">Checker</option>
             </select>
+            <div id="colorPalette"></div>
             <button id="boton_agregar" onclick="guardar_habito_json()">Guardar</button>
         </div>
         </div>
       </div>
         
-        
 
-        
    
       
       
@@ -814,7 +813,7 @@ svg.selectAll(".bar")
                     //console.log("check-" + objeto.id)
                     
                     
-                    registrar_Habitos_checker(objeto.id)
+                    registrar_Habitos_checker(objeto)
                     actualizar_listas()
                     definir(objeto)
                     //ipcRenderer.send('abrir-ventana-secundaria', objeto)
