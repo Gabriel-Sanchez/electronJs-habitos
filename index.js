@@ -347,6 +347,15 @@ function calcular_habitos_restanten (hecho, cantidad) {
 
   return cantidad
 }
+function calcular_tiempo_restante(hecho, total, tiempo, ciclos) {
+  tiempoTotal = Number(ciclos) * Number(tiempo) 
+  console.log(total + '-'+tiempo)
+  if (!hecho) {
+    total = total + tiempoTotal
+  }
+
+  return total
+}
 
 function calcularDiasDeRachaHastaHoy (id, datos, hecho) {
   // Filtrar los datos por id
@@ -422,4 +431,10 @@ function resetBorderColorsHabit(colorHabito) {
 
     }
   }
+}
+
+function convertirMinutosAHoras(minutos) {
+  var horas = Math.floor(minutos / 60);
+  var minutosRestantes = minutos % 60;
+  return horas + " horas y " + minutosRestantes + " minutos";
 }

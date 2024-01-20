@@ -244,7 +244,8 @@ renderUpdateList(listElements, menuList);
             <div class="contenedor_datos_superior" >
 
               <button class="material-icons" onclick="configurar_habito_nuevo()" >  add</button>
-  
+              
+              <h4 id="tiempo_restante"></h4>
               <h4 id="tareas_restantes"></h4>
             </div>
 
@@ -762,6 +763,7 @@ svg.selectAll(".bar")
 
             if (!hecho){
               tareas_restantes = 0
+              tiempo_restante = 0
             }
 
 
@@ -778,6 +780,7 @@ svg.selectAll(".bar")
                 var numero_racha_h = calcularDiasDeRachaHastaHoy(data[i].id, records_h, hecho )
 
                 tareas_restantes = calcular_habitos_restanten(hecho, tareas_restantes)
+                tiempo_restante = calcular_tiempo_restante(hecho, tiempo_restante, data[i].work_time, data[i].count )
 
 
 
@@ -807,12 +810,13 @@ svg.selectAll(".bar")
                 var texto_nombre = document.createTextNode(data[i].nombre)
                 var texto_numero_racha = document.createTextNode( numero_racha_h)
                 racha_habito_p.appendChild(texto_numero_racha)
-
+                
                 var boton_config = document.createElement("button")
                 boton_config.style.backgroundColor = data[i].color
                 //boton_config.innerHTML = '<i class="material-icons">settings</i>';
                 boton_config.classList.add('boton_config')
                 Nombre_habito_h1.appendChild(texto_nombre)
+                Nombre_habito_h1.title = data[i].work_time
                 Nombre_habito.appendChild(Nombre_habito_h1)
                 Nombre_habito.appendChild(racha_habito_p)
                 div_item_h.appendChild(boton_config);
@@ -902,6 +906,9 @@ svg.selectAll(".bar")
 
             var texto_numeros_restantes = document.getElementById('tareas_restantes')
             texto_numeros_restantes.innerText = tareas_restantes
+
+            var texto_tiempo_restante = document.getElementById('tiempo_restante')
+            texto_tiempo_restante.innerText = convertirMinutosAHoras(tiempo_restante)
         }
 
     
