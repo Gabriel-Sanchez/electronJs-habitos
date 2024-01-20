@@ -191,6 +191,7 @@ function transformarDatos(idHabito, archivo) {
          nextSelector: '#minDate-next',
          itemName: "minuto",
          tooltip: true,
+         subDomainTextFormat: '%d',
          label: {
            position: 'left',
            offset: {
