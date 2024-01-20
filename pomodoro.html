@@ -222,6 +222,7 @@ function miFuncion4() {
 
                 //document.getElementById('header').innerText = value.nombre;
                 objeto_habito = value
+                document.getElementById('temporizador').title = value.nombre
     
                 resolve([ciclos, tiempoTrabajo, tiempoDescanso]);
             });
@@ -257,7 +258,7 @@ function miFuncion4() {
 
     <div id="tiempo">
 
-        <h2 id="temporizador">25:00</h2>
+        <h2 id="temporizador" >00:00</h2>
     </div>
     <h2 id="ciclos">00</h2>
 
