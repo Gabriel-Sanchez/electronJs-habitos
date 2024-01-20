@@ -416,7 +416,7 @@ function resetBorderColorsHabit(colorHabito) {
   for (var i = 0; i < divsHijos.length; i++) {
     if (divsHijos[i].style.backgroundColor == colorHabito ){
       
-      divsHijos[i].style.border = '2px solid black';
+      divsHijos[i].style.border = '3px solid black';
     }else{
       divsHijos[i].style.border = "none";
 
