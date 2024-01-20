@@ -210,3 +210,12 @@ summary{
 .detalles_lista{
   background-color: #525467;
 }
+
+.div_color_habito{
+  width: 12px;
+  height: 47px;
+}
+
+.div_botones{
+  display: flex;
+}

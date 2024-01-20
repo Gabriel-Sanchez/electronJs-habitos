@@ -794,6 +794,7 @@ svg.selectAll(".bar")
 
                 var div_item_h = document.createElement('div')
                 var div_botones = document.createElement('div')
+                div_botones.classList.add('div_botones')
                 li.appendChild(div_item_h)
                 lista.appendChild(li);
                 var Nombre_habito = document.createElement('div')
@@ -807,6 +808,8 @@ svg.selectAll(".bar")
                 racha_habito_p.appendChild(texto_numero_racha)
 
                 var boton_config = document.createElement("button")
+                boton_config.style.backgroundColor = data[i].color
+                //boton_config.innerHTML = '<i class="material-icons">settings</i>';
                 boton_config.classList.add('boton_config')
                 Nombre_habito_h1.appendChild(texto_nombre)
                 Nombre_habito.appendChild(Nombre_habito_h1)
@@ -834,6 +837,11 @@ svg.selectAll(".bar")
                 botn_graf.value = data[i];
                 div_botones.appendChild(botn)
                 div_botones.appendChild(botn_graf)
+
+                div_color = document.createElement('div')
+                div_color.classList.add('div_color_habito')
+                div_color.style.backgroundColor = data[i].color
+                div_botones.appendChild(div_color)
 
                 //console.log(data[i])
 
