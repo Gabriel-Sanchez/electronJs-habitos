@@ -26,6 +26,8 @@ button{
 .botones_pom{
     margin-top: auto;
     margin-bottom: auto;
+    display: flex;
+    align-items: center;
 }
 #temporizador{
     margin-top: auto;
@@ -34,7 +36,10 @@ button{
 }
 
 #iniciarPausar{
-    border-radius: 20px;
+    padding: 0;
+    height: 28px;
+    width: 28px;
+    border-radius: 14px;
 
 }
 
@@ -66,6 +71,21 @@ h2{
 
 #cerrar i{
     font-size: 10px !important;
+    height: 12px;
+    width: 12px;
+}
+#cerrar{
+    padding: 0;
+    height: 20px;
+    width: 20px;
+}
+#ciclos{
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
+#cerrar:hover{
+    background-color: rgb(250, 148, 148);
+    color: red;
+}
 
