@@ -342,6 +342,7 @@ setInterval(() => {
                 <option value="2">Checker</option>
             </select>
             <div id="colorPalette"></div>
+            <input class="imput_form" type="hidden" id="color_hab" name="color_hab">
             <button id="boton_agregar" onclick="guardar_habito_json()">Guardar</button>
         </div>
         </div>
@@ -364,6 +365,7 @@ setInterval(() => {
 
       <script>
         let colorPalette = document.getElementById('colorPalette');
+        let colorDelHabito = document.getElementById('color_hab')
 let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'pink']; // Reemplaza estos colores con los de tu lista
 
 let selectedColor;
@@ -384,6 +386,8 @@ colors.forEach(function(color) {
             divsHijos[i].style.border = "none";
         }
         colorDiv.style.border = '2px solid black'
+        colorDelHabito.value = selectedColor
+
       
     });
     colorPalette.appendChild(colorDiv);

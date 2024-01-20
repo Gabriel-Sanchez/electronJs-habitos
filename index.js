@@ -221,7 +221,8 @@ function guardar_habito_json () {
     short_break: Number(document.getElementById('short_break').value),
     count: Number(document.getElementById('count').value),
     type: Number(document.getElementById('type').value),
-    orden_n: Number(document.getElementById('orden_n').value)
+    orden_n: Number(document.getElementById('orden_n').value),
+    color: document.getElementById('color_hab').value
   }
 
   console.log(formValues)
@@ -269,6 +270,7 @@ function agregar_Nuevo_habito_js () {
     short_break: Number(document.getElementById('short_break').value),
     count: Number(document.getElementById('count').value),
     type: Number(document.getElementById('type').value),
+    color: document.getElementById('color_hab').value,
     orden_n: maxOrdenN + 1
   }
 
@@ -305,6 +307,7 @@ function configurar_habito_nuevo () {
   document.getElementById('count').value = ''
   document.getElementById('type').value = ''
   document.getElementById('orden_n').value = ''
+  document.getElementById('color_hab').value = ''
 
   // console.log(valor.orden_n)
 
