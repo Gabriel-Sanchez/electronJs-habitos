@@ -40,6 +40,9 @@ button{
     height: 28px;
     width: 28px;
     border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -71,13 +74,17 @@ h2{
 
 #cerrar i{
     font-size: 10px !important;
-    height: 12px;
-    width: 12px;
+    /* height: 12px;
+    width: 12px; */
+    
 }
 #cerrar{
     padding: 0;
     height: 20px;
     width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #ciclos{
     margin-top: auto;
@@ -88,4 +95,6 @@ h2{
     background-color: rgb(250, 148, 148);
     color: red;
 }
+
+
 

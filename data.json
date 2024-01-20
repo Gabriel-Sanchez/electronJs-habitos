@@ -105,7 +105,8 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 12
+    "orden_n": 12,
+    "color": "green"
   },
   {
     "id": 21,

@@ -45,6 +45,7 @@ const createWindow = () => {
       width: 160,
       height: 40,
       transparent: true,
+      //resizable: false,
       frame: false,
       hasShadow: false,
       x: width - 160,
