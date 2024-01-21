@@ -156,6 +156,9 @@ function archivarHabito(){
      console.log('El objeto con id ' + habito.id + ' no existe')
    }
 
+   actualizar_listas()
+   cambiarVentana('ventana1')
+
 
 }
 
@@ -273,9 +276,12 @@ function guardar_habito_json () {
 function actualizar_listas () {
   document.getElementById('miLista').innerHTML = ''
   document.getElementById('miLista_hechos').innerHTML = ''
+  document.getElementById('miLista_archivados').innerHTML = ''
 
-  llenar_lista_habitos('miLista', false)
-  llenar_lista_habitos('miLista_hechos', true)
+  llenar_lista_habitos('miLista', false, false)
+  llenar_lista_habitos('miLista_hechos', true, false)
+  llenar_lista_habitos('miLista_archivados', false, true)
+  llenar_lista_habitos('miLista_archivados', true, true)
   console.log('guardar')
   eventos_lista_habitos()
 }

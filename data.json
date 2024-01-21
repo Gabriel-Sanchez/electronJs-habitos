@@ -18,7 +18,8 @@
     "count": 1,
     "type": 1,
     "orden_n": 0,
-    "color": "indigo"
+    "color": "indigo",
+    "archivado": 1
   },
   {
     "id": 8,
@@ -28,7 +29,8 @@
     "count": 1,
     "type": 2,
     "orden_n": 17,
-    "color": "orange"
+    "color": "orange",
+    "archivado": true
   },
   {
     "id": 3,
@@ -38,7 +40,8 @@
     "count": 1,
     "type": 1,
     "orden_n": 9,
-    "color": "blue"
+    "color": "blue",
+    "archivado": 1
   },
   {
     "id": 2,
@@ -287,7 +290,8 @@
     "count": 1,
     "type": 2,
     "orden_n": 30,
-    "color": "undefined"
+    "color": "undefined",
+    "archivado": 1
   },
   {
     "id": 31,
@@ -307,7 +311,8 @@
     "count": 2,
     "type": 1,
     "orden_n": 1,
-    "color": "green"
+    "color": "green",
+    "archivado": 1
   },
   {
     "id": 33,

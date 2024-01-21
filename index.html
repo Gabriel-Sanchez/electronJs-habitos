@@ -312,6 +312,11 @@ setInterval(() => {
             <ul id="miLista_hechos">
           </details>
           </ul>
+          <details id="details_lista_hecha">
+            <summary>Tareas Archivadas</summary>
+            <ul id="miLista_archivados">
+          </details>
+          </ul>
         </div>
         
         <div id="ventana2" class="ventana" style="display: none;">
@@ -749,7 +754,7 @@ svg.selectAll(".bar")
           });
 
           
-          function llenar_lista_habitos(nombre_lista, hecho) {
+          function llenar_lista_habitos(nombre_lista, hecho, IsHabitoArchivado) {
             var data = fs.readFileSync("data.json", 'utf8');
             var jsonData = JSON.parse(data);
             var sortedJsonData = [...jsonData].sort((a, b) => a.orden_n - b.orden_n);
@@ -776,7 +781,10 @@ svg.selectAll(".bar")
               console.log(data[i].id)
               */
 
+              if ((IsHabitoArchivado && Number(data[i].archivado))|| (!IsHabitoArchivado && !Number(data[i].archivado))){
+
               
+
               if (existeRegistroHoy(records_h, data[i].id) == hecho) {
                 var numero_racha_h = calcularDiasDeRachaHastaHoy(data[i].id, records_h, hecho )
 
@@ -898,6 +906,7 @@ svg.selectAll(".bar")
 
               }
             }
+          }
 
             //eventos_lista_habitos()
             //ordenar_lista_habitos()
