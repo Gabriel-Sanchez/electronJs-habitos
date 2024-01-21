@@ -156,6 +156,12 @@ justify-content: space-between;
 #boton_borrar{
   color: red;
 }
+#archivar_borrar{
+  color: rgb(244, 99, 99);
+}
+#des_archivar_borrar{
+  color: rgb(9, 228, 79);
+}
 
 #tareas_restantes{
   height: 40px;

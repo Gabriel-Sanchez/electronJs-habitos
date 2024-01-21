@@ -8,7 +8,7 @@
     "type": 2,
     "orden_n": 2,
     "color": "orange",
-    "archivado": 1
+    "archivado": 0
   },
   {
     "id": 26,
@@ -51,7 +51,8 @@
     "count": 1,
     "type": 1,
     "orden_n": 5,
-    "color": "orange"
+    "color": "orange",
+    "archivado": 0
   },
   {
     "id": 1,
@@ -90,7 +91,8 @@
     "count": 1,
     "type": 1,
     "orden_n": 3,
-    "color": "blue"
+    "color": "blue",
+    "archivado": 1
   },
   {
     "id": 13,
@@ -130,7 +132,8 @@
     "count": 1,
     "type": 2,
     "orden_n": 12,
-    "color": "undefined"
+    "color": "undefined",
+    "archivado": 1
   },
   {
     "id": 22,
@@ -261,7 +264,8 @@
     "count": 1,
     "type": 2,
     "orden_n": 3,
-    "color": "yellow"
+    "color": "yellow",
+    "archivado": 1
   },
   {
     "id": 28,

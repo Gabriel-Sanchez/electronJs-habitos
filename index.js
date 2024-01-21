@@ -136,7 +136,7 @@ function leer_archivo_historial (archivo) {
   return records
 }
 
-function archivarHabito(){
+function archivarHabito(SeVaArchivar){
   const data = fs.readFileSync('data.json', 'utf8')
   const dataJson = JSON.parse(data)
 
@@ -148,7 +148,7 @@ function archivarHabito(){
 
    // Si el objeto existe, actualizarlo
    if (index !== -1) {
-     dataJson[index].archivado = 1
+     dataJson[index].archivado = SeVaArchivar
      fs.writeFileSync('data.json', JSON.stringify(dataJson, null, 2), 'utf8')
      console.log('guardardó')
    } else {
@@ -226,6 +226,7 @@ function configurar_habito (valor) {
   document.getElementById('type').value = valor.type
   document.getElementById('orden_n').value = valor.orden_n
   document.getElementById('color_hab').value = valor.color
+  document.getElementById('archivado').value = valor.archivado
 
   resetBorderColorsHabit(valor.color)
 
@@ -237,6 +238,13 @@ function configurar_habito (valor) {
   }
 
   document.getElementById('boton_borrar').style.display = 'block'
+  if (valor.archivado){
+    document.getElementById('des_archivar_borrar').style.display = 'block'
+    document.getElementById('archivar_borrar').style.display = 'none'
+  }else{
+    document.getElementById('des_archivar_borrar').style.display = 'none'
+    document.getElementById('archivar_borrar').style.display = 'block'
+  }
 }
 
 function guardar_habito_json () {
@@ -340,6 +348,7 @@ function configurar_habito_nuevo () {
   document.getElementById('type').value = ''
   document.getElementById('orden_n').value = ''
   document.getElementById('color_hab').value = ''
+  document.getElementById('archivado').value = ''
 
   resetBorderColorsHabit('none')
 
@@ -351,6 +360,8 @@ function configurar_habito_nuevo () {
   }
 
   document.getElementById('boton_borrar').style.display = 'none'
+  document.getElementById('archivar_borrar').style.display = 'none'
+  document.getElementById('des_archivar_borrar').style.display = 'none'
 }
 
 function eliminar_habito () {
