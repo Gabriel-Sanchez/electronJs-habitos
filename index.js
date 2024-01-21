@@ -136,6 +136,29 @@ function leer_archivo_historial (archivo) {
   return records
 }
 
+function archivarHabito(){
+  const data = fs.readFileSync('data.json', 'utf8')
+  const dataJson = JSON.parse(data)
+
+  habito = Number(document.getElementById('id').value) 
+  console.log(habito)
+
+   // Buscar el índice del objeto con el id dado
+   const index = dataJson.findIndex(item => item.id === habito)
+
+   // Si el objeto existe, actualizarlo
+   if (index !== -1) {
+     dataJson[index].archivado = 1
+     fs.writeFileSync('data.json', JSON.stringify(dataJson, null, 2), 'utf8')
+     console.log('guardardó')
+   } else {
+     // Si el objeto no existe, puedes decidir qué hacer (por ejemplo, añadirlo al array)
+     console.log('El objeto con id ' + habito.id + ' no existe')
+   }
+
+
+}
+
 function existeRegistroHoy (records, id) {
   // Obtén la fecha de hoy en formato yyyy-mm-dd
   // const hoy = new Date().toISOString().split('T')[0];

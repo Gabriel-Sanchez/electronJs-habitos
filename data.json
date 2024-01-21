@@ -7,7 +7,8 @@
     "count": 5,
     "type": 2,
     "orden_n": 2,
-    "color": "orange"
+    "color": "orange",
+    "archivado": 1
   },
   {
     "id": 26,
@@ -95,7 +96,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 8,
+    "orden_n": 12,
     "color": "violet"
   },
   {
@@ -105,8 +106,9 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 12,
-    "color": "green"
+    "orden_n": 8,
+    "color": "green",
+    "archivado": 1
   },
   {
     "id": 21,
