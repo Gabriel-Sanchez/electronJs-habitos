@@ -52,7 +52,7 @@
     "type": 1,
     "orden_n": 5,
     "color": "orange",
-    "archivado": 0
+    "archivado": 1
   },
   {
     "id": 1,
@@ -66,7 +66,7 @@
   },
   {
     "id": 12,
-    "nombre": "Chat in english ",
+    "nombre": "Chat in english u",
     "work_time": 10,
     "short_break": 1,
     "count": 1,
@@ -76,12 +76,13 @@
   },
   {
     "id": 9,
-    "nombre": "Fotografia",
+    "nombre": "Fotografiae",
     "work_time": 1,
     "short_break": 1,
     "count": 1,
     "type": 2,
-    "orden_n": 11
+    "orden_n": 12,
+    "color": "undefined"
   },
   {
     "id": 10,
@@ -101,7 +102,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 12,
+    "orden_n": 14,
     "color": "violet"
   },
   {
@@ -117,7 +118,7 @@
   },
   {
     "id": 21,
-    "orden_n": 16,
+    "orden_n": 18,
     "nombre": "anki (español)",
     "work_time": 1,
     "short_break": 1,
@@ -142,17 +143,17 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 15,
+    "orden_n": 16,
     "color": "undefined"
   },
   {
     "id": 23,
-    "nombre": "Serie ingles",
+    "nombre": "Serie ingles...",
     "work_time": 1,
     "short_break": 1,
     "count": 1,
     "type": 2,
-    "orden_n": 22,
+    "orden_n": 11,
     "color": "green"
   },
   {
@@ -172,7 +173,8 @@
     "short_break": 5,
     "count": 2,
     "type": 2,
-    "orden_n": 24
+    "orden_n": 24,
+    "archivado": 1
   },
   {
     "id": 18,
@@ -181,7 +183,7 @@
     "short_break": 2,
     "count": 1,
     "type": 1,
-    "orden_n": 14
+    "orden_n": 15
   },
   {
     "id": 5,
@@ -190,7 +192,7 @@
     "short_break": 5,
     "count": 4,
     "type": 1,
-    "orden_n": 18
+    "orden_n": 19
   },
   {
     "id": 17,
@@ -199,7 +201,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 20
+    "orden_n": 22
   },
   {
     "id": 15,
@@ -284,7 +286,8 @@
     "count": 221,
     "type": 1,
     "orden_n": 21,
-    "color": "green"
+    "color": "green",
+    "archivado": 1
   },
   {
     "id": 30,
@@ -304,7 +307,7 @@
     "short_break": 2,
     "count": 3,
     "type": 1,
-    "orden_n": 19,
+    "orden_n": 20,
     "color": "blue"
   },
   {

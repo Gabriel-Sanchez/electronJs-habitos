@@ -110,6 +110,7 @@ function eventos_lista_habitos () {
       // console.log(obj)
 
       fs.writeFileSync('data.json', JSON.stringify(obj, null, 2), 'utf8')
+      actualizar_listas()
 
       // let data = JSON.stringify(obj, null, 2);
       // fs.writeFileSync('data.json', data, 'utf8');
@@ -286,10 +287,10 @@ function actualizar_listas () {
   document.getElementById('miLista_hechos').innerHTML = ''
   document.getElementById('miLista_archivados').innerHTML = ''
 
-  llenar_lista_habitos('miLista', false, false)
   llenar_lista_habitos('miLista_hechos', true, false)
   llenar_lista_habitos('miLista_archivados', false, true)
   llenar_lista_habitos('miLista_archivados', true, true)
+  llenar_lista_habitos('miLista', false, false)
   console.log('guardar')
   eventos_lista_habitos()
 }
