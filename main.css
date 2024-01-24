@@ -240,3 +240,17 @@ summary{
   background-color: #525467;
   margin: 0;
 }
+#horas_completadas{
+  height: 40px;
+  width: 70px;
+  /* Utilizar un diseño Flexbox */
+  display: flex;
+  
+  /* Centrar los elementos verticalmente */
+  align-items: center;
+  
+  /* Centrar los elementos horizontalmente */
+  justify-content: center;
+  background-color: #525467;
+  margin: 0;
+}

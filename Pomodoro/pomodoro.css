@@ -14,13 +14,13 @@ button{
     background-color: rgb(189, 122, 252);
     justify-content: space-between;
     /* border-radius: 10px; */
-    border-radius: 5px 0 0 0;
     /* padding-left: 5px;
     padding-right: 5px; */
     padding: 2px;
     font-size: 12px;
     padding-left: 5px ;
-
+    
+    /* border-radius: 5px 0 0 0; */
 
 }
 .botones_pom{
@@ -59,12 +59,15 @@ html{
     border-radius: 20px;
 }
 
-#tiempo, #ciclos{
+.tiempo_style{
     display: flex;
     background-color: rgb(55, 62, 62);
    
-    padding: 2px;
+    /* padding: 2px; */
+    padding-left: 2px;
+    padding-top: 2px;
     border-radius: 3px;
+    padding-bottom: 1px;
 
 }
 h2{
@@ -94,6 +97,12 @@ h2{
 #cerrar:hover{
     background-color: rgb(250, 148, 148);
     color: red;
+}
+
+.boton_start:hover{
+    background-color: rgb(22, 92, 206);
+    color: white;
+
 }
 
 

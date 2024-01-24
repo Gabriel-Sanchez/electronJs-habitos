@@ -246,6 +246,7 @@ renderUpdateList(listElements, menuList);
               <button class="material-icons" onclick="configurar_habito_nuevo()" >  add</button>
               
               <h4 id="tiempo_restante"></h4>
+              <h4 id="horas_completadas"></h4>
               <h4 id="tareas_restantes"></h4>
             </div>
 
@@ -757,6 +758,7 @@ svg.selectAll(".bar")
 
           
           function llenar_lista_habitos(nombre_lista, hecho, IsHabitoArchivado) {
+            actualizar_horas_realizadas()
             var data = fs.readFileSync("data.json", 'utf8');
             var jsonData = JSON.parse(data);
             var sortedJsonData = [...jsonData].sort((a, b) => a.orden_n - b.orden_n);
