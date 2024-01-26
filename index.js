@@ -531,3 +531,26 @@ segundos = segundos < 10 ? '0' + segundos : segundos;
 console.log(`Duración total: ${horas} horas, ${minutos} minutos y ${segundos} segundos`);
   horas_completadas.innerText = `${horas}:${minutos}:${segundos}`
 }
+
+function obtener_historial_habitos(diario){
+  const data = fs.readFileSync('historial_habitos.csv', 'utf8');
+  const records = Papa.parse(data, {
+    header: true,
+    skipEmptyLines: true
+  }).data;
+
+  if (diario){
+    const hoy = new Date().toLocaleDateString('en-CA')
+  
+    const filteredData = records.filter(record => record.fecha === hoy);
+    console.log(typeof(filteredData))
+    return filteredData
+    
+  }else{
+    console.log(typeof(records))
+    return records
+    
+  }
+
+
+}
