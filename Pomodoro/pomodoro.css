@@ -65,6 +65,7 @@ html{
    
     /* padding: 2px; */
     padding-left: 2px;
+    padding-right: 2px;
     padding-top: 2px;
     border-radius: 3px;
     padding-bottom: 1px;
@@ -88,6 +89,7 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 2px;
 }
 #ciclos{
     margin-top: auto;
