@@ -6,3 +6,9 @@ body {
   font-family: 'Fira Sans Condensed', sans-serif;
   color: aliceblue;
 }
+
+:root{
+  --mi-color-primario: rgb(5, 85, 133);
+  --mi-color-secundario: rgb(73, 201, 79);
+  --mi-color-terciario: rgb(0, 178, 132);
+}

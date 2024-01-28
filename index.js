@@ -2,6 +2,12 @@ const fs = require('fs')
 const Papa = require('papaparse')
 const moment = require('moment')
 
+let elemento = document.querySelector(':root'); // Selecciona el elemento raíz
+let estilo = getComputedStyle(elemento); // Obtiene los estilos computados del elemento
+let colorPrimario = estilo.getPropertyValue('--mi-color-primario'); 
+let colorSecundario = estilo.getPropertyValue('--mi-color-secundario'); 
+let colorTerciario = estilo.getPropertyValue('--mi-color-terciario'); 
+
 let data_historial
 let records
 

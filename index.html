@@ -210,7 +210,7 @@ renderUpdateList(listElements, menuList);
         
 
           progress {
-            accent-color: #3687c0; /* Color de la barra de progreso */
+            accent-color: var(--mi-color-secundario); /* Color de la barra de progreso */
         }
           
 
@@ -591,8 +591,8 @@ colors.forEach(function(color) {
           datasets: [{
             label: `${year}-min`,
             data: duraciones,
-            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-            borderColor: 'rgba(54, 162, 235, 1)',
+            borderColor: colorSecundario,
+            backgroundColor: colorSecundario,
             borderWidth: 1
           }]
         },

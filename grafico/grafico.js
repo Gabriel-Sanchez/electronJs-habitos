@@ -384,16 +384,16 @@ let datosObjetivo = etiquetas.map(() => valorObjetivo);
             datasets: [{
                 label: 'Duración',
                 data: datosParaElGrafico,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: colorSecundario,
+                borderColor: colorTerciario,
                 borderWidth: 1
             }, {
               label: 'Valor Objetivo',
               data: datosObjetivo,
               type: 'line',
               fill: false,
-              borderColor: 'rgba(255, 0, 0, 1)',
-              backgroundColor: 'rgba(255, 0, 0, 1)',
+              borderColor: colorPrimario,
+              backgroundColor: colorPrimario,
               pointRadius: 0,
               borderWidth: 2,
               
