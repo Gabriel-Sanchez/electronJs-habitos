@@ -8,7 +8,8 @@
     "type": 2,
     "orden_n": 2,
     "color": "orange",
-    "archivado": 0
+    "archivado": 0,
+    "objetivo" : 4
   },
   {
     "id": 26,

@@ -264,6 +264,9 @@ function definir(value) {
 
          transformarDatos(value.id, 'historial_habitos.csv');
 
+         Ver_horas_invertidas_habito(value.id+'')
+         dias_totales_invertidos_habito(value.id+'')
+
         
    //  });
  

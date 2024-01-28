@@ -254,3 +254,14 @@ summary{
   background-color: #525467;
   margin: 0;
 }
+
+.div_totales{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.h_total{
+  padding-left: 10px;
+  padding-right: 10px;
+}
