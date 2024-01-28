@@ -283,3 +283,109 @@ function mostrar_flechas() {
   }
 }
 
+function convertirATiempoEnMinutos(tiempo) {
+  let partes = tiempo.split(':');
+  let horas = parseInt(partes[0]);
+  let minutos = parseInt(partes[1]);
+  let segundos = parseInt(partes[2]);
+  return horas * 60 + minutos + segundos / 60;
+}
+
+
+function graficar_semana(id) {
+    // Leer los datos del archivo CSV
+    const datos = fs.readFileSync('historial_habitos.csv', 'utf8');
+    const registros = Papa.parse(datos, {
+        header: true,
+        skipEmptyLines: true
+    }).data;
+
+
+    let hoy_fecha = new Date();
+    let diaSemana_fecha = hoy_fecha.getDay();
+    let lunes_fecha = new Date(hoy_fecha);
+    lunes_fecha.setDate(hoy_fecha.getDate() - diaSemana_fecha + (diaSemana_fecha == 0 ? -6 : 1)); // Ajusta al lunes de esta semana
+    let domingo_fecha = new Date(lunes_fecha);
+    domingo_fecha.setDate(lunes_fecha.getDate() + 6);
+
+    // Obtener la fecha actual y la fecha del lunes de esta semana
+    let fechaActual = new Date();
+    let diaDeLaSemana = fechaActual.getDay();
+    let lunesDeEstaSemana = new Date(fechaActual.setDate(fechaActual.getDate() - diaDeLaSemana + (diaDeLaSemana === 0 ? -6 : 1)));
+
+
+    // Filtrar los datos para obtener solo los de esta semana y el id especificado
+    let registrosDeEstaSemana = registros.filter(registro => {
+        let fechaDelRegistro = new Date(registro.fecha);
+        return fechaDelRegistro >= lunesDeEstaSemana && registro.id_habito == id;
+    });
+    
+    console.log('-rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+    console.log(registrosDeEstaSemana)
+    console.log('-rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+
+    // Preparar los datos para el gráfico
+    let etiquetas = registrosDeEstaSemana.map(registro => registro.fecha);
+    // let datosParaElGrafico = registrosDeEstaSemana.map(registro => registro.duracion);
+    let datosParaElGrafico = registrosDeEstaSemana.map(registro => convertirATiempoEnMinutos(registro.duracion));
+    let objeto_fecha = Object.fromEntries(etiquetas.map((key, i) => [key, datosParaElGrafico[i]]));
+    console.log(datosParaElGrafico)
+
+    let nombresPorDia = [
+      'Lunes',
+      'Martes',
+      'Miércoles',
+      'Jueves',
+      'Viernes',
+      'Sábado',
+      'Domingo'
+    ]
+    idx_dia = 0
+     
+    let dataCompleta = {};
+    lunes_fecha = moment(lunes_fecha);
+    domingo_fecha = moment(domingo_fecha)
+
+    while (lunes_fecha <= domingo_fecha) {
+      let fechaStr =  lunes_fecha.format("YYYY-MM-DD");
+      dataCompleta[nombresPorDia[idx_dia]+'-'+fechaStr.split("-")[2]] = objeto_fecha[fechaStr] || 0;
+      lunes_fecha.add(1, 'days');
+      idx_dia = idx_dia + 1
+}
+
+console.log(dataCompleta)
+
+etiquetas = Object.keys(dataCompleta);
+datosParaElGrafico = Object.values(dataCompleta);
+
+    // Crear el gráfico con Chart.js
+    let contexto = document.getElementById('miGrafico').getContext('2d');
+    if(window.miGrafico instanceof Chart) {
+        window.miGrafico.destroy(); // Destruir el gráfico anterior si existe
+    }
+    window.miGrafico = new Chart(contexto, {
+        type: 'bar',
+        data: {
+            labels: etiquetas,
+            datasets: [{
+                label: 'Duración',
+                data: datosParaElGrafico,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Llamar a la función con el id que quieres graficar
+

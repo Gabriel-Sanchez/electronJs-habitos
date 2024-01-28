@@ -463,13 +463,19 @@ colors.forEach(function(color) {
          
           <div class="center_div arriba_e">
               <div  id="cal-heatmap"></div>
+              
           </div>
           <div class="center_div" >
             <button id="minDate-previous_year"><</button>
             <button id="minDate-next_year">></button>
         </div>
           <div>
+            <div style="justify-content: center; display: flex; height: 200px; width: 350px;" >
+
+              <canvas  id="miGrafico"></canvas>
+
               <div id="mes_habito"></div>
+            </div>
               <div class="center_div" >
                   
                   <button id="minDate-previous"><</button>
@@ -495,7 +501,8 @@ colors.forEach(function(color) {
         }
       </style>
 
-    
+
+     
 
 <div style="justify-content: center; display: flex;" >
 
@@ -901,6 +908,8 @@ svg.selectAll(".bar")
                  // ipcRenderer.send('abrir-ventana-grafico', objeto)
                  definir(objeto)
                  generarGraficoDuracionPorAnio(objeto.id+'');
+                 graficar_semana(objeto.id+'');
+                 
                  //mostrar_flechas()
 
                 })

@@ -71,7 +71,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 9,
+    "orden_n": 14,
     "color": "blue"
   },
   {
@@ -102,7 +102,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 14,
+    "orden_n": 15,
     "color": "violet"
   },
   {
@@ -118,7 +118,7 @@
   },
   {
     "id": 21,
-    "orden_n": 18,
+    "orden_n": 19,
     "nombre": "anki (español)",
     "work_time": 1,
     "short_break": 1,
@@ -143,7 +143,7 @@
     "short_break": 1,
     "count": 1,
     "type": 1,
-    "orden_n": 16,
+    "orden_n": 18,
     "color": "undefined"
   },
   {
@@ -183,7 +183,7 @@
     "short_break": 2,
     "count": 1,
     "type": 1,
-    "orden_n": 15
+    "orden_n": 16
   },
   {
     "id": 5,
@@ -192,7 +192,7 @@
     "short_break": 5,
     "count": 4,
     "type": 1,
-    "orden_n": 19
+    "orden_n": 9
   },
   {
     "id": 17,
