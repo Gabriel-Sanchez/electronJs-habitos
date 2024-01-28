@@ -195,7 +195,9 @@
     "short_break": 5,
     "count": 4,
     "type": 1,
-    "orden_n": 9
+    "orden_n": 9,
+    "color": "undefined",
+    "objetivo": 4
   },
   {
     "id": 17,

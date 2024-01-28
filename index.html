@@ -533,7 +533,7 @@ colors.forEach(function(color) {
   let years_graf = []; // Definir la variable years en un ámbito más amplio
   let duracionesPorAnio_graf = {}; // Hacer duracionesPorAnio global
 
-  function generarGraficoDuracionPorAnio(id) {
+  function generarGraficoDuracionPorAnio(id, valorObjetivo) {
     currentYearIndex_graf = 0;
     duracionesPorAnio_graf = {}; // Limpiar duracionesPorAnio
 
@@ -584,6 +584,8 @@ colors.forEach(function(color) {
         currentChart_graf.destroy();
       }
 
+      let datosObjetivo = labels.map(() => valorObjetivo);
+
       const ctx = document.getElementById('myChart');
       ctx.style.height = '100px';
       currentChart_graf = new Chart(ctx, {
@@ -596,7 +598,17 @@ colors.forEach(function(color) {
             borderColor: colorSecundario,
             backgroundColor: colorSecundario,
             borderWidth: 1
-          }]
+          }, {
+            label: 'Valor Objetivo',
+            data: datosObjetivo,
+            type: 'line',
+            fill: false,
+            borderColor: colorPrimario,
+            backgroundColor: colorPrimario,
+            pointRadius: 0,
+            borderWidth: 2,
+            
+        }]
         },
         options: {
           responsive: true,
@@ -914,7 +926,7 @@ svg.selectAll(".bar")
                   //console.log(data[i].id)
                  // ipcRenderer.send('abrir-ventana-grafico', objeto)
                  definir(objeto)
-                 generarGraficoDuracionPorAnio(objeto.id+'');
+                 generarGraficoDuracionPorAnio(objeto.id+'', objeto.objetivo);
                  graficar_semana(objeto.id+'', objeto.objetivo);
                  
                  //mostrar_flechas()
