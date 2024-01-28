@@ -7,6 +7,7 @@ let estilo = getComputedStyle(elemento); // Obtiene los estilos computados del e
 let colorPrimario = estilo.getPropertyValue('--mi-color-primario'); 
 let colorSecundario = estilo.getPropertyValue('--mi-color-secundario'); 
 let colorTerciario = estilo.getPropertyValue('--mi-color-terciario'); 
+let colorCuaternario = estilo.getPropertyValue('--mi-color-cuaternario'); 
 
 let data_historial
 let records

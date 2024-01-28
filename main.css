@@ -253,6 +253,8 @@ summary{
   justify-content: center;
   background-color: #525467;
   margin: 0;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .div_totales{
@@ -264,6 +266,8 @@ summary{
 .h_total{
   padding-left: 10px;
   padding-right: 10px;
+  /* background-color: #525467; */
+  padding: 6px;
 }
 
 .botones_nyp{
@@ -271,7 +275,7 @@ summary{
 }
 
 .horas_css{
-  color: var(--mi-color-primario);
+  color: var(--mi-color-cuaternario);
 }
 
 .minutos_css{
