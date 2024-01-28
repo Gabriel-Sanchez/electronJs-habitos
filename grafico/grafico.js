@@ -180,7 +180,7 @@ function transformarDatos(idHabito, archivo) {
          data: datasjs,
          start: new Date(),
          highlight: "now",
-         cellSize: 15,
+         cellSize: 20,
          cellRadius: 3,
          cellPadding: 5,
          range: 1,
@@ -198,7 +198,7 @@ function transformarDatos(idHabito, archivo) {
              x: 20,
              y: 35,
            },
-           width: 110,
+           width: 100,
          },
          onClick: function (date, nb) {
              mostrar_datos(date, nb)
@@ -211,6 +211,7 @@ function transformarDatos(idHabito, archivo) {
              base: "#525467",
              overflow: "white"
             },
+            
             //legendColors: ['#00ff00', '#0000ff', '#ffff00'],
 
 
@@ -292,7 +293,7 @@ function convertirATiempoEnMinutos(tiempo) {
 }
 
 
-function graficar_semana(id) {
+function graficar_semana(id, valorObjetivo) {
     // Leer los datos del archivo CSV
     const datos = fs.readFileSync('historial_habitos.csv', 'utf8');
     const registros = Papa.parse(datos, {
@@ -332,13 +333,13 @@ function graficar_semana(id) {
     console.log(datosParaElGrafico)
 
     let nombresPorDia = [
-      'Lunes',
-      'Martes',
-      'Miércoles',
-      'Jueves',
-      'Viernes',
-      'Sábado',
-      'Domingo'
+      'Lun',
+      'Mar',
+      'Mié',
+      'Jue',
+      'Vie',
+      'Sáb',
+      'Dom'
     ]
     idx_dia = 0
      
@@ -358,6 +359,11 @@ console.log(dataCompleta)
 etiquetas = Object.keys(dataCompleta);
 datosParaElGrafico = Object.values(dataCompleta);
 
+//let valorObjetivo = 5; // Cambia esto por tu valor objetivo
+
+// Crear un array con el valor objetivo para cada día de la semana
+let datosObjetivo = etiquetas.map(() => valorObjetivo);
+
     // Crear el gráfico con Chart.js
     let contexto = document.getElementById('miGrafico').getContext('2d');
     if(window.miGrafico instanceof Chart) {
@@ -373,7 +379,17 @@ datosParaElGrafico = Object.values(dataCompleta);
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
-            }]
+            }, {
+              label: 'Valor Objetivo',
+              data: datosObjetivo,
+              type: 'line',
+              fill: false,
+              borderColor: 'rgba(255, 0, 0, 1)',
+              backgroundColor: 'rgba(255, 0, 0, 1)',
+              pointRadius: 0,
+              borderWidth: 2,
+              
+          }]
         },
         options: {
           responsive: true,

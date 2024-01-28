@@ -474,13 +474,13 @@ colors.forEach(function(color) {
 
               <canvas  id="miGrafico"></canvas>
 
-              <div id="mes_habito"></div>
-            </div>
               <div class="center_div" >
-                  
-                  <button id="minDate-previous"><</button>
+                
+                <button id="minDate-previous"><</button>
+                <div id="mes_habito"></div>
                   <button id="minDate-next">></button>
               </div>
+            </div>
               
           </div>
           <div id="onClick-placeholder"></div>
@@ -908,7 +908,7 @@ svg.selectAll(".bar")
                  // ipcRenderer.send('abrir-ventana-grafico', objeto)
                  definir(objeto)
                  generarGraficoDuracionPorAnio(objeto.id+'');
-                 graficar_semana(objeto.id+'');
+                 graficar_semana(objeto.id+'', objeto.objetivo);
                  
                  //mostrar_flechas()
 

@@ -52,3 +52,6 @@
     font-size: 20px;
 }
 
+.subdomain-text {
+fill: white !important; /* Cambia 'white' al color que desees */
+}
