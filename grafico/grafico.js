@@ -267,6 +267,11 @@ function definir(value) {
          Ver_horas_invertidas_habito(value.id+'')
          dias_totales_invertidos_habito(value.id+'')
 
+         let botones_prev_next = document.getElementsByClassName('botones_nyp')
+         for (let boton of botones_prev_next) {
+          boton.style.display = 'block';
+        }
+
         
    //  });
  

@@ -265,3 +265,7 @@ summary{
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.botones_nyp{
+  display: none;
+}
