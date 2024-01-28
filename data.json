@@ -9,7 +9,7 @@
     "orden_n": 2,
     "color": "orange",
     "archivado": 0,
-    "objetivo" : 4
+    "objetivo": 4
   },
   {
     "id": 26,
@@ -63,7 +63,8 @@
     "count": 2,
     "type": 1,
     "orden_n": 6,
-    "color": "orange"
+    "color": "orange",
+    "objetivo": 1
   },
   {
     "id": 12,
@@ -165,7 +166,8 @@
     "count": 1,
     "type": 1,
     "orden_n": 7,
-    "color": "orange"
+    "color": "orange",
+    "objetivo": 1
   },
   {
     "id": 6,
@@ -371,5 +373,16 @@
     "type": 2,
     "orden_n": 36,
     "color": "red"
+  },
+  {
+    "id": 38,
+    "nombre": "iu",
+    "work_time": 1,
+    "short_break": 1,
+    "count": 1,
+    "type": 1,
+    "color": "orange",
+    "objetivo": 4,
+    "orden_n": 37
   }
 ]
