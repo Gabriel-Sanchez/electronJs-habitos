@@ -613,7 +613,7 @@ minutos = minutos < 10 ? '0' + minutos : minutos;
 segundos = segundos < 10 ? '0' + segundos : segundos;
 
 console.log(`Duración total: ${horas} horas, ${minutos} minutos y ${segundos} segundos`);
-label_horas_habito.innerText = `Total de tiempo: ${horas} horas: ${minutos} min: ${segundos} seg`
+label_horas_habito.innerHTML = `Total de tiempo: <strong class="horas_css">${horas}</strong> horas: <strong class="minutos_css">${minutos}</strong> min: <strong class="seg_css">${segundos}</strong> seg`
 }
 
 function dias_totales_invertidos_habito(id){
@@ -630,5 +630,5 @@ function dias_totales_invertidos_habito(id){
   const hoy = new Date().toLocaleDateString('en-CA')
   
   const filteredData = records.filter(record => record.id_habito === id);
-label_horas_habito.innerText = `Total de días: ${filteredData.length}`
+label_horas_habito.innerHTML = `Total de días: <strong class="minutos_css">${filteredData.length}</strong>`
 }

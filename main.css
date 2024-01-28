@@ -269,3 +269,14 @@ summary{
 .botones_nyp{
   display: none;
 }
+
+.horas_css{
+  color: var(--mi-color-primario);
+}
+
+.minutos_css{
+  color: var(--mi-color-secundario);
+}
+.seg_css{
+  color: var(--mi-color-terciario);
+}
