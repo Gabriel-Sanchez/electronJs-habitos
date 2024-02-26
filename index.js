@@ -633,3 +633,13 @@ function dias_totales_invertidos_habito(id){
   const filteredData = records.filter(record => record.id_habito === id);
 label_horas_habito.innerHTML = `Total de días: <strong class="minutos_css">${filteredData.length}</strong>`
 }
+
+
+function obtenerObjetoHabito(id) {
+  const data = fs.readFileSync('data.json', 'utf8')
+  let jsonData = JSON.parse(data)
+  jsonData = jsonData.filter(item => item.id == Number(id))
+
+  return jsonData[0]
+
+}

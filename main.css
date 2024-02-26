@@ -261,6 +261,7 @@ summary{
   width: 60%;
   display: flex;
   justify-content: space-between;
+  margin: 0;
 }
 
 .h_total{
@@ -268,6 +269,7 @@ summary{
   padding-right: 10px;
   /* background-color: #525467; */
   padding: 6px;
+  margin: 0;
 }
 
 .botones_nyp{
@@ -283,4 +285,14 @@ summary{
 }
 .seg_css{
   color: var(--mi-color-terciario);
+}
+
+#form_edicion_historial{
+  display: none;
+}
+
+#onClick-placeholder{
+  margin: 5px;
+  text-align: center;
+
 }

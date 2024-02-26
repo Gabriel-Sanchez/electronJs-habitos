@@ -1,5 +1,6 @@
 
 const CalHeatMap = require('cal-heatmap');
+const { duration } = require('moment');
 
 var data = {
  '2023-12-18': 5,
@@ -49,25 +50,51 @@ function mostrar_datos(date, nb){
  console.log(datos_historial)
 
  if (nb === null){
-     resultado = 'sin registro'
+     resultado = 'sin registro <br>'
+     duracion_historial = document.getElementById("duracion_historial").value = '0:0:0'
      
  }else{
-     
-     resultado = ` <br>  La fecha es ${diaSemana}, ${dia} de ${mes} del año ${ano} </br>  <br> Concentración: ${datos_historial.duracion} - Descanso: ${datos_historial.duracion_descanso} <br/> <br> Hora de inicio: ${datos_historial.start_timer} - Hora de fin: ${datos_historial.end_timer}  <br/> `
- }
+  duracion_historial = document.getElementById("duracion_historial").value = datos_historial.duracion
+  var objetoDatos_historial = document.getElementById("objeto_historial");
+  objetoDatos_historial.dataset.objeto = JSON.stringify(datos_historial);
+  console.log("Objeto guardado en atributo de datos.");
+  // console.log("objeto_guardado:",objeto_habito)
+  
+  
+  resultado = ` <br>  La fecha es ${diaSemana}, ${dia} de ${mes} del año ${ano} </br>  <br> Concentración: ${datos_historial.duracion} - Descanso: ${datos_historial.duracion_descanso} <br/> <br> Hora de inicio: ${datos_historial.start_timer} - Hora de fin: ${datos_historial.end_timer}  <br/> `
+}
 
+document.getElementById('form_edicion_historial').style.display = 'none'
 
+document.getElementById('onClick-placeholder').innerHTML = `
 
- document.getElementById('onClick-placeholder').innerHTML = `
-
- <!-- <b>${date}</b>  -->
+<!-- <b>${date}</b>  -->
 <br/> <b>${resultado}</b> <br/>
- 
- <!-- with 
 
- 
- <b>${(nb === null ? 'unknown' : nb)}</b> items -->
+
+<button id="boton_visibleEdicionHistorial" onclick="visibleEdicionHistorial()">Editar</button>
+
+<!-- with 
+
+
+<b>${(nb === null ? 'unknown' : nb)}</b> items -->
 `;
+
+
+id_historial = document.getElementById("id_historial_habito").value = valor_completo.id
+fecha_historial = document.getElementById("fecha_historial").value = fecha
+console.log(id_historial)
+
+
+
+
+var objetoDatos = document.getElementById("objeto_habito_edicion");
+objeto_habito = obtenerObjetoHabito(id_historial)
+objetoDatos.dataset.objeto = JSON.stringify(objeto_habito);
+console.log("Objeto guardado en atributo de datos.");
+console.log("objeto_guardado:",objeto_habito)
+
+
 
 }
 
@@ -261,6 +288,7 @@ function definir(value) {
 
          valor_completo = value
          document.getElementById('onClick-placeholder').innerHTML = ''
+         document.getElementById('form_edicion_historial').style.display = 'none'
 
          transformarDatos(value.id, 'historial_habitos.csv');
 
@@ -320,12 +348,21 @@ function graficar_semana(id, valorObjetivo) {
     // Obtener la fecha actual y la fecha del lunes de esta semana
     let fechaActual = new Date();
     let diaDeLaSemana = fechaActual.getDay();
-    let lunesDeEstaSemana = new Date(fechaActual.setDate(fechaActual.getDate() - diaDeLaSemana + (diaDeLaSemana === 0 ? -6 : 1)));
+    let lunesDeEstaSemana = new Date(fechaActual.setDate(fechaActual.getDate() - diaDeLaSemana + (diaDeLaSemana === 0 ? -7 : 1)));
+
+    lunesDeEstaSemana.setHours(0, 0, 0, 0)
+    console.log('lunesDeEstaSemana')
+    console.log(lunesDeEstaSemana)
+    console.log('lunesDeEstaSemana')
+
 
 
     // Filtrar los datos para obtener solo los de esta semana y el id especificado
     let registrosDeEstaSemana = registros.filter(registro => {
         let fechaDelRegistro = new Date(registro.fecha);
+        fechaDelRegistro.setHours(0, 0, 0, 0)
+        lunesDeEstaSemana.setDate(lunesDeEstaSemana.getDate() - 1);
+
         return fechaDelRegistro >= lunesDeEstaSemana && registro.id_habito == id;
     });
     
@@ -413,3 +450,79 @@ let datosObjetivo = etiquetas.map(() => valorObjetivo);
 
 // Llamar a la función con el id que quieres graficar
 
+
+function agregarEditarHabito() {
+  id_habitoObjet = document.getElementById("id_historial_habito")
+  id_habito = id_habitoObjet.value
+  duracion_historialobject = document.getElementById("duracion_historial")
+
+  var objeto_historial_leido = {}
+  var objeto_historial = document.getElementById("objeto_historial");
+  var objetoGuardado_historial = objeto_historial.dataset.objeto;
+  if (objetoGuardado_historial) {
+    objeto_historial_leido = JSON.parse(objetoGuardado_historial);
+      console.log("Objeto recuperado:", objeto_historial_leido);
+  } else {
+      console.log("No hay ningún objeto guardado.");
+  }
+
+  fecha_historial = document.getElementById("fecha_historial").value
+
+  duracion_historial = duracion_historialobject.value
+  let data = fs.readFileSync('historial_habitos.csv', 'utf8');
+  let records = Papa.parse(data, {header: true}).data;
+
+  console.log('se guardara en -', id_habito, ' el tiempo', duracion_historial, 'en-', objeto_historial_leido.fecha)
+
+  let hoy = moment().format('YYYY-MM-DD');
+  let hora = moment().format('HH:mm:ss');
+
+  fechaSeleccionada = objeto_historial_leido.fecha
+
+  let existeHoy = records.some(record => moment(record.fecha).format('YYYY-MM-DD') === fecha_historial && record.id_habito === id_habito);
+  console.log(existeHoy)
+  console.log("--eeeeeeeeeeeeeeettttttttttttttttttteeeeeuuuuuuuuuuuuaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  if (!existeHoy) {
+      let nueva_fila = {
+          id_habito: id_habito,
+          fecha: fecha_historial,
+          duracion: duracion_historial,
+          start_timer: hora,
+          end_timer: 0,
+          duracion_descanso: 0
+      };
+      records.push(nueva_fila);
+  }else{
+    records.forEach(record => {
+      if(moment(record.fecha).format('YYYY-MM-DD') === fechaSeleccionada && record.id_habito === id_habito) {
+          record.duracion = duracion_historial;
+      }
+  });
+  }
+
+  let csv = Papa.unparse(records);
+  fs.writeFileSync('historial_habitos.csv', csv);
+  
+  var objetoDatos = document.getElementById("objeto_habito_edicion");
+  var objetoGuardado = objetoDatos.dataset.objeto;
+  if (objetoGuardado) {
+      var objeto = JSON.parse(objetoGuardado);
+      console.log("Objeto recuperado:", objeto);
+      definir(objeto)
+      generarGraficoDuracionPorAnio(objeto.id+'', objeto.objetivo);
+      graficar_semana(objeto.id+'', objeto.objetivo);
+  } else {
+      console.log("No hay ningún objeto guardado.");
+  }
+  id_habitoObjet.value = ''
+  duracion_historialobject.value = ''
+  objetoDatos.dataset = {}
+
+
+}
+
+
+function visibleEdicionHistorial(){
+  document.getElementById('boton_visibleEdicionHistorial').style.display = 'none'
+  document.getElementById('form_edicion_historial').style.display = 'block'
+}
